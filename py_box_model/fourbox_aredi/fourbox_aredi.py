@@ -1,5 +1,4 @@
 import numpy as np
-from matplotlib import pyplot as plt
 import seawater as sw
 
 
@@ -12,7 +11,7 @@ def fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, 
     area_s = 1e14
     area_n = 0.6e14
     Dhigh = 100
-    dt = 365 * 86400 / 4
+    dt = 365 * 86400 / 4  # Note: seconds in 1/4 year? Do we try to account for leap years?
 
     # reindex these from 1-based (for Matlab) to 0-based for Python
     inorth = 0
@@ -22,7 +21,7 @@ def fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, 
 
     T = np.zeros((N + 1, 4))  # account for Matlab being able to append to arrays, and having a j+1 in the loop
     S = np.zeros((N + 1, 4))  # account for Matlab being able to append to arrays, and having a j+1 in the loop
-    V = np.zeros((N, 4))  # todo: Not used?
+    # V = np.zeros((N, 4))  # todo: Not used?
     M_n = np.zeros((N, 1))
     M_upw = np.zeros((N, 1))
     M_eddy = np.zeros((N, 1))
@@ -50,7 +49,7 @@ def fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, 
             M_eddy[j] = AI * Dlow[j] * 2.5e7 / 1e6
             Vdeep = 3700 * area - area_n * Dhigh - area_s * Dhigh - area_low * Dlow[j]
             Vlow = area_low * Dlow[j]
-            Sinitlow = S[j, ilow] * area_low * Dlow[j]
+            # Sinitlow = S[j, ilow] * area_low * Dlow[j]  # todo: Not used?
             dVlow = (Mek - M_eddy[j] - M_n[j] + M_upw[j] - Fws - Fwn) * dt
             dVdeep = -dVlow
             Dlow[j + 1] = Dlow[j] + dVlow / area_low
@@ -120,17 +119,6 @@ def fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, 
             T[j + 1, ilow] = (T[j, ilow] * Vlow + dTlow) / (Vlow + dVlow)
             T[j + 1, ideep] = (T[j, ideep] * Vdeep + dTDeep) / (Vdeep + dVdeep)
         else:
-            raise ValueError("sigma0[j, inorth] <=? sigma0[j, ilow] error!")
-
-            # [j [area_n*Dhigh area_s*Dhigh Vlow+dVlow Vdeep+dVdeep]*S(j+1,:)'
-            # -[area_n*Dhigh area_s*Dhigh Vlow Vdeep]*S(j,:)']
-
-    # plt.figure()
-    # plt.subplot(211)
-    # plt.plot(S)
-    # plt.legend('North', 'South', 'Low', 'Deep')
-    # plt.subplot(212)
-    # plt.plot(np.arange(N), M_n / 1e6, np.arange(N), M_upw / 1e6, np.arange(N), (Mek - M_eddy) / 1e6)
-    # plt.legend('North', 'Upw', 'South')
-    # plt.pause(0.1)
+            raise ValueError("Unexpected condition: !(sigma0[j, inorth] <= sigma0[j, ilow]) "
+                             "and !(sigma0[j, inorth] > sigma0[j, ilow])!")
     return M_n, M_upw, M_eddy, Dlow, T, S, sigma0

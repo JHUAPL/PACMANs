@@ -1,5 +1,6 @@
 import numpy as np
 from matplotlib import pyplot as plt
+
 from script_utils import fba_run_n_steps, fba_run_n_steps_async
 
 
@@ -200,7 +201,7 @@ def sim2(num_procs=12):
     plt.grid()
     plt.legend()
     plt.show()
-    #legend('A_R_e_d_i=500', 'A_R_e_d_i=1000', 'A_R_e_d_i=2000', 'Location', 'northeast')
+    # legend('A_R_e_d_i=500', 'A_R_e_d_i=1000', 'A_R_e_d_i=2000', 'Location', 'northeast')
 
 
 def sim3(num_procs=12):
@@ -247,26 +248,26 @@ def sim3(num_procs=12):
     plt.figure(figsize=(18, 12))
     Fwflux = np.arange(0, 30) * 0.05
     plt.subplot(221)
-    plt.plot(Fwflux, Mnsaveepsxp5 / 1e6, '-+b', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Mnsave25 / 1e6, '-xk', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Mnsaveepsx2 / 1e6, '-or', label='\epsilon=2.4e-4')
-    plt.plot(Fwflux, Mnsaveepsxp5_low / 1e6, '-+g', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Mnsave25_low / 1e6, '-xc', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Mnsaveepsx2_low / 1e6, '-oy', label='\epsilon=2.4e-4')
+    plt.plot(Fwflux, Mnsaveepsxp5 / 1e6, '-+b', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Mnsave25 / 1e6, '-xk', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Mnsaveepsx2 / 1e6, '-or', label='epsilon=2.4e-4')
+    plt.plot(Fwflux, Mnsaveepsxp5_low / 1e6, '-+g', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Mnsave25_low / 1e6, '-xc', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Mnsaveepsx2_low / 1e6, '-oy', label='epsilon=2.4e-4')
     plt.xlabel('Freshwater flux in Sv')
     plt.ylabel('Overturning in Sv')
     plt.title('a: NH Overturning')
     plt.grid()
     plt.legend()
-    #'\epsilon=0.6e-4', '\epsilon=1.2e-4', '\epsilon=2.4e-4'
+    # '\epsilon=0.6e-4', '\epsilon=1.2e-4', '\epsilon=2.4e-4'
 
     plt.subplot(222)
-    plt.plot(Fwflux, Meddysaveepsxp5 / 1e6 - 25, '-+b', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Meddysave25 / 1e6 - 25, '-xk', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Meddysaveepsx2 / 1e6 - 25, '-or', label='\epsilon=2.4e-4')
-    plt.plot(Fwflux, Meddysaveepsxp5_low / 1e6 - 25, '-+g', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Meddysave25_low / 1e6 - 25, '-xc', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Meddysaveepsx2_low / 1e6 - 25, '-oy', label='\epsilon=2.4e-4')
+    plt.plot(Fwflux, Meddysaveepsxp5 / 1e6 - 25, '-+b', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Meddysave25 / 1e6 - 25, '-xk', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Meddysaveepsx2 / 1e6 - 25, '-or', label='epsilon=2.4e-4')
+    plt.plot(Fwflux, Meddysaveepsxp5_low / 1e6 - 25, '-+g', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Meddysave25_low / 1e6 - 25, '-xc', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Meddysaveepsx2_low / 1e6 - 25, '-oy', label='epsilon=2.4e-4')
     plt.xlabel('Freshwater flux in Sv')
     plt.ylabel('Overturning in Sv')
     plt.title('b: SH Overturning')
@@ -274,24 +275,24 @@ def sim3(num_procs=12):
     plt.legend()
 
     plt.subplot(223)
-    plt.plot(Fwflux, Dlowsaveepsxp5, '-+b', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Dlowsave25, '-xk', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Dlowsaveepsx2, '-or', label='\epsilon=2.4e-4')
-    plt.plot(Fwflux, Dlowsaveepsxp5_low, '-+g', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, Dlowsave25_low, '-xc', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, Dlowsaveepsx2_low, '-oy', label='\epsilon=2.4e-4')
+    plt.plot(Fwflux, Dlowsaveepsxp5, '-+b', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Dlowsave25, '-xk', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Dlowsaveepsx2, '-or', label='epsilon=2.4e-4')
+    plt.plot(Fwflux, Dlowsaveepsxp5_low, '-+g', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, Dlowsave25_low, '-xc', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, Dlowsaveepsx2_low, '-oy', label='epsilon=2.4e-4')
     plt.xlabel('Freshwater flux in Sv')
     plt.ylabel('Depth in m')
     plt.title('c: Low latitude thermocline depth')
     plt.legend()
 
     plt.subplot(224)
-    plt.plot(Fwflux, dsigmasaveepsxp5, '-+b', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, dsigmasave25, '-xk', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, dsigmasaveepsx2, '-or', label='\epsilon=2.4e-4')
-    plt.plot(Fwflux, dsigmasaveepsxp5_low, '-+g', label='\epsilon=0.6e-4')
-    plt.plot(Fwflux, dsigmasave25_low, '-xc', label='\epsilon=1.2e-4')
-    plt.plot(Fwflux, dsigmasaveepsx2_low, '-oy', label='\epsilon=2.4e-4')
+    plt.plot(Fwflux, dsigmasaveepsxp5, '-+b', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, dsigmasave25, '-xk', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, dsigmasaveepsx2, '-or', label='epsilon=2.4e-4')
+    plt.plot(Fwflux, dsigmasaveepsxp5_low, '-+g', label='epsilon=0.6e-4')
+    plt.plot(Fwflux, dsigmasave25_low, '-xc', label='epsilon=1.2e-4')
+    plt.plot(Fwflux, dsigmasaveepsx2_low, '-oy', label='epsilon=2.4e-4')
     plt.xlabel('Freshwater flux in Sv')
     plt.ylabel('Density in kg/m^3')
     plt.title('d: Density difference N-Low')
@@ -302,29 +303,10 @@ def sim3(num_procs=12):
 
 
 if __name__ == "__main__":
-    # sim1(12)
+    sim1(12)
     # sim2(12)
-    sim3(12)
+    # sim3(12)
 
-#
-# N = 8000;
-# Kv = 1e-5;
-# AI = 1000;
-# D0 = 400;
-# epsilon = 1.2e-4;
-# Fws = 1e6;
-# T0n = 2;
-# T0s = 4;
-# T0d = 3;
-# T0l = 17;
-# Aredi = 1000;
-# S0n = 35;
-# S0s = 36;
-# S0d = 34.5;
-# S0l = 36;
-# M_s = 15e6;
-# Meks = 25e6;
-#
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
