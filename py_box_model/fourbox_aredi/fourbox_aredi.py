@@ -2,12 +2,41 @@ import numpy as np
 import seawater as sw
 
 
-def fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon):
+def fourbox_Aredi(N: int, Kv: float, AI: float, Mek: float, Aredi: float, M_s: float, D0: float, T0s: float, T0n: float,
+                  T0l: float, T0d: float, S0s: float, S0n: float, S0l: float, S0d: float, Fws: float, Fwn: float,
+                  epsilon: float):
     """
-    return [M_n M_upw M_eddy Dlow T S sigma0]
+    Run the Four-Box simulation from https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml.
+    :param N: Number of days to run the model?
+    :param Kv: Vertical diffusion coefficient
+    :param AI: Interface height diffusion coefficient or Gent-McWilliams coefficient; A_{GM} in the paper
+    :param Mek: Ekman flux from the southern ocean
+    :param Aredi: Redi coefficient
+    :param M_s: antarctic bottom water formation rate; M_{SD} in paper
+    :param D0: Initial pycnocline/thermocline depth
+    :param T0s: Initial Temperature of the South box?
+    :param T0n: Initial Temperature of the North box?
+    :param T0l: Initial Temperature of the Low box?
+    :param T0d: Initial Temperature of the Deep box?
+    :param S0s: Initial Salinity of the South box?
+    :param S0n: Initial Salinity of the North box?
+    :param S0l: Initial Salinity of the Low box?
+    :param S0d: Initial Salinity of the Deep box?
+    :param Fws: Fresh water flux (South)?
+    :param Fwn: Fresh water flux (North)?
+    :param epsilon: Resistance parameter
+    :return: [M_n M_upw M_eddy Dlow T S sigma0]
+        M_n: Northern Hemisphere overturning
+        M_upw: Upwelling from the deep ocean
+        M_eddy: Advective eddy flux in the southern ocean
+        Dlow: Thermocline depth of lower latitudes
+        T: Temperature, degrees C
+        S: Salinity
+        sigma0: density
+
     """
     area = 3.6e14
-    area_low = 2e14
+    area_low = 2e14  # Area_{low}
     area_s = 1e14
     area_n = 0.6e14
     Dhigh = 100
