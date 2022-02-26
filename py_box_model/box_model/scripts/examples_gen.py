@@ -1,8 +1,8 @@
-import time
 import argparse
+import time
+from copy import deepcopy
 
 from utils import gen_and_save_box_runs
-from copy import deepcopy
 
 
 def copy_merge_dicts(d1, d2):
@@ -20,13 +20,10 @@ def main(results_directory):
         # box model args, path to results directory, save subdir name, compress
         (copy_merge_dicts(box_args_base, {'Mek': 15e6}), results_directory, 'Mek=15e6', True),
         (deepcopy(box_args_base), results_directory, 'base_run_Mek=25e6', True),
-        (copy_merge_dicts(box_args_base, {'Mek': 35e6}), results_directory, 'Mek=15e6', True),
-        (copy_merge_dicts(box_args_base, {'Mek': 15e6}), results_directory, 'Mek=15e6', True),
+        (copy_merge_dicts(box_args_base, {'Mek': 35e6}), results_directory, 'Mek=35e6', True),
         (copy_merge_dicts(box_args_base, {'Mek': 15e6, 'D0': 100}), results_directory, 'D0=100_Mek=15e6', True),
         (copy_merge_dicts(box_args_base, {'D0': 100}), results_directory, 'D0=100_Mek=25e6', True),
-        (copy_merge_dicts(box_args_base, {'Mek': 35e6, 'D0': 100}), results_directory, 'D0=100_Mek=25e6', True),
-        (copy_merge_dicts(box_args_base, {'Mek': 15e6}), results_directory, 'Mek=15e6', True),
-        (copy_merge_dicts(box_args_base, {'Mek': 15e6}), results_directory, 'Mek=15e6', True),
+        (copy_merge_dicts(box_args_base, {'Mek': 35e6, 'D0': 100}), results_directory, 'D0=100_Mek=35e6', True),
     ]
 
     start = time.time()
