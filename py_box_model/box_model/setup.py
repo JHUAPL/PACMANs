@@ -20,7 +20,7 @@ else:
                         ]
 
 setuptools.setup(
-    name='fourbox_aredi',
+    name='box_model',
     version=__version__,
 
     description='Python version of Four-box Model from JHU',
@@ -35,7 +35,7 @@ setuptools.setup(
     license='Apache License 2.0',
 
     python_requires='>=3.8',
-    packages=setuptools.find_packages(include=['fourbox_aredi', 'fourbox_aredi.*']),
+    packages=setuptools.find_packages(include=['box_model', 'box_model.*']),
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[

@@ -310,7 +310,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, Kv, 500, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, Kv, 500, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveAGM500(k) = M_n(N);
 # MusaveAGM500(k) = M_u(N);
@@ -322,7 +322,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, Kv, 2000, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, Kv, 2000, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveAGM2000(k) = M_n(N);
 # MusaveAGM2000(k) = M_u(N);
@@ -336,7 +336,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, Kv, 500, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, Kv, 500, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveAGM500_low(k) = M_n(N);
 # MusaveAGM500_low(k) = M_u(N);
@@ -348,7 +348,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, Kv, 2000, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, Kv, 2000, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveAGM2000_low(k) = M_n(N);
 # MusaveAGM2000_low(k) = M_u(N);
@@ -432,7 +432,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, 0, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, 0, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveKv0(k) = M_n(N);
 # MusaveKv0(k) = M_u(N);
@@ -444,7 +444,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, 5e-5, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, 5e-5, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveKv05(k) = M_n(N);
 # MusaveKv05(k) = M_u(N);
@@ -458,7 +458,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, 0, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, 0, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveKv0_low(k) = M_n(N);
 # MusaveKv0_low(k) = M_u(N);
@@ -470,7 +470,7 @@ if __name__ == "__main__":
 # for k=1:31
 # Fwn = (k - 1) * 0.05e6;
 # [M_n M_u M_eddy Dlow T S sigma0] = ...
-# fourbox_Aredi(N, 5e-5, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
+# box_model(N, 5e-5, Agm, Meks, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon);
 # pause(0.1);
 # MnsaveKv05_low(k) = M_n(N);
 # MusaveKv05_low(k) = M_u(N);

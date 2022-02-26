@@ -29,7 +29,7 @@ The name of your environment should be in front of your command line, e.g.
 
 ### PACMANs
 
-Assuming you have the code pulled from the repository, navigate to the `fourbox_aredi` directory and run
+Assuming you have the code pulled from the repository, navigate to the `box_model` directory and run
 
 ```
 $ pip install -e .

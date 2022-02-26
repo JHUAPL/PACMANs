@@ -2,7 +2,7 @@ import multiprocessing as mp
 
 import numpy as np
 
-from fourbox_aredi import fourbox_Aredi
+from box_model import box_model
 
 
 def last_point_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon):
@@ -33,7 +33,7 @@ def last_point_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0
     :return: list(np.array, np.array, np.array, np.array, np.array)
     """
     M_n, M_u, M_eddy, Dlow, T, S, sigma0 = \
-        fourbox_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon)
+        box_model(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon)
     return M_n[N - 1], M_u[N - 1], M_eddy[N - 1], sigma0[N - 1, 1] - sigma0[N - 1, 3], Dlow[N - 1]
 
 
@@ -48,9 +48,9 @@ def fba_run_n_steps(n_steps, fourbox_args):
     for k in range(n_steps):
         Fwn = k * 0.05e6  # change to "k" due to reindexing to 0-based
         fourbox_args['Fwn'] = Fwn
-        M_n, M_u, M_eddy, Dlow, T, S, sigma0 = fourbox_Aredi(**fourbox_args)
+        M_n, M_u, M_eddy, Dlow, T, S, sigma0 = box_model(**fourbox_args)
         # Note: the "N-1" is used instead of "-1" because the arrays need to be 1 value longer than N for the loop in
-        #   fourbox_Aredi() to work
+        #   box_model() to work
         Mnsave[k] = M_n[N - 1]
         Musave[k] = M_u[N - 1]
         Meddysave[k] = M_eddy[N - 1]
