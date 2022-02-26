@@ -28,6 +28,7 @@ def box_model(N: int, Kv: float, AI: float, Mek: float, Aredi: float, M_s: float
     """
     Run the Four-Box simulation from https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml
     todo: add ranges and extended ranges
+    Box notes: https://jhuapl.app.box.com/folder/156748842221
     :param N: Number of days to run the model
     :param Kv: Vertical diffusion coefficient
     :param AI: Interface height diffusion coefficient or Gent-McWilliams coefficient; A_{GM} in the paper
