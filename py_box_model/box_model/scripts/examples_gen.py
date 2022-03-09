@@ -12,9 +12,9 @@ BOX_ARGS_BASE = dict(N=4000, Kv=1e-5, AI=1000, Mek=25e6, Aredi=1000, M_s=15e6, D
 
 PARAM_ORDER = ['Kv', 'AI', 'Mek', 'Aredi', 'M_s', 'D0', 'T0s', 'T0n', 'T0l', 'T0d', 'S0s', 'S0n', 'S0l', 'S0d', 'Fws',
                'Fwn', 'epsilon', 'N']
-#todo: use this
 DEFAULT_PARAMS = ['area=3.6e14', 'area_low=2e14', 'area_s=1e14', 'area_n=0.6e14', 'Dhigh=100',
                   'timestep_size_in_years=0.25']
+RUN_COUNTER = -1
 
 
 def copy_merge_dicts(d1, d2):
@@ -30,9 +30,20 @@ def make_save_dirs(d, res_dir):
     return new_dir_path
 
 
-def make_gen_and_save_args(d, res_dir):
+def make_gen_and_save_args_complex(d, res_dir):
+    """
+    DEPRECATED. Here for reference as needed for current time. Will delete once sure it
+        is no longer useful.
+    """
     new_dict = copy_merge_dicts(BOX_ARGS_BASE, d)
-    return new_dict, res_dir, make_save_dirs(new_dict, res_dir), True
+    return new_dict, res_dir, make_save_dirs(new_dict, res_dir), False
+
+
+def make_gen_and_save_args(d, res_dir):
+    global RUN_COUNTER
+    new_dict = copy_merge_dicts(BOX_ARGS_BASE, d)
+    RUN_COUNTER += 1
+    return new_dict, res_dir, os.path.join(res_dir, 'run_' + str(RUN_COUNTER)), False
 
 
 def main(results_directory):

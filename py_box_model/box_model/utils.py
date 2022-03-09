@@ -3,6 +3,7 @@ import json
 import multiprocessing as mp
 
 import numpy as np
+import pandas as pd
 
 from box_model import box_model
 
@@ -15,8 +16,16 @@ def run_and_save_box_run(box_args_dict, save_path, run_name, compressed=False):
         np.savez_compressed(os.path.join(save_path, run_name, 'results.npz'),
                             M_n=M_n, M_upw=M_upw, M_eddy=M_eddy, Dlow=Dlow, T=T, S=S, sigma0=sigma0)
     else:
-        np.savez(os.path.join(save_path, run_name, 'results.npz'),
-                 M_n=M_n, M_upw=M_upw, M_eddy=M_eddy, Dlow=Dlow, T=T, S=S, sigma0=sigma0)
+        # np.savez(os.path.join(save_path, run_name, 'results.npz'),
+        #          M_n=M_n, M_upw=M_upw, M_eddy=M_eddy, Dlow=Dlow, T=T, S=S, sigma0=sigma0)
+        d = dict(
+            M_n=M_n.reshape(-1), M_upw=M_upw.reshape(-1), M_eddy=M_eddy.reshape(-1), Dlow=Dlow.reshape(-1),
+            Tn=T[:, 0], Ts=T[:, 1], Tl=T[:, 2], Td=T[:, 3],
+            Sn=S[:, 0], Ss=S[:, 1], Sl=S[:, 2], Sd=S[:, 3],
+            sigma0n=sigma0[:, 0], sigma0s=sigma0[:, 1], sigma0l=sigma0[:, 2], sigma0d=sigma0[:, 3]
+        )
+        df = pd.DataFrame(d)
+        df.to_csv(os.path.join(save_path, run_name, 'results.csv'))
     return True
 
 
