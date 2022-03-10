@@ -9,7 +9,7 @@ D_LYSOCLINE = np.float64(3700)  # todo: Is this the correct interpretation of th
 L_X_SOUTH = np.float64(2.5e7)  # length around the circumpolar region in km (L_x^S)
 L_Y_SOUTH = np.float64(1e6)  # length scale over which the pycnocline shallows in the Southern Ocean in km (L_y_S)
 L_X_NORTH = np.float64(5e6)  # Analogous to L_X_SOUTH but for the Northern Ocean
-L_Y_NORTH = L_X_NORTH  # Analogous to L_Y_SOUTH but for the Northern Ocean
+L_Y_NORTH = np.float64(1e6)  # Analogous to L_Y_SOUTH but for the Northern Ocean
 SECONDS_PER_YEAR = np.float64(365)*24*60*60
 WATER_PRESSURE = np.float64(0)  # Used to compute density for various temperature and salinity values
 v_T = np.float64(100) / SECONDS_PER_YEAR  # air–sea heat transfer velocity of 100 (m/yr); Equation A2b in paper
@@ -66,29 +66,29 @@ def box_model(N: int, Kv: float, AI: float, Mek: float, Aredi: float, M_s: float
     # TODO: Set up early stopping based on negative values for M_n
 
     # Set all values to float64, todo: check if this is needed
-    Kv = np.float64(Kv)
-    AI = np.float64(AI)
-    Mek = np.float64(Mek)
-    Aredi = np.float64(Aredi)
-    M_s = np.float64(M_s)
-    D0 = np.float64(D0)
-    T0s = np.float64(T0s)
-    T0n = np.float64(T0n)
-    T0l = np.float64(T0l)
-    T0d = np.float64(T0d)
-    S0s = np.float64(S0s)
-    S0n = np.float64(S0n)
-    S0l = np.float64(S0l)
-    S0d = np.float64(S0d)
-    Fws = np.float64(Fws)
-    Fwn = np.float64(Fwn)
-    epsilon = np.float64(epsilon)
-    area = np.float64(area)
-    area_low = np.float64(area_low)
-    area_s = np.float64(area_s)
-    area_n = np.float64(area_n)
-    Dhigh = np.float64(Dhigh)
-    timestep_size_in_years = np.float64(timestep_size_in_years)
+    # Kv = np.float64(Kv)
+    # AI = np.float64(AI)
+    # Mek = np.float64(Mek)
+    # Aredi = np.float64(Aredi)
+    # M_s = np.float64(M_s)
+    # D0 = np.float64(D0)
+    # T0s = np.float64(T0s)
+    # T0n = np.float64(T0n)
+    # T0l = np.float64(T0l)
+    # T0d = np.float64(T0d)
+    # S0s = np.float64(S0s)
+    # S0n = np.float64(S0n)
+    # S0l = np.float64(S0l)
+    # S0d = np.float64(S0d)
+    # Fws = np.float64(Fws)
+    # Fwn = np.float64(Fwn)
+    # epsilon = np.float64(epsilon)
+    # area = np.float64(area)
+    # area_low = np.float64(area_low)
+    # area_s = np.float64(area_s)
+    # area_n = np.float64(area_n)
+    # Dhigh = np.float64(Dhigh)
+    # timestep_size_in_years = np.float64(timestep_size_in_years)
 
     dt = SECONDS_PER_YEAR * timestep_size_in_years
 
