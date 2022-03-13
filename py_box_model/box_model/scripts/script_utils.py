@@ -34,7 +34,7 @@ def last_point_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0
     """
     M_n, M_u, M_eddy, Dlow, T, S, sigma0 = \
         box_model(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon)
-    return M_n[N - 1], M_u[N - 1], M_eddy[N - 1], sigma0[N - 1, 1] - sigma0[N - 1, 3], Dlow[N - 1]
+    return M_n[-1], M_u[-1], M_eddy[-1], sigma0[1, -1] - sigma0[3, -1], Dlow[-1]
 
 
 def fba_run_n_steps(n_steps, fourbox_args):
@@ -51,11 +51,11 @@ def fba_run_n_steps(n_steps, fourbox_args):
         M_n, M_u, M_eddy, Dlow, T, S, sigma0 = box_model(**fourbox_args)
         # Note: the "N-1" is used instead of "-1" because the arrays need to be 1 value longer than N for the loop in
         #   box_model() to work
-        Mnsave[k] = M_n[N - 1]
-        Musave[k] = M_u[N - 1]
-        Meddysave[k] = M_eddy[N - 1]
-        dsigmasave[k] = sigma0[N - 1, 1] - sigma0[N - 1, 3]
-        Dlowsave[k] = Dlow[N - 1]
+        Mnsave[k] = M_n[-1]
+        Musave[k] = M_u[-1]
+        Meddysave[k] = M_eddy[-1]
+        dsigmasave[k] = sigma0[1, -1] - sigma0[3, -1]
+        Dlowsave[k] = Dlow[-1]
     return Mnsave, Musave, Meddysave, dsigmasave, Dlowsave
 
 
@@ -67,9 +67,9 @@ def fba_run_n_steps_async(n_steps, fourbox_args, poolsize=12):
     dsigmasave = np.zeros((n_steps, 1))
     Dlowsave = np.zeros((n_steps, 1))
     async_args = [
-        (fourbox_args['N'], fourbox_args['Kv'], fourbox_args['AI'], fourbox_args['Mek'], fourbox_args['Aredi'],
-         fourbox_args['M_s'], fourbox_args['D0'], fourbox_args['T0s'], fourbox_args['T0n'], fourbox_args['T0l'],
-         fourbox_args['T0d'], fourbox_args['S0s'], fourbox_args['S0n'], fourbox_args['S0l'], fourbox_args['S0d'],
+        (fourbox_args['N'], fourbox_args['K_v'], fourbox_args['A_GM'], fourbox_args['M_ek'], fourbox_args['A_Redi'],
+         fourbox_args['M_SD'], fourbox_args['D_low0'], fourbox_args['T_south0'], fourbox_args['T_north0'], fourbox_args['T_low0'],
+         fourbox_args['T_deep0'], fourbox_args['S_south0'], fourbox_args['S_north0'], fourbox_args['S_low0'], fourbox_args['S_deep0'],
          fourbox_args['Fws'], Fwn, fourbox_args['epsilon']) for Fwn in
         np.arange(n_steps) * 0.05e6]
     pool = mp.Pool(poolsize)

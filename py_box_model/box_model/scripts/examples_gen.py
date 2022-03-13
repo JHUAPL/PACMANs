@@ -5,15 +5,17 @@ from copy import deepcopy
 
 from utils import gen_and_save_box_runs
 
-BOX_ARGS_BASE = dict(N=4000, Kv=1e-5, AI=1000, Mek=25e6, Aredi=1000, M_s=15e6, D0=400,
-                     T0s=4, T0n=2, T0l=17, T0d=3, S0s=36, S0n=35, S0l=36, S0d=34.5,
+BOX_ARGS_BASE = dict(N=4000, K_v=1e-5, A_GM=1000, M_ek=25e6, A_Redi=1000, M_SD=15e6, D_low0=400,
+                     T_north0=2, T_south0=4, T_low0=17, T_deep0=3,
+                     S_north0=35, S_south0=36, S_low0=36, S_deep0=34.5,
                      Fws=1e6, Fwn=0.05e6, epsilon=1.2e-4
                      )
 
-PARAM_ORDER = ['Kv', 'AI', 'Mek', 'Aredi', 'M_s', 'D0', 'T0s', 'T0n', 'T0l', 'T0d', 'S0s', 'S0n', 'S0l', 'S0d', 'Fws',
+PARAM_ORDER = ['K_v', 'A_GM', 'M_ek', 'A_Redi', 'M_SD', 'D_low0', 'T_south0', 'T_north0', 'T_low0', 'T_deep0',
+               'S_south0', 'S_north0', 'S_low0', 'S_deep0', 'Fws',
                'Fwn', 'epsilon', 'N']
-DEFAULT_PARAMS = ['area=3.6e14', 'area_low=2e14', 'area_s=1e14', 'area_n=0.6e14', 'Dhigh=100',
-                  'timestep_size_in_years=0.25']
+DEFAULT_PARAMS = ['area=3.6e14', 'area_low=2e14', 'area_s=1e14', 'area_n=0.6e14', 'D_high=100',
+                  'time_step_size_in_years=0.25']
 RUN_COUNTER = -1
 
 
@@ -49,37 +51,37 @@ def make_gen_and_save_args(d, res_dir):
 def main(results_directory):
     run_specs = [
         # box model args, path to results directory, save subdir name, compress
-        make_gen_and_save_args({'Mek': 15e6}, results_directory),
+        make_gen_and_save_args({'M_ek': 15e6}, results_directory),
         make_gen_and_save_args({}, results_directory),
-        make_gen_and_save_args({'Mek': 35e6}, results_directory),
-        make_gen_and_save_args({'D0': 100}, results_directory),
-        make_gen_and_save_args({'Mek': 35e6, 'D0': 100}, results_directory),
-        make_gen_and_save_args({'Mek': 15e6, 'D0': 100}, results_directory),
+        make_gen_and_save_args({'M_ek': 35e6}, results_directory),
+        make_gen_and_save_args({'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'M_ek': 35e6, 'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'M_ek': 15e6, 'D_low0': 100}, results_directory),
         # sim 2
-        make_gen_and_save_args({'N': 8000, 'Aredi': 500}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Aredi': 2000}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Aredi': 500, 'D0': 100}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Aredi': 2000, 'D0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_Redi': 500}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_Redi': 2000}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_Redi': 500, 'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_Redi': 2000, 'D_low0': 100}, results_directory),
         # sim 3
         make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] / 2}, results_directory),
         make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] * 2}, results_directory),
-        make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] / 2, 'D0': 100}, results_directory),
-        make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] * 2, 'D0': 100}, results_directory),
+        make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] / 2, 'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'epsilon': BOX_ARGS_BASE['epsilon'] * 2, 'D_low0': 100}, results_directory),
         # sim 4
-        make_gen_and_save_args({'N': 8000, 'AI': 500}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'AI': 2000}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'AI': 500, 'D0': 100}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'AI': 2000, 'D0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_GM': 500}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_GM': 2000}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_GM': 500, 'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'A_GM': 2000, 'D_low0': 100}, results_directory),
         # sim 5
-        make_gen_and_save_args({'N': 8000, 'Kv': 0}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Kv': 05e-5}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Kv': 0, 'D0': 100}, results_directory),
-        make_gen_and_save_args({'N': 8000, 'Kv': 05e-5, 'D0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'K_v': 0}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'K_v': 05e-5}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'K_v': 0, 'D_low0': 100}, results_directory),
+        make_gen_and_save_args({'N': 8000, 'K_v': 05e-5, 'D_low0': 100}, results_directory),
     ]
 
     start = time.time()
     gen_and_save_box_runs(run_specs, asynchronous=True, pool_size=12)
-    print('time to generate and save {} specs: {} s'.format(len(run_specs), time.time()-start))
+    print('time to generate and save {} specs: {} s'.format(len(run_specs), time.time() - start))
 
 
 if __name__ == "__main__":

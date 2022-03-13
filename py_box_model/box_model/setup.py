@@ -32,7 +32,7 @@ setuptools.setup(
     author=__author__,
     author_email=__email__,
 
-    license='Apache License 2.0',
+    license='?',
 
     python_requires='>=3.8',
     packages=setuptools.find_packages(include=['box_model', 'box_model.*']),
@@ -45,8 +45,6 @@ setuptools.setup(
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-
-        'License :: OSI Approved :: Apache Software License',
 
         'Programming Language :: Python :: 3 :: Only',
     ],
