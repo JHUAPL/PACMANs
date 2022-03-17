@@ -34,7 +34,7 @@ def last_point_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0
     """
     M_n, M_u, M_eddy, Dlow, T, S, sigma0 = \
         box_model(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon)
-    return M_n[-1], M_u[-1], M_eddy[-1], sigma0[1, -1] - sigma0[3, -1], Dlow[-1]
+    return M_n[-1], M_u[-1], M_eddy[-1], sigma0[0, -1] - sigma0[2, -1], Dlow[-1]
 
 
 def fba_run_n_steps(n_steps, fourbox_args):
