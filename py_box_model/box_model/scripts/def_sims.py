@@ -9,7 +9,7 @@ def sim1(num_procs=12):
     # Note: consider turning 'fourbox_args' into a config object?
     fourbox_args = dict(N=4000, K_v=1e-5, A_GM=1000, D_low0=400, epsilon=1.2e-4, Fws=1e6, T_north0=2, T_south0=4, 
                         T_deep0=3, T_low0=17, S_north0=35, S_south0=36, S_deep0=34.5, S_low0=36, M_SD=15e6, A_Redi=1000)
-    n_steps = 30
+    n_steps = 31
 
     fourbox_args['M_ek'] = 15e6
     out = fba_run_n_steps(n_steps, fourbox_args) if num_procs == 1 \

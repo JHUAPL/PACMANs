@@ -5,35 +5,16 @@ import numpy as np
 from box_model import box_model
 
 
-def last_point_Aredi(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon):
+def last_point_aredi(N, K_v, A_GM, M_ek, A_Redi, M_SD, D_low0, T_north0, T_south0, T_low0, T_deep0,
+                     S_north0, S_south0, S_low0, S_deep0, Fws, Fwn, epsilon):
     """
     Run the four box model for N steps, and then get the Nth entry of the following variables:
        M_n, M_u, M_eddy, sigma0 - sigma0, Dlow
-
-    Primarily used for running multiprocessing
-    todo: fill in parameter explanations
-    :param N:
-    :param Kv:
-    :param AI:
-    :param Mek:
-    :param Aredi:
-    :param M_s:
-    :param D0:
-    :param T0s:
-    :param T0n:
-    :param T0l:
-    :param T0d:
-    :param S0s:
-    :param S0n:
-    :param S0l:
-    :param S0d:
-    :param Fws:
-    :param Fwn:
-    :param epsilon:
-    :return: list(np.array, np.array, np.array, np.array, np.array)
+     Primarily used for running multiprocessing
     """
     M_n, M_u, M_eddy, Dlow, T, S, sigma0 = \
-        box_model(N, Kv, AI, Mek, Aredi, M_s, D0, T0s, T0n, T0l, T0d, S0s, S0n, S0l, S0d, Fws, Fwn, epsilon)
+        box_model(N, K_v, A_GM, M_ek, A_Redi, M_SD, D_low0, T_north0, T_south0, T_low0, T_deep0,
+                  S_north0, S_south0, S_low0, S_deep0, Fws, Fwn, epsilon)
     return M_n[-1], M_u[-1], M_eddy[-1], sigma0[0, -1] - sigma0[2, -1], Dlow[-1]
 
 
@@ -44,7 +25,6 @@ def fba_run_n_steps(n_steps, fourbox_args):
     Meddysave = np.zeros((n_steps, 1))
     dsigmasave = np.zeros((n_steps, 1))
     Dlowsave = np.zeros((n_steps, 1))
-    N = fourbox_args['N']
     for k in range(n_steps):
         Fwn = k * 0.05e6  # change to "k" due to reindexing to 0-based
         fourbox_args['Fwn'] = Fwn
@@ -54,7 +34,7 @@ def fba_run_n_steps(n_steps, fourbox_args):
         Mnsave[k] = M_n[-1]
         Musave[k] = M_u[-1]
         Meddysave[k] = M_eddy[-1]
-        dsigmasave[k] = sigma0[1, -1] - sigma0[3, -1]
+        dsigmasave[k] = sigma0[0, -1] - sigma0[2, -1]
         Dlowsave[k] = Dlow[-1]
     return Mnsave, Musave, Meddysave, dsigmasave, Dlowsave
 
@@ -68,12 +48,13 @@ def fba_run_n_steps_async(n_steps, fourbox_args, poolsize=12):
     Dlowsave = np.zeros((n_steps, 1))
     async_args = [
         (fourbox_args['N'], fourbox_args['K_v'], fourbox_args['A_GM'], fourbox_args['M_ek'], fourbox_args['A_Redi'],
-         fourbox_args['M_SD'], fourbox_args['D_low0'], fourbox_args['T_south0'], fourbox_args['T_north0'], fourbox_args['T_low0'],
-         fourbox_args['T_deep0'], fourbox_args['S_south0'], fourbox_args['S_north0'], fourbox_args['S_low0'], fourbox_args['S_deep0'],
+         fourbox_args['M_SD'], fourbox_args['D_low0'],
+         fourbox_args['T_north0'], fourbox_args['T_south0'], fourbox_args['T_low0'], fourbox_args['T_deep0'],
+         fourbox_args['S_north0'], fourbox_args['S_south0'], fourbox_args['S_low0'], fourbox_args['S_deep0'],
          fourbox_args['Fws'], Fwn, fourbox_args['epsilon']) for Fwn in
         np.arange(n_steps) * 0.05e6]
     pool = mp.Pool(poolsize)
-    res = pool.starmap_async(last_point_Aredi, async_args)
+    res = pool.starmap_async(last_point_aredi, async_args)
     res = res.get()
     pool.close()
     pool.join()
