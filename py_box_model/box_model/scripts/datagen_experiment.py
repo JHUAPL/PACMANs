@@ -49,37 +49,46 @@ def main(netcdf_fp):
                          area_s=1e14, area_n=0.6e14, D_high=100, time_step_size_in_years=0.25
                          )
 
-    perturbations = [{'M_ek': 15e6},
-                     {'M_ek': 35e6},
-                     {'D_low0': 100},
-                     {'M_ek': 35e6, 'D_low0': 100},
-                     {'M_ek': 15e6, 'D_low0': 100},
-                     # sim 2
-                     {'N': 8000, 'A_Redi': 500},
-                     {'N': 8000, 'A_Redi': 2000},
-                     {'N': 8000, 'A_Redi': 500, 'D_low0': 100},
-                     {'N': 8000, 'A_Redi': 2000, 'D_low0': 100},
-                     # sim 3
-                     {'epsilon': BOX_ARGS_BASE['epsilon'] / 2},
-                     {'epsilon': BOX_ARGS_BASE['epsilon'] * 2},
-                     {'epsilon': BOX_ARGS_BASE['epsilon'] / 2, 'D_low0': 100},
-                     {'epsilon': BOX_ARGS_BASE['epsilon'] * 2, 'D_low0': 100},
-                     # sim 4
-                     {'N': 8000, 'A_GM': 500},
-                     {'N': 8000, 'A_GM': 2000},
-                     {'N': 8000, 'A_GM': 500, 'D_low0': 100},
-                     {'N': 8000, 'A_GM': 2000, 'D_low0': 100},
-                     # sim 5
-                     {'N': 8000, 'K_v': 0},
-                     {'N': 8000, 'K_v': 05e-5},
-                     {'N': 8000, 'K_v': 0, 'D_low0': 100},
-                     {'N': 8000, 'K_v': 05e-5, 'D_low0': 100}
-                     ]
+    perturbable = list(BOX_ARGS_BASE.keys())
+    # remove variables that we don't want perturbed from the list of perturbable variables
+    perturbable.remove('N')
+    perturbable.remove('time_step_size_in_years')
 
     run_and_save_box_run(BOX_ARGS_BASE, netcdf_fp, 'base', 'None'),
 
-    for i, p in enumerate(perturbations):
-        run_and_save_box_run(update_base_params(BOX_ARGS_BASE, p), netcdf_fp, 'example' + str(i), 'base')
+    args_dict = {'base': BOX_ARGS_BASE}
+    current_base_ids = ['base']
+    iterations = 0
+    max_iterations = 100
+    run_idx = 0
+
+    for i in range(10):
+        num_samples = np.random.randint(1, 5)
+        sample_indices = np.random.choice(np.arange(len(current_base_ids)), size=num_samples, replace=True)
+        for idx in sample_indices:
+            base_id = current_base_ids[idx]
+            run_id = base_id + "_to_example_" + str(run_idx)
+            run_idx += 1
+
+            perturb_var = np.random.choice(perturbable)
+            cur_value = args_dict[base_id][perturb_var]
+            mag = np.log10(cur_value)
+            new_value = cur_value + np.random.normal() * 10**(mag - 1)
+            new_params = update_base_params(args_dict[base_id], {perturb_var: new_value})
+
+            if len(current_base_ids) < 10 and np.random.uniform(0., 1.) < 0.25:
+                current_base_ids.append(run_id)
+                args_dict[run_id] = new_params
+
+            run_and_save_box_run(new_params, netcdf_fp, run_id, base_id)
+            iterations += 1
+
+            if iterations > max_iterations:
+                return
+
+            if len(current_base_ids) > 6:
+                pop_id = current_base_ids.pop(np.random.randint(0, len(current_base_ids)))
+                args_dict.pop(pop_id)
 
 
 if __name__ == "__main__":
