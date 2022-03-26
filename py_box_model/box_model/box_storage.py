@@ -21,7 +21,7 @@ PARAMS = ['N', 'K_v', 'A_GM', 'M_ek', 'A_Redi', 'M_SD', 'D_low0',
 
 
 def store_run(data: dict, netcdf4_file: str, run_id: str, when_generated: Union[str, datetime.datetime],
-              from_run_id: str, run_parameters: dict, sign_change: Union[None, list, np.ndarray] = None):
+              from_run_id: str, run_parameters: dict, sign_change: Union[None, list, np.ndarray]):
     """
     Todo: Write doc string
     :param data:
@@ -57,7 +57,7 @@ def store_run(data: dict, netcdf4_file: str, run_id: str, when_generated: Union[
     run.time_generated = str(when_generated)
     run.from_run = from_run_id
     run.perturbations = []
-    # run.mode_shift_detected = "False" if sign_change is None else "True"
+    run.mode_shift_detected = "False" if sign_change is None else "True"
     run.parameters = json.dumps(run_parameters)
     # create dimensions with unknown length
     if 'time_step' not in run.dimensions.keys():
