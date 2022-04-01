@@ -1,20 +1,29 @@
+# Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+# All rights reserved.
+# Distributed under the terms of the BSD 3-Clause License.
+
+"""
+An example of how to generate and store data produced from the box model in NetCDF format.
+"""
+
 import argparse
 import datetime
 from copy import deepcopy
 
 import numpy as np
 
-from box_model import box_model, NORTH_IDX, SOUTH_IDX, LOW_IDX, DEEP_IDX
-from box_storage import store_run
+from py_box_model.box_model import box_model, NORTH_IDX, SOUTH_IDX, LOW_IDX, DEEP_IDX
+from py_box_model.box_model_args import box_args_from_dict, dict_from_box_args
+from py_box_model.box_storage import store_run
 
 
 def box_output_to_storage_dict(M_n, M_upw, M_eddy, D_low, T, S, sigma_0):
-    variables = {'M_n': M_n, 'M_upw': M_upw, 'M_eddy': M_eddy, 'D_low': D_low, 'S_north': S[:, NORTH_IDX],
-                 'S_south': S[:, SOUTH_IDX], 'S_low': S[:, LOW_IDX], 'S_deep': S[:, DEEP_IDX],
-                 'T_north': T[:, NORTH_IDX], 'T_south': T[:, SOUTH_IDX], 'T_low': T[:, LOW_IDX],
-                 'T_deep': T[:, DEEP_IDX], 'sigma_0_north': sigma_0[:, NORTH_IDX],
-                 'sigma_0_south': sigma_0[:, SOUTH_IDX], 'sigma_0_low': sigma_0[:, LOW_IDX],
-                 'sigma_0_deep': sigma_0[:, DEEP_IDX]}
+    variables = {
+        'M_n': M_n, 'M_upw': M_upw, 'M_eddy': M_eddy, 'D_low': D_low,
+        'S_north': S[:, NORTH_IDX], 'S_south': S[:, SOUTH_IDX], 'S_low': S[:, LOW_IDX], 'S_deep': S[:, DEEP_IDX],
+        'T_north': T[:, NORTH_IDX], 'T_south': T[:, SOUTH_IDX], 'T_low': T[:, LOW_IDX], 'T_deep': T[:, DEEP_IDX],
+        'sigma_0_north': sigma_0[:, NORTH_IDX], 'sigma_0_south': sigma_0[:, SOUTH_IDX],
+        'sigma_0_low': sigma_0[:, LOW_IDX], 'sigma_0_deep': sigma_0[:, DEEP_IDX]}
     return variables
 
 
@@ -33,11 +42,13 @@ def find_sign_changes(arr):
     return None
 
 
-def run_and_save_box_run(box_args_dict, netcdf_file, run_id, base_id):
-    M_n, M_upw, M_eddy, D_low, T, S, sigma_0 = box_model(**box_args_dict)
+def run_and_save_box_run(box_args, netcdf_file, run_id, base_id):
+    results = box_model(**box_args)
+    M_n, M_upw, M_eddy, D_low, T, S, sigma_0 = results.unpack()
     data = box_output_to_storage_dict(M_n, M_upw, M_eddy, D_low, T, S, sigma_0)
     when_generated = datetime.datetime.now()
-    store_run(data, netcdf_file, run_id, when_generated, base_id, box_args_dict, find_sign_changes(M_n))
+    params = dict_from_box_args(**box_args)
+    store_run(data, netcdf_file, run_id, when_generated, base_id, params, find_sign_changes(M_n))
     return True
 
 
@@ -76,10 +87,11 @@ def main(netcdf_fp):
                      {'N': 8000, 'K_v': 05e-5, 'D_low0': 100}
                      ]
 
-    run_and_save_box_run(BOX_ARGS_BASE, netcdf_fp, 'base', 'None'),
+    run_and_save_box_run(box_args_from_dict(BOX_ARGS_BASE), netcdf_fp, 'base', 'None'),
 
     for i, p in enumerate(perturbations):
-        run_and_save_box_run(update_base_params(BOX_ARGS_BASE, p), netcdf_fp, 'example' + str(i), 'base')
+        box_args = box_args_from_dict(update_base_params(BOX_ARGS_BASE, p))
+        run_and_save_box_run(box_args, netcdf_fp, 'example' + str(i), 'base')
 
 
 if __name__ == "__main__":

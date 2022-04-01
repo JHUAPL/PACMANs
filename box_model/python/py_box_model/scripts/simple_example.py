@@ -1,17 +1,30 @@
+# Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+# All rights reserved.
+# Distributed under the terms of the BSD 3-Clause License.
+
+"""
+A basic example of how to generate one run of box model data. Results are plotted for convenience and to facilitate
+understanding of the box model outputs.
+"""
+
 from matplotlib import pyplot as plt
 
-from box_model import box_model
+from py_box_model.box_model import box_model
+from py_box_model.box_model_args import (
+    BoxModelBoxDimensions,
+    BoxModelInitConditions,
+    BoxModelParameters,
+    BoxModelTimeStep
+)
 
 
 def run_simple_example():
-    fourbox_args = dict(
-        N=4000, K_v=1e-5, A_GM=1000, M_ek=25e6,
-        A_Redi=1000, M_SD=15e6, D_low0=400,
-        T_north0=2, T_south0=4, T_low0=17, T_deep0=3,
-        S_north0=35, S_south0=36, S_low0=36, S_deep0=34.5,
-        Fws=1e6, Fwn=0.05e6, epsilon=1.2e-4
-    )
-    M_n, M_upw, M_eddy, D_low, T, S, sigma0 = box_model(**fourbox_args)
+    # See argument objects' definitions for default settings
+    box_dims = BoxModelBoxDimensions()
+    box_init = BoxModelInitConditions()
+    box_params = BoxModelParameters(M_ek=15e6)
+    box_time_step = BoxModelTimeStep()
+    M_n, M_upw, M_eddy, D_low, T, S, sigma0 = box_model(box_dims, box_init, box_params, box_time_step).unpack()
     plt.plot(M_n, label='M_n')
     plt.plot(M_upw, label='M_upw')
     plt.plot(M_eddy, label='M_eddy')

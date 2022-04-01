@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
 
+# Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+# All rights reserved.
+# Distributed under the terms of the BSD 3-Clause License.
+
 import setuptools
 import os
 
@@ -16,14 +20,15 @@ if on_rtd:
 else:
     install_requires = ['numpy>=1.22.1',
                         'seawater>=3.3.4',
-                        'matplotlib>=3.5.1'
+                        'matplotlib>=3.5.1',
+                        'pytest'
                         ]
 
 setuptools.setup(
-    name='box_model',
+    name='py_box_model',
     version=__version__,
 
-    description='Python version of Four-box Model from JHU',
+    description='Python version of Box Model from JHU',
     long_description=long_description,
     long_description_content_type="text/markdown",
 
@@ -35,17 +40,16 @@ setuptools.setup(
     license='?',
 
     python_requires='>=3.8',
-    packages=setuptools.find_packages(include=['box_model', 'box_model.*']),
+    packages=setuptools.find_packages(),#include=['box_model', 'box_model.*']),
 
     # See https://pypi.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Development Status :: 3 - Alpha',
-
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering',
         'Topic :: Scientific/Engineering :: Artificial Intelligence',
-
+        'Topic :: Scientific/Engineering :: Oceanography',
         'Programming Language :: Python :: 3 :: Only',
     ],
 

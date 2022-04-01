@@ -1,3 +1,7 @@
+# Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+# All rights reserved.
+# Distributed under the terms of the BSD 3-Clause License.
+
 import datetime
 import json
 from typing import Union
@@ -5,33 +9,36 @@ from typing import Union
 import netCDF4
 import numpy as np
 
-SAVED_VARS = ['M_n', 'M_upw', 'M_eddy', 'D_low',
-              'S_north', 'S_south', 'S_low', 'S_deep',
-              'T_north', 'T_south', 'T_low', 'T_deep',
-              'sigma_0_north', 'sigma_0_south', 'sigma_0_low', 'sigma_0_deep'
-              ]
-
-PARAMS = ['N', 'K_v', 'A_GM', 'M_ek', 'A_Redi', 'M_SD', 'D_low0',
-          'T_south0', 'T_north0', 'T_low0', 'T_deep0',
-          'S_south0', 'S_north0', 'S_low0', 'S_deep0',
-          'Fws', 'Fwn', 'epsilon',
-          'area', 'area_low', 'area_s', 'area_n',
-          'D_high', 'time_step_size_in_years'
-          ]
+from .constants import PARAMS, SAVED_VARS
 
 
-def store_run(data: dict, netcdf4_file: str, run_id: str, when_generated: Union[str, datetime.datetime],
-              from_run_id: str, run_parameters: dict, sign_change: Union[None, list, np.ndarray]):
+def store_run(
+        data: dict,
+        netcdf4_file: str,
+        run_id: str,
+        when_generated: Union[str, datetime.datetime],
+        from_run_id: str,
+        run_parameters: dict,
+        sign_change: Union[None, list, np.ndarray]
+) -> None:
     """
-    Todo: Write doc string
-    :param data:
-    :param netcdf4_file:
-    :param run_id:
-    :param when_generated:
-    :param from_run_id:
-    :param run_parameters:
-    :param sign_change:
-    :return:
+    Store a run of Box model data in a NetCDF file.
+
+    :param data: (dict) Dictionary object mapping the keys in SAVED_VARS, to the corresponding data values
+    :param netcdf4_file: (str) Path to the NetCDF file. If one is not present, create a new one at this location
+    :param run_id: (str) Identifier for the run
+        NOTE: Nothing forces uniqueness of IDs between runs, but NetCDF will likely throw an error if one attempts to
+            use the same run_id twice in a single group
+    :param when_generated: (str or datetime.datetime) Some indicator of when the data was generated. Can simple set to
+        the string "None" to indicate it is a base set of parameters
+    :param from_run_id: (str) Run ID from which this run was generated, i.e. the run whose parameters were perturbed to
+        generate this one
+    :param run_parameters: (dict) Dictionary object mapping the keys in PARAMS, to the corresponding parameter values
+    :param sign_change: (None, list, or numpy.ndarray) If there was a change in the sign of the M_n variable, this
+        should be a list of indices denoting the time steps where the changes occurred. For example, if the value of
+        this variable were
+            [59, 491]
+        then there is a change in the sign of M_n vector from step 58 to 59, and again from 490 to 491.
     """
 
     # validate data and params dictionaries

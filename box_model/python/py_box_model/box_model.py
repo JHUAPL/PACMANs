@@ -1,11 +1,23 @@
+# Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+# All rights reserved.
+# Distributed under the terms of the BSD 3-Clause License.
+
 import numpy as np
 import seawater as sw
+
+from .box_model_args import (
+    BoxModelBoxDimensions,
+    BoxModelInitConditions,
+    BoxModelParameters,
+    BoxModelTimeStep,
+    BoxModelResult
+)
 
 # reindex these from 1-based (for Matlab) to 0-based for Python
 NORTH_IDX, SOUTH_IDX, LOW_IDX, DEEP_IDX = 0, 1, 2, 3
 
 ACC_GRAVITY = np.float64(9.8)
-D_LYSOCLINE = np.float64(3700)  # todo: Is this the correct interpretation of this value?
+D_LYSOCLINE = np.float64(3700)
 L_X_SOUTH = np.float64(2.5e7)  # length around the circumpolar region in km (L_x^S)
 L_Y_SOUTH = np.float64(1e6)  # length scale over which the pycnocline shallows in the Southern Ocean in km (L_y_S)
 L_X_NORTH = np.float64(5e6)  # Analogous to L_X_SOUTH but for the Northern Ocean
@@ -15,52 +27,34 @@ WATER_PRESSURE = np.float64(0)  # Used to compute density for various temperatur
 v_T = np.float64(100) / SECONDS_PER_YEAR  # air–sea heat transfer velocity of 100 (m/yr); Equation A2b in paper
 
 
-def box_model(N: int, K_v: float, A_GM: float, M_ek: float, A_Redi: float, M_SD: float, D_low0: float, T_north0: float,
-              T_south0: float, T_low0: float, T_deep0: float, S_north0: float, S_south0: float, S_low0: float,
-              S_deep0: float, Fws: float, Fwn: float, epsilon: float, area: float = 3.6e14, area_low: float = 2e14,
-              area_s: float = 1e14, area_n: float = 0.6e14, D_high: float = 100, time_step_size_in_years: float = 0.25
-              ):
+def box_model(box_dimensions: BoxModelBoxDimensions,
+              init_conditions: BoxModelInitConditions,
+              box_params: BoxModelParameters,
+              time_step: BoxModelTimeStep
+              ) -> BoxModelResult:
     """
     Run the Four-Box simulation from https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml
-    todo: add ranges and extended ranges
-    Box notes: https://jhuapl.app.box.com/folder/156748842221
-    :param N: Number of time steps to run the model
-    :param K_v: Vertical diffusion coefficient
-    :param A_GM: Interface height diffusion coefficient or Gent-McWilliams coefficient; A_{GM} in the paper
-    :param M_ek: Ekman flux from the southern ocean
-    :param A_Redi: Redi coefficient
-    :param M_SD: antarctic bottom water formation rate; M_{SD} in paper
-    :param D_low0: Initial pycnocline/thermocline depth
-    :param T_north0: Initial Temperature of the North box
-    :param T_south0: Initial Temperature of the South box
-    :param T_low0: Initial Temperature of the Low box
-    :param T_deep0: Initial Temperature of the Deep box
-    :param S_north0: Initial Salinity of the North box
-    :param S_south0: Initial Salinity of the South box
-    :param S_low0: Initial Salinity of the Low box
-    :param S_deep0: Initial Salinity of the Deep box
-    :param Fws: Fresh water flux (South)
-    :param Fwn: Fresh water flux (North)
-    :param epsilon: Resistance parameter
-    :param area: Total area of the box model
-    :param area_low: Surface area of the low-latitude box (Area_{Low})
-    :param area_s: Area of the southern surface area layer box
-    :param area_n: Area of the southern surface area layer box
-    :param D_high: Depth of the northern and southern surface area boxes
-    :param time_step_size_in_years: Size of the step taken at each iteration, in years; e.g. 0.25 ~= 3 months
-    :return: [M_n M_upw M_eddy D_low T S sigma_0]
-        M_n: Northern Hemisphere overturning
-        M_upw: Upwelling from the deep ocean
-        M_eddy: Advective eddy flux in the southern ocean
-        D_low: Thermocline depth of lower latitudes
-        T: Temperature, degrees C
-        S: Salinity
-        sigma_0: Density
-
+    :param box_dimensions: (BoxModelBoxDimensions) Dimensions of the box for this run
+    :param init_conditions: (BoxModelInitConditions) Initial conditions for D_low, S, and T
+    :param box_params: (BoxModelParameters) Model parameters
+    :param time_step: (BoxModelTimeStep) Time settings, i.e. step size and number of time steps
     """
-    # TODO: Set up early stopping based on negative values for M_n
     # TODO: Add parameterized randomness to simulation
 
+    # unpack arguments
+    N, time_step_size_in_years = time_step.N, time_step.time_step_size_in_years
+
+    T_north0, T_south0, T_low0, T_deep0 = init_conditions.get_T_init_conditions()
+    S_north0, S_south0, S_low0, S_deep0 = init_conditions.get_S_init_conditions()
+    D_low0 = init_conditions.D_low0
+
+    K_v, A_GM, M_ek, A_Redi = box_params.K_v, box_params.A_GM, box_params.M_ek, box_params.A_Redi
+    M_SD, Fws, Fwn, epsilon = box_params.M_SD, box_params.Fws, box_params.Fwn, box_params.epsilon
+
+    area, area_low = box_dimensions.area, box_dimensions.area_low
+    area_s, area_n, D_high = box_dimensions.area_s, box_dimensions.area_n, box_dimensions.D_high
+
+    # set constants and initial conditions
     dt = SECONDS_PER_YEAR * time_step_size_in_years
 
     T = np.zeros((N + 1, 4), dtype=np.float64)
@@ -153,7 +147,7 @@ def box_model(N: int, K_v: float, A_GM: float, M_ek: float, A_Redi: float, M_SD:
                         + (M_ek + M_SD) * (T[step, DEEP_IDX] - T[step, SOUTH_IDX])
                         + v_T * area_s * (T_south0 - T[step, SOUTH_IDX])) * dt
             dT_deep = (-(M_upw[step] + M_ek + M_SD - M_n[step]) * T[step, DEEP_IDX]
-                       + (M_eddy[step] + M_SD) * T[step, SOUTH_IDX]) * dt  # todo: why doesn't this need v_T?
+                       + (M_eddy[step] + M_SD) * T[step, SOUTH_IDX]) * dt
             dT_north = ((-M_n[step] + M_LN) * (T[step, LOW_IDX] - T[step, NORTH_IDX])
                         + v_T * area_n * (T_north0 - T[step, NORTH_IDX])) * dt
             S[step + 1, NORTH_IDX] = S[step, NORTH_IDX] + dS_north / (area_n * D_high)
@@ -175,4 +169,4 @@ def box_model(N: int, K_v: float, A_GM: float, M_ek: float, A_Redi: float, M_SD:
     T = T[:-1].transpose()
     S = S[:-1].transpose()
     sigma_0 = sigma_0[:-1].transpose()
-    return M_n, M_upw, M_eddy, D_low, T, S, sigma_0
+    return BoxModelResult(M_n, M_upw, M_eddy, D_low, T, S, sigma_0)
