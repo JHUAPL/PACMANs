@@ -11,13 +11,14 @@ the box model, including:
 
 ## Requirements
 
-versions
+This code is tested on `Python version 3.9`. The box model code also leverages the following packages:
+ - `numpy`
+ - `seawater`
+ - `matplotlib`
+ - `netCDF4`
+ - `pytest` (for running unit tests)
 
 ## Getting Started
-
-## running the code section
-
-
 
 ### Python
 If you are unfamiliar with Python, we recommend downloading Anaconda from 
@@ -42,7 +43,7 @@ if you named your environment "myenv", it should appear as follows:
 (myenv) $ 
 ```
 
-### Python Box Model
+### Running the code
 
 Assuming you have the code pulled from the repository, navigate to the `box_model` directory and run
 
@@ -65,23 +66,74 @@ Once installed, you should be able to run the follow scripts from the [scripts](
       parameter space exploration experiment using small random perturbations on box 
       model variables. Each simulation result is stored in NetCDF format.
 
+### Box model example
+
+The very basic example of running the box model can be illustrated in the following example:
+
+```python
+from py_box_model.box_model import box_model
+from py_box_model.box_model_args import (
+    BoxModelBoxDimensions,
+    BoxModelInitConditions,
+    BoxModelParameters,
+    BoxModelTimeStep
+)
+
+# Define box model arguments (see definitions of each argument for available parameters and default settings):
+box_dimensions = BoxModelBoxDimensions()
+box_initial_conditions = BoxModelInitConditions()
+box_parameters = BoxModelParameters(M_ek=35e6) 
+box_time_step = BoxModelTimeStep(n_steps=100)
+
+# the box model returns a BoxModelResult object
+result = box_model(box_dimensions, box_initial_conditions, box_parameters, box_time_step)
+
+# Call the `unpack` method to get the various result values (if desired):
+M_n, M_upw, M_eddy, D_low, T, S, sigma0 = result.unpack()
+```
+
+
 ## Organization
 
 ```
-py_box_model
-|   setup.py - Script to install trojai module into Python environment
+python
 │   scripts - Location for local code examples and other useful scripts
 │   notebooks - Location for Jupyter Notebooks
-└───core - Top level Python module
-|   box_model.py - file containing code for the box model
-    └───test - top level scripts directory
-        └───TODO
+|   setup.py - Script to install trojai module into Python environment
+|   README.md - This file
+│   tests - Location for test scripts
+└───py_box_model - Top level Python module
+    └───test - Location of test scripts
+        └───data - Directory of files used for test
+    |   box_model.py - box model code
+    |   box_model_args.py - box model box model argument objects
+    |   box_storage.py - functions for storing box model data to disk
+    |   constants.py - various constants used between box model files
 ```
-
 
 ## For Developers
 
-Unit tests (how to run), developer notes, git reminders
+When contributing to this code, we ask:
+  - Start by creating a branch of the repository, then writing the code, and creating a merge request
+  - Consider creating an issue on GitHub for more in-depth or challenging additions or problems
+  - Please use type hinting for arguments and results
+  - Remember to add the copyright statement at the top of the file
+  - Add unit tests where feasible (using `pytest`) to the `test` directory, and briefly describe the tests below
+
+### Running the tests
+
+As previously mentioned, we currently use `pytest` for the tests we have. To run the tests, simply
+navigate to the `python` directory on the command line and run:
+
+```commandline
+pytest
+```
+
+and the tests will run. Current testing includes the following:
+
+  - Compare with data produced by the original Matlab version of the box model and ensure the differences is 
+    values is small
+  - Compare the box model results using the default parameters with previously generated data
 
 ## Acknowledgements
 
