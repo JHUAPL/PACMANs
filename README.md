@@ -1,5 +1,5 @@
 
-# The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator (PACMANS) for Tipping Point Discovery![image](https://user-images.githubusercontent.com/96882537/161562132-c7b25546-0279-4146-ae8a-6cd3e93b3e0e.png)
+# The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator (PACMANS) for Tipping Point Discovery
 
 ## Description
 This repository contains the source code which supports the DARPA AI-assisted Climate Tipping-point Modeling (ACTM) program.  
