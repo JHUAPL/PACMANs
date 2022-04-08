@@ -1,0 +1,2 @@
+This document notes the use of each file in this folder. 
+All are matlab codes, for using CESM2 (Community Earth System Model, version 2) output data, to create timeseries similar to the Gnanadesikan 4-box model for the Atlantic.
