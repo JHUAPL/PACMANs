@@ -1,7 +1,24 @@
-This is the shared location for PACMANs - a collaboration between Applied Physics Laboratory and Johns Hopkins University.
+
+# The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator (PACMANS) for Tipping Point Discovery
+
+## Description
+This repository contains the source code which supports the DARPA AI-assisted Climate Tipping-point Modeling (ACTM) program.  
 
 
-fourbox_Aredi_noise.m superseeds the fourbox_Aredi routine in the Box model package.
-Note that you have to add another parameter when you call it.
+## Team
+Authors of this repository include researchers from the Applied Physics Laboratory and from Johns Hopkins University.
 
-CESM2 folder contains matlab functions for reading in temperature, salinity, northward velocity, and meridional overturning circulation and producing zonal means of temperature, salinity, potential density, and northward velocity, and subsequently producing box-model style timeseries. The conditions at any individual time from the box-model-style time series can be used as initial conditions for the box model to suggest whether AMOC collapse is likely.
+- Jennifer Sleeman (JHU/APL)
+- Jay Brett (JHU/APL)
+- Anand Gnanadesikan (JHU)
+- Yannis Kevrekidis (JHU)
+- Anshu Saksena (JHU/APL)
+- Chace Ashcraft (JHU/APL)
+- David Chung (JHU/APL)
+- Larry White (JHU/APL)
+- Thomas Haine (JHU)
+- Marie-Aude Pradal (JHU)
+- Renske Gelderloos (JHU)
+
+## Contact
+If you have any questions pertaining to this repository, please contact Jennifer Sleeman (jennifer.sleeman at jhuapl dot edu).
