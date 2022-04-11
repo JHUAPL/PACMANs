@@ -1,0 +1,70 @@
+function [timeUTC,depth,meanlatA,meanlonA,volumeA,meanVA,meanlonP,meanlatP,volumeP,meanVP] = zonalV(fileV,fileGrid)
+%zonalV zonally averages northward velocities from CESM2
+%   fileV is the string name of the netcdf file containing V, the northward
+%   velocities, from CESM2.
+%   fileGrid is the string name of the netcdf file containing regions,
+%   Varea
+time_days_since_01Jan0000 = ncread(fileV,'time'); % time is number of days since 0000-01-01 00:00:00'
+time_on_01Jan0000 = datenum(0000,1,1,0,0,0); % = matlab time as datenum is number of days
+timeUTC = time_on_01Jan0000 + (time_days_since_01Jan0000); % matlab time in days, i.e.datenum 
+nt=length(timeUTC);
+
+lat_degN_1 = ncread(fileV,'lat'); % nlon,nlat 320x384
+lon_degE_1 = ncread(fileV,'lon'); % nlon,nlat 320x384
+depth = ncread(fileV,'lev')/100; % depth (m)
+[ny,nx]=size(lat_degN_1);
+nz=length(depth);
+
+regions=ncread(fileGrid,'REGION_MASK');
+tarea=ncread(fileGrid,'VAREA');
+
+meanVA=zeros(ny,nz,nt);
+meanlonA=zeros(ny,nz);
+meanlatA=zeros(ny,nz);
+volumeA=zeros(ny,nz);
+meanVP=zeros(ny,nz,nt);
+meanlonP=zeros(ny,nz);
+meanlatP=zeros(ny,nz);
+volumeP=zeros(ny,nz);
+
+for ii=1:ny
+    start = [1 ii 1 1]; % [lon,lat,depth,monthly time], start location along each coordinate
+    count = [Inf 1 Inf nt];    % read number of elements in each dimension....INf = read until the end of each dimension
+    stride = [1 1 1 1];   % read variable data at intervals specified in stride
+    hold_V_all = squeeze(ncread(fileV,'so',start,count,stride)); % (lon, lat, depth, monthly time) 320x1x1x600
+    for jj=1:nz
+        hold_V=squeeze(hold_V_all(:,jj,:));
+        hold_region=regions(:,ii);
+        hold_lon=lon_degE_1(:,ii);
+        iwant=(hold_region==6)|(hold_region==8)|(hold_region==9);
+        if sum(iwant)==0
+            iwant=hold_lon<22.5 |hold_lon>292.4;
+        end
+        iwant(hold_V==0)=0;
+        iwant(isnan(hold_V))=0;
+        volumeA(ii,jj)=nansum(dz(jj)*tarea(iwant,ii));
+        meanVA(ii,jj,:)=nansum(hold_V(iwant,:)*dz(jj).*repmat(tarea(iwant,ii),1,count(4)),1)./volumeA(ii,jj);
+        meanlatA(ii,jj)=nansum(lat_degN_1(iwant,ii).*tarea(iwant,ii))./nansum(tarea(iwant,ii));
+        holdlon=lon_degE_1(iwant,ii); holdlon(holdlon<180)=holdlon(holdlon<180)+360;
+        meanlonA(ii,jj)=nansum(holdlon.*tarea(iwant,ii))./nansum(tarea(iwant,ii));
+    
+
+        %Pacific
+        iwant=(hold_region==1)|(hold_region==2);
+        if sum(iwant)==0
+            iwant=hold_lon>140 |hold_lon<250;
+        end
+        iwant(hold_V==0)=0;
+        iwant(isnan(hold_V))=0;
+        volumeP(ii,jj)=nansum(dz(jj)*tarea(iwant,ii));
+        meanVP(ii,jj,:)=nansum(hold_V(iwant,:)*dz(jj).*repmat(tarea(iwant,ii),1,count(4)),1)./volumeP(ii,jj);
+        meanlatP(ii,jj)=nansum(lat_degN_1(iwant,ii).*tarea(iwant,ii))./nansum(tarea(iwant,ii));
+        holdlon=lon_degE_1(iwant,ii); holdlon(holdlon<180)=holdlon(holdlon<180)+360;
+        meanlonP(ii,jj)=nansum(holdlon.*tarea(iwant,ii))./nansum(tarea(iwant,ii));
+
+    end
+
+end
+
+
+end
