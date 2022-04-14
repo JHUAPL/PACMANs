@@ -17,6 +17,9 @@ either:
 2. https://www.earthsystemgrid.org/dataset/ucar.cgd.cesm2le.ocn.proc.monthly_ave.html (LE)
 
 These two sources have different variable naming conventions.
+You must download a set of 4 files from the same timeperiod to get matching results.
+From the CMIP source, you want variables so, thetao, vo, msftmz. Searching on that site, try NCAR AND Omon AND so to see monthly salt files from NCAR, the modeling center that produces CESM2.
+From the LE source, you want variables SALT, TEMP, VVEL, MOC. The link goes directly to the monthly ocean data.
 
 ## Format
 
@@ -30,18 +33,40 @@ This section will describe the configuration file, which holds all paths, filena
 Using this will allow you to not change anything in the codes themselves, but simply set the 'configuration' and run.
 
 ```buildoutcfg
-path_1: path/to/your/salt/file/and/stuff
+# csem2to4box config
+InputFiles:
+    salt: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.SALT.185001-185912.nc
+    temp: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.TEMP.185001-185912.nc
+    velN: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.VVEL.185001-185912.nc
+    MOC: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.MOC.185001-185912.nc
+    grid: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.SALT.185001-185912.nc
+    datapath: /path/to/above/files/
+    gswLibraryPath: /path/toyour/gsw/
+    source: LE
+    lowmemory: 1
+coordinates:
+    latSouth: -45 
+    latNorth1: 45 
+    latNorth2: 65
+    depthH: 200
+parameters:
+    diffusionGM: 3000
+    diffusionRedi: 600
+    diffusionVert: 0.16e-4
+    epsilon: 1.4e-4
+OutputFiles:
+    matlab: zonalmeanBHISTcmip6LE2-1001-001-185001-185912.mat
+    atlantic: zonalmeanABHISTcmip6LE2-1001-001-185001-185912.nc 
+    pacific: zonalmeanPBHISTcmip6LE2-1001-001-185001-185912.nc
+    box: boxBHISTcmip6LE2-1001-001-185001-185912.nc
 
 ```
-## Running
-
-First edit the top section of `cesm2to4boxNewFw` with the corresponding input and output file names; later this will be replaced by setting the configuration file.
 
 - Input data: 
 1. Files for salinity, temperature, northward velocity, overturning circulation, and one LE file to access grid variables not included in CMIP files. 
 2. The path to the input files.
 3. The path to your Gibbs Seawater Toolbox
-4. Parameters: source (CMIP or LE), lowmemory (true 1/false 0), diffusivities and time constant of the model (defaults are for CESM2), and limits of the high-latitude boxes (latSouth, latNorth, depthH).
+4. Parameters: source (CMIP or LE), lowmemory (true 1/false 0), diffusivities and time constant of the model (defaults are for CESM2), and limits of the high-latitude boxes (latSouth, latNorth (a southern and northern limit), depthH).
 
 - Output data: 
 1. netcdf filenames to write zonal-mean temperature, salinity, potential density, northward velocity, and overturning circulation for the Atlantic (A) and the Pacific (P),
@@ -51,6 +76,14 @@ where the Pacific includes the full Southern Ocean in its southernmost extent.
 pycnocline depth (D), Ekman (Mek) and deepwater formation (Ms) mass fluxes in the Southern Ocean, AMOC (Atlantic Meridional Overturning Circulation) as a mass flux (Mn),
 and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). The additional parameters needed to run the 4-box model,diffusivities and time constant of the model,
  are noted as a string global parameter; and the limits of the high-latitude boxes are noted as another.
+
+## Running
+
+First edit the configuration file with the corresponding input and output file names. 
+In matlab, run config_reader. 
+Then run cesm2to4boxCorrect.
+
+
 
 # Dependencies
 
@@ -97,4 +130,4 @@ Ekman and deepwater formation mass fluxes in the Southern Ocean, AMOC (Atlantic 
 
 Deprecated codes:
 zonalV, zonalTSrho0, now combined into the zonalVTSrho0 series
-cesm2to4box, now replaced by cesm2to4boxNewFw, which calculates freshwater fluxes differently
+cesm2to4box, replaced by cesm2to4boxNewFw, which calculates freshwater fluxes differently, now replaced by cesm2to4boxCorrect which has better variable names
