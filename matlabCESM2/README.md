@@ -27,6 +27,7 @@ From the LE source, you want variables SALT, TEMP, VVEL, MOC. The link goes dire
 ## Libraries (or prereqs to run )
 Matlab version 2016b or later is needed to run these codes, due to the ability to extend matrices to match dimensions for binary operations.
 Gibbs Sea Water Toolbox is also required.
+So is YAML.
 
 ## Configuration 
 This section will describe the configuration file, which holds all paths, filenames, and parameters for running the code.
