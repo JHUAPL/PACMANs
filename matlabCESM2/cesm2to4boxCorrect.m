@@ -4,7 +4,9 @@
 % This is the high-level code to process CESM2 to box model style
 % timeseries. Run config_reader first. Requires zonalVTSrho0set,
 % freshwaterfluxS, freshwaterfluxN, and zonal2box.
+
 %% config structure parsing; run config_reader first
+
 InputFiles=ConfigStruct.InputFiles;
 parameters=ConfigStruct.parameters;
 coordinates=ConfigStruct.coordinates;
@@ -13,8 +15,9 @@ OutputFiles=ConfigStruct.OutputFiles;
 boxlimitstr = strcat(num2str(abs(coordinates.latSouth)), 'S,', ...
     num2str(coordinates.latNorth1), '-', num2str(coordinates.latNorth2), ...
     'N,', num2str(coordinates.depthH), 'm'); 
-%will generate e.g.'45S 45-65N 200m'
-modelparams = strcat('Agm=', num2str(parameters.diffusionGM), ',Aredi=', ...
+%will generate e.g. '45S 45-65N 200m'
+
+modelparamsstr = strcat('Agm=', num2str(parameters.diffusionGM), ',Aredi=', ...
     num2str(parameters.diffusionRedi), ',Kv=', num2str(parameters.diffusionVert), ...
     ',epsilon=', num2str(parameters.epsilon));
 %will generate e.g. 'Agm=3000,Aredi=600,Kv=0.16e-4,epsilon=1.4e-4'
@@ -38,30 +41,32 @@ display('Input file path added')
 % and integrated density anomaly D0 (for pycnocline depth)
 
 %% load meridional overturning circulation
-%load(SaveZonalMat)
+
 switch source
     case 'CMIP'
-        msftmz_kgpersec_1 = ncread(InFileName_1, 'msftmz');
+        msftmzKgpersec = ncread(InputFile.MOC, 'msftmz');
         % dimensions latitude,levels (depth),basin,time,
         % Size:       395x61x3x600
         depthMOC = ncread(InFileName_1, 'lev') / 100; %cm-->m
         latMOC = ncread(InFileName_1, 'lat');
-        AMOC_Sv = squeeze(msftmz_kgpersec_1(:, :, 1, :)/1000000000); 
+        AMOCsv = squeeze(msftmzKgpersec(:, :, 1, :)/1000000000); 
         %(lat,depth,1=atl_arctic,months)
-        PMOC_Sv = squeeze(msftmz_kgpersec_1(:, :, 2, :)/1000000000);
+        PMOCsv = squeeze(msftmzKgpersec(:, :, 2, :)/1000000000);
     case 'LE'
-        msftmz_sv_1 = ncread(InFileName_1, 'MOC'); %in Sverdrups
-        depthMOC = ncread(InFileName_1, 'moc_z') / 100; %cm-->m
-        latMOC = ncread(InFileName_1, 'lat_aux_grid');
-        AMOC_Sv = squeeze(sum(msftmz_sv_1(:, :, :, 2, :), 3)); 
+        msftmzSv = ncread(InputFile.MOC, 'MOC'); %in Sverdrups
+        depthMOC = ncread(InputFile.MOC, 'moc_z') / 100; %cm-->m
+        latMOC = ncread(InputFile.MOC, 'lat_aux_grid');
+        AMOCsv = squeeze(sum(msftmzSv(:, :, :, 2, :), 3)); 
         %(lat,depth,1=atl_arctic,months)
-        PMOC_Sv = squeeze(sum(msftmz_sv_1(:, :, :, 1, :), 3)) - AMOC_Sv;
+        PMOCsv = squeeze(sum(msftmzSv(:, :, :, 1, :), 3)) - AMOCsv;
 end
 
 %% save mat here- comment out if not wanted
+
 save(OutputFiles.matlab)
 
 %% save zonal-mean VTSrho0 information out to netcdf, Atlantic
+
 lat = Atlantic.latT(:, 1);
 nccreate(OutputFiles.atlantic, 'lat', ...
     'Dimensions', {'lat', length(lat)});
@@ -157,6 +162,7 @@ ncwrite(OutputFiles.atlantic, 'potentialDensity', Atlantic.rho0);
 ncwrite(OutputFiles.atlantic, 'pycnoclineDepth', Atlantic.D0);
 
 %% write Pacific
+
 %Read the variable, dimension, and group definitions from the file using ncinfo.
 % This information defines the file's schema.
 S = ncinfo(OutputFiles.atlantic);
@@ -178,10 +184,10 @@ ncwrite(OutputFiles.pacific, 'pycnoclineDepth', Pacific.D0);
 
 %% zonal to box, Atlantic
 [T4, S4, sigma4, D, Mn, Mek, Ms] = ...
-    zonal2box(coordinates, depth, Atlantic, Pacific, AMOC_Sv);
-%use Pacific for southern box, Atlantic for deep, low, north
+    zonal2box(coordinates, depth, Atlantic, Pacific, AMOCsv);
+% use Pacific for southern box, Atlantic for deep, low, north
 
-dyu = ncread(FileName_CESMLE, 'DYU') ./ 100; %cm to meters, y-spacing
+dyu = ncread(InputFiles.grid, 'DYU') ./ 100; %cm to meters, y-spacing
 [Fwn] = freshwaterfluxN(coordinates, depth, Atlantic, dyu);
 [Fws] = freshwaterfluxS(coordinates, depth, Pacific, dyu);
 
@@ -189,9 +195,9 @@ FwintoS = -Fws;
 FwintoN = Fwn(:, 1) - Fwn(:, 2);
 
 %% save box information out to netcdf
-%ncid = netcdf.create(OutputFiles.box,'NOCLOBBER');
+
 time = timeUTC;
-size(time)
+
 nccreate(OutputFiles.box, 'time', ...
     'Dimensions', {'time', length(timeUTC)});
 nccreate(OutputFiles.box, 'box', ...
@@ -224,7 +230,7 @@ ncwriteatt(OutputFiles.box, '/', 'creation_date', datestr(now));
 ncwriteatt(OutputFiles.box, '/', 'model', ...
     'CESM2 1 Degree Global Model for CMIP');
 ncwriteatt(OutputFiles.box, '/', 'box_limits', boxlimitstr);
-ncwriteatt(OutputFiles.box, '/', 'box_params', cesmparams);
+ncwriteatt(OutputFiles.box, '/', 'box_params', modelparamsstr);
 
 ncwriteatt(OutputFiles.box, 'box', 'long_name', 'box order N S L D')
 ncwriteatt(OutputFiles.box, 'time', 'units', 'days')
