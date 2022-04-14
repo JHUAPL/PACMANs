@@ -1,7 +1,7 @@
-function [timeUTC, depth, Atlantic, Pacific] = zonalVTSrho0set(InputFiles)
 % Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 % All rights reserved.
 % Distributed under the terms of the BSD 3-Clause License.
+function [timeUTC, depth, Atlantic, Pacific] = zonalVTSrho0set(InputFiles)
 % zonal averaging of CESM2 output files:
 % zonalTSrho0 reads .nc T,S,V files by latitude, computes rho0, the potential
 % density, using the gsw toolbox, averages zonally in the Atlantic and
@@ -14,7 +14,7 @@ function [timeUTC, depth, Atlantic, Pacific] = zonalVTSrho0set(InputFiles)
 % and integrated density anomaly D0 (for pycnocline depth)
 
 source = InputFiles.source; %'LE' from NCAR or 'CMIP' from llnl cmip archive
-lowmemory = InputFiles.lowmemory1; %1 for laptop, 0 for cluster
+lowmemory = InputFiles.lowmemory; %1 for laptop, 0 for cluster
 
 time_days_since_01Jan0000 = ncread(InputFiles.salt, 'time');
 % time is number of days since 0000-01-01 00:00:00'
