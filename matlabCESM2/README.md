@@ -5,7 +5,7 @@ This folder contains Matlab scripts for using CESM2 (Community Earth System Mode
 - Reference paper for the 4-box model: https://doi.org/10.1175/JCLI-D-18-0388.1
 - Reference paper for CESM2: https://doi.org/10.1029/2019MS001916
 
-#License
+# License
 Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 All rights reserved.
 Distributed under the terms of the BSD 3-Clause License.
@@ -80,8 +80,10 @@ and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). The ad
 
 ## Running
 
-First edit the configuration file with the corresponding input and output file names. 
+First edit the configuration file with the corresponding input and output file names and the limits you want for the Northern and Southern high-latitude boxes. 
+
 In matlab, run config_reader. 
+
 Then run cesm2to4boxCorrect.
 
 
