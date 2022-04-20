@@ -12,6 +12,8 @@ All rights reserved.
 
 Distributed under the terms of the BSD 3-Clause License.
 
+# Instructions 
+
 ## Download 
 Data files in netcdf format are expected; these may be accessed for CESM2 through 
 either: 
@@ -28,15 +30,13 @@ From the LE source, you want variables SALT, TEMP, VVEL, MOC. The link goes dire
 
 In both cases, wget and curl scripts are available if you want to download many files or download onto your HPC system. We recommend putting these files into their own directory, which will be set in the configuration file along with their names.
 
-## Format
-
-# Instructions 
 ## Libraries and Requirements
 Matlab version 2017b or later is needed to run these codes, due to the ability to extend matrices to match dimensions for binary operations and the isfile() function.
 
 Gibbs Sea Water Toolbox is required: https://www.teos-10.org/software.htm McDougall, T.J. and P.M. Barker, 2011: Getting started with TEOS-10 and the Gibbs Seawater (GSW) Oceanographic Toolbox, 28pp., SCOR/IAPSO WG127, ISBN 978-0-646-55621-5.
 
 YAML is also required: https://code.google.com/archive/p/yamlmatlab/ 
+    yaml syntax: https://docs.ansible.com/ansible/latest/reference_appendices/YAMLSyntax.html
 
 ## Configuration 
 This section describes the configuration file, which holds all paths, filenames, and parameters for running the code.
@@ -81,12 +81,14 @@ OutputFiles:
 4. Parameters: source (CMIP or LE), lowmemory (true 1/false 0), diffusivities and time constant of the model (defaults are for CESM2), and limits of the high-latitude boxes (latSouth, latNorth (a southern and northern limit), depthH).
 
 - Output data: 
-1. netcdf filenames to write zonal-mean temperature, salinity, potential density, northward velocity, and overturning circulation for the Atlantic (A) and the Pacific (P),
+1. netcdf filenames to write zonal-mean temperature, salinity, potential density, northward velocity, and overturning circulation for the Atlantic and the Pacific,
 where the Pacific includes the full Southern Ocean in its southernmost extent. 
 2. A .mat filename to write out all variables in both of (1). 
 3. A netcdf filename to write out the box-model timeseries (monthly values): temperature, salinity, and sigma (potential density) for the 4 boxes, 
 pycnocline depth (D), Ekman (Mek) and deepwater formation (Ms) mass fluxes in the Southern Ocean, AMOC (Atlantic Meridional Overturning Circulation) as a mass flux (Mn),
 and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). 
+
+Atlantic and Pacific contain zonal-mean latitude (latT for tracers,  latV for velocities), longitude (lonT for tracers, latT for velocities), tracer volume (volumeT), velocity volume (volumeV),  northward velocity (velN), temperature (temp), salinity (salt),  potential density (rho0), and integrated density anomaly D0 (for pycnocline depth)
 
 -Coordinates
 The limits of the high-latitude boxes: 
@@ -112,7 +114,6 @@ First edit the configuration file with the corresponding input and output file n
 In matlab, run config_reader. 
 
 Then run cesm2to4boxCorrect.
-
 
 
 # Dependencies
