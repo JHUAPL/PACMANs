@@ -1,26 +1,64 @@
 % Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 % All rights reserved.
 % Distributed under the terms of the BSD 3-Clause License.
+
 % This is the high-level code to process CESM2 to box model style
 % timeseries. Run config_reader first. Requires zonalVTSrho0set,
 % freshwaterfluxS, freshwaterfluxN, and zonal2box.
 
-%% config structure parsing; run config_reader first
+%% config structure parsing
 
 InputFiles=ConfigStruct.InputFiles;
 parameters=ConfigStruct.parameters;
 coordinates=ConfigStruct.coordinates;
 OutputFiles=ConfigStruct.OutputFiles;
 
+% will generate e.g. '45S 45-65N 200m', the boxlimitstr, which is a global 
+% attribute of OutputFiles.box
 boxlimitstr = strcat(num2str(abs(coordinates.latSouth)), 'S,', ...
     num2str(coordinates.latNorth1), '-', num2str(coordinates.latNorth2), ...
     'N,', num2str(coordinates.depthH), 'm'); 
-%will generate e.g. '45S 45-65N 200m'
 
+% will generate e.g. 'Agm=3000,Aredi=600,Kv=0.16e-4,epsilon=1.4e-4', the modelparamstr, 
+% which is a global attribute of OutputFiles.box
 modelparamsstr = strcat('Agm=', num2str(parameters.diffusionGM), ',Aredi=', ...
     num2str(parameters.diffusionRedi), ',Kv=', num2str(parameters.diffusionVert), ...
     ',epsilon=', num2str(parameters.epsilon));
-%will generate e.g. 'Agm=3000,Aredi=600,Kv=0.16e-4,epsilon=1.4e-4'
+    
+% check for existing copies of OutputFiles and append date to differentiate 
+% the new ones
+
+if isfile(OutputFiles.matlab)
+    oldName=OutputFiles.matlab;
+    newName=strcat(OutputFiles.matlab(1:end-4),date,'.mat');
+    display(strcat('Matlab output filename=',oldName,' existed'))
+    display(strcat('Matlab output filename now is=',newName))
+    OutputFiles.matlab=newName;
+end
+
+if isfile(OutputFiles.box)
+    oldName=OutputFiles.box;
+    newName=strcat(OutputFiles.box(1:end-4),date,'.mat');
+    display(strcat('Box output filename=',oldName,' existed'))
+    display(strcat('Box output filename now is=',newName))
+    OutputFiles.box=newName;
+end
+
+if isfile(OutputFiles.atlantic)
+    oldName=OutputFiles.atlantic;
+    newName=strcat(OutputFiles.atlantic(1:end-4),date,'.mat');
+    display(strcat('Atlantic output filename=',oldName,' existed'))
+    display(strcat('Atlantic output filename now is=',newName))
+    OutputFiles.atlantic=newName;
+end
+
+if isfile(OutputFiles.pacific)
+    oldName=OutputFiles.pacific;
+    newName=strcat(OutputFiles.pacific(1:end-4),date,'.mat');
+    display(strcat('Pacific output filename=',oldName,' existed'))
+    display(strcat('Pacific output filename now is=',newName))
+    OutputFiles.pacific=newName;
+end
 
 %% Add Paths
 
