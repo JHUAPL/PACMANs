@@ -1,6 +1,7 @@
 % Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 % All rights reserved.
 % Distributed under the terms of the BSD 3-Clause License.
+
 function [Fws] = freshwaterfluxS(coordinates, depth, Pacific, dyu)
 % freshwaterfluxS computes the freshwater flux from the northward salt flux
 % across coordinates.latSouth
