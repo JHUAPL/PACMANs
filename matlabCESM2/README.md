@@ -2,12 +2,14 @@
 
 # Intro
 This folder contains Matlab scripts for using CESM2 (Community Earth System Model, version 2) output data to create timeseries similar to the Gnanadesikan 4-box model for the Atlantic.
-- Reference paper for the 4-box model: https://doi.org/10.1175/JCLI-D-18-0388.1
-- Reference paper for CESM2: https://doi.org/10.1029/2019MS001916
+- Reference paper for the 4-box model: https://doi.org/10.1175/JCLI-D-18-0388.1 Gnanadesikan, Anand, Richard Kelson, and Michaela Sten. "Flux correction and overturning stability: Insights from a dynamical box model." Journal of Climate 31.22 (2018): 9335-9350.
+- Reference paper for CESM2: https://doi.org/10.1029/2019MS001916 Donabasoglu, G., Lamarque, J. F., Bacmeister, J., Bailey, D. A., DuVivier, A. K., & Edwards, J. The Commuity Earth System Model Version 2 (CESM2). J. Adv. Model. Earth. Sy, 12, e2019MS001916.
 
 # License
 Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+
 All rights reserved.
+
 Distributed under the terms of the BSD 3-Clause License.
 
 ## Download 
@@ -17,21 +19,30 @@ either:
 2. https://www.earthsystemgrid.org/dataset/ucar.cgd.cesm2le.ocn.proc.monthly_ave.html (LE)
 
 These two sources have different variable naming conventions.
+
 You must download a set of 4 files from the same timeperiod to get matching results.
-From the CMIP source, you want variables so, thetao, vo, msftmz. Searching on that site, try NCAR AND Omon AND so to see monthly salt files from NCAR, the modeling center that produces CESM2.
+
+From the CMIP source, you want variables so, thetao, vo, msftmz. Searching on that site, try NCAR AND Omon AND so to see monthly salt files from NCAR, the modeling center that produces CESM2. You MUST also get one SALT or TEMP file from the LE source-- these contain grid information that is missing in the CMIP-sourced data files.
+
 From the LE source, you want variables SALT, TEMP, VVEL, MOC. The link goes directly to the monthly ocean data.
+
+In both cases, wget and curl scripts are available if you want to download many files or download onto your HPC system. We recommend putting these files into their own directory, which will be set in the configuration file along with their names.
 
 ## Format
 
 # Instructions 
-## Libraries (or prereqs to run )
-Matlab version 2016b or later is needed to run these codes, due to the ability to extend matrices to match dimensions for binary operations.
-Gibbs Sea Water Toolbox is also required.
-So is YAML.
+## Libraries and Requirements
+Matlab version 2017b or later is needed to run these codes, due to the ability to extend matrices to match dimensions for binary operations and the isfile() function.
+
+Gibbs Sea Water Toolbox is required: https://www.teos-10.org/software.htm McDougall, T.J. and P.M. Barker, 2011: Getting started with TEOS-10 and the Gibbs Seawater (GSW) Oceanographic Toolbox, 28pp., SCOR/IAPSO WG127, ISBN 978-0-646-55621-5.
+
+YAML is also required: https://code.google.com/archive/p/yamlmatlab/ 
 
 ## Configuration 
-This section will describe the configuration file, which holds all paths, filenames, and parameters for running the code.
+This section describes the configuration file, which holds all paths, filenames, and parameters for running the code.
 Using this will allow you to not change anything in the codes themselves, but simply set the 'configuration' and run.
+
+Sample:
 
 ```buildoutcfg
 # csem2to4box config
@@ -64,7 +75,7 @@ OutputFiles:
 ```
 
 - Input data: 
-1. Files for salinity, temperature, northward velocity, overturning circulation, and one LE file to access grid variables not included in CMIP files. 
+1. Files for salinity, temperature, northward velocity, overturning circulation, and one LE file to access grid variables not included in CMIP files. If you are using LE files, simply repeat your SALT or TEMP filename.
 2. The path to the input files.
 3. The path to your Gibbs Seawater Toolbox
 4. Parameters: source (CMIP or LE), lowmemory (true 1/false 0), diffusivities and time constant of the model (defaults are for CESM2), and limits of the high-latitude boxes (latSouth, latNorth (a southern and northern limit), depthH).
@@ -75,8 +86,24 @@ where the Pacific includes the full Southern Ocean in its southernmost extent.
 2. A .mat filename to write out all variables in both of (1). 
 3. A netcdf filename to write out the box-model timeseries (monthly values): temperature, salinity, and sigma (potential density) for the 4 boxes, 
 pycnocline depth (D), Ekman (Mek) and deepwater formation (Ms) mass fluxes in the Southern Ocean, AMOC (Atlantic Meridional Overturning Circulation) as a mass flux (Mn),
-and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). The additional parameters needed to run the 4-box model,diffusivities and time constant of the model,
- are noted as a string global parameter; and the limits of the high-latitude boxes are noted as another.
+and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). 
+
+-Coordinates
+The limits of the high-latitude boxes: 
+1. latSouth: latitude (negative for South) that is the northern limit of the southern box (-54 to -35 is reasonable) 
+2. latNorth1: latitude (positive for North) that is the southern limit of the northern box (eg 45)
+3. latNorth2: latitude (positive for North) that is the northern limit of the northern box (eg 65, 85)
+4. depthH: the depth (in positive meters) below the surface that is the limit of the southern and northern boxes.
+
+These are combined into a string that is a global attribute in the netcdf output file of the box-model timeseries.
+
+-Parameters
+1. diffusionGM: Gent-McWilliams diffusivity, 3000 in CESM2
+2. diffusionRedi: Redi diffusivity, 600 in CESM2
+3. diffusionVert: Vertical diffusivity, 0.16e-4 in CESM2
+4. epsilon: Time constant (1/seconds) for the northern box. Estimated as 1.4e-4 in CESM2.
+
+These are combined into a string that is a global attribute in the netcdf output file of the box-model timeseries. These are necessary inputs for the box model, but are not currently estimated from the model data.
 
 ## Running
 
@@ -105,32 +132,8 @@ program, and in association with Johns Hopkins University.
 Insights from a Dynamical Box Model, Journal of Climate, 31(22), 9335-9350. 
 Retrieved Mar 30, 2022 from [https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml](https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml).
 
-# old version of this README
-This document notes the use of files in this folder. 
-All are matlab codes, for using CESM2 (Community Earth System Model, version 2) output data, to create timeseries similar to the Gnanadesikan 4-box model for the Atlantic.
-Reference paper for the 4-box model: https://doi.org/10.1175/JCLI-D-18-0388.1
-Reference paper for CESM2: https://doi.org/10.1029/2019MS001916
+<sup>2</sup>Donabasoglu, G., Lamarque, J. F., Bacmeister, J., Bailey, D. A., DuVivier, A. K., & Edwards, J. The Commuity Earth System Model Version 2 (CESM2). J. Adv. Model. Earth. Sy, 12, e2019MS001916. Accessed Apr 20, 2022 via [https://doi.org/10.1029/2019MS001916 ](https://doi.org/10.1029/2019MS001916)
 
-Data files in netcdf format are expected; these may be accessed for CESM2 through 
-either https://esgf-node.llnl.gov/search/cmip6/ (CMIP) or https://www.earthsystemgrid.org/dataset/ucar.cgd.cesm2le.ocn.proc.monthly_ave.html (LE)
-These two sources have different variable naming conventions.
-
-The top-level code to use is cesm2to4boxNewFw. 
-Edit the top section for the data filenames you have and the filenames you want data saved to. 
-Input: files for salinty, temperature, northward velocity, overturning circulation, and one LE file to access grid variables not included in CMIP files.
-Output: netcdf files of zonal-mean temperature, salinity, potential density, northward velocity, and overturning circulation for the Atlantic (A) and the Pacific (P),
-where the Pacific includes the full Southern Ocean in its southernmost extent. A .mat file containing all variables in both of those. 
-And finally, a netcdf file containing the box-model timeseries (monthly values): temperature, salinity, and sigma (potential density) for the 4 boxes, 
-pycnocline depth (D), Ekman (Mek) and deepwater formation (Ms) mass fluxes in the Southern Ocean, AMOC (Atlantic Meridional Overturning Circulation) as a mass flux (Mn),
-and the freshwater fluxes for the northern and southern boxes (Fws, Fwn). The additional parameters needed to run the 4-box model are notes as a string global parameter; 
-these are mixing parameters and a time constant for the northern box.
-
-This code uses zonalVTSrho0 (for CMIP data) or zonalVTSrho0LE (for LE data) to perform the zonal averaging and density computations. 
-If you have a low-RAM environment, choose zonalVTSrho0lowmemory (for CMIP data) or zonalVTSrho0LElowmemory (for LE data) instead.
-It uses freshwaterfluxN and freshwaterfluxS to compute the freshwater fluxes.
-It uses zonal2box to compute the temperature, salinity, and sigma (potential density) for the 4 boxes, pycnocline depth,
-Ekman and deepwater formation mass fluxes in the Southern Ocean, AMOC (Atlantic Meridional Overturning Circulation) as a mass flux.
-
-Deprecated codes:
-zonalV, zonalTSrho0, now combined into the zonalVTSrho0 series
+# Deprecated codes:
+zonalV, zonalTSrho0, zonalVTSrho0, zonalVTSrho0LE, zonalVTSrho0LElowmemory, zonalVTSrho0lowmemory, now combined into the zonalVTSrho0set
 cesm2to4box, replaced by cesm2to4boxNewFw, which calculates freshwater fluxes differently, now replaced by cesm2to4boxCorrect which has better variable names
