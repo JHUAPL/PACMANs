@@ -1,6 +1,7 @@
 % Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 % All rights reserved.
 % Distributed under the terms of the BSD 3-Clause License.
+
 function [Fwn] = freshwaterfluxN(coordinates, depth, Atlantic, dyu)
 % freshwaterfluxN computes the freshwater flux from the northward salt flux
 % across coordinates.latNorth 1 and 2
