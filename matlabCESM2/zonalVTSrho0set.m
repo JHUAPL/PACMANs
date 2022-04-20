@@ -1,6 +1,7 @@
 % Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
 % All rights reserved.
 % Distributed under the terms of the BSD 3-Clause License.
+
 function [timeUTC, depth, Atlantic, Pacific] = zonalVTSrho0set(InputFiles)
 % zonal averaging of CESM2 output files:
 % zonalTSrho0 reads .nc T,S,V files by latitude, computes rho0, the potential
