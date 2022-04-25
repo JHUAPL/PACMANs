@@ -109,11 +109,11 @@ These are combined into a string that is a global attribute in the netcdf output
 
 ## Running
 
-First edit the configuration file with the corresponding input and output file names and the limits you want for the Northern and Southern high-latitude boxes. 
+First edit the configuration file with the corresponding input and output file names and the limits you want for the Northern and Southern high-latitude boxes. Also edit the config filename and path in config_reader.
 
 In matlab, run config_reader. 
 
-Then run cesm2to4boxCorrect.
+Then run cesm2to4box.
 
 
 # Dependencies
@@ -135,6 +135,6 @@ Retrieved Mar 30, 2022 from [https://journals.ametsoc.org/view/journals/clim/31/
 
 <sup>2</sup>Donabasoglu, G., Lamarque, J. F., Bacmeister, J., Bailey, D. A., DuVivier, A. K., & Edwards, J. The Commuity Earth System Model Version 2 (CESM2). J. Adv. Model. Earth. Sy, 12, e2019MS001916. Accessed Apr 20, 2022 via [https://doi.org/10.1029/2019MS001916 ](https://doi.org/10.1029/2019MS001916)
 
-# Deprecated codes:
+# Deprecated (removed) codes:
 zonalV, zonalTSrho0, zonalVTSrho0, zonalVTSrho0LE, zonalVTSrho0LElowmemory, zonalVTSrho0lowmemory, now combined into the zonalVTSrho0set
-cesm2to4box, replaced by cesm2to4boxNewFw, which calculates freshwater fluxes differently, now replaced by cesm2to4boxCorrect which has better variable names
+old cesm2to4box, replaced by cesm2to4boxNewFw, which calculates freshwater fluxes differently, now replaced by cesm2to4boxCorrect, renamed cesm2to4box, which has better variable names
