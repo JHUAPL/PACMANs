@@ -80,7 +80,7 @@ display('Input file path added')
 
 %% load meridional overturning circulation
 
-switch source
+switch InputFiles.source
     case 'CMIP'
         msftmzKgpersec = ncread(InputFile.MOC, 'msftmz');
         % dimensions latitude,levels (depth),basin,time,
