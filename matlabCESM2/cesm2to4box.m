@@ -82,7 +82,7 @@ display('Input file path added')
 
 switch InputFiles.source
     case 'CMIP'
-        msftmzKgpersec = ncread(InputFile.MOC, 'msftmz');
+        msftmzKgpersec = ncread(InputFiles.MOC, 'msftmz');
         % dimensions latitude,levels (depth),basin,time,
         % Size:       395x61x3x600
         depthMOC = ncread(InFileName_1, 'lev') / 100; %cm-->m
@@ -91,9 +91,9 @@ switch InputFiles.source
         %(lat,depth,1=atl_arctic,months)
         PMOCsv = squeeze(msftmzKgpersec(:, :, 2, :)/1000000000);
     case 'LE'
-        msftmzSv = ncread(InputFile.MOC, 'MOC'); %in Sverdrups
-        depthMOC = ncread(InputFile.MOC, 'moc_z') / 100; %cm-->m
-        latMOC = ncread(InputFile.MOC, 'lat_aux_grid');
+        msftmzSv = ncread(InputFiles.MOC, 'MOC'); %in Sverdrups
+        depthMOC = ncread(InputFiles.MOC, 'moc_z') / 100; %cm-->m
+        latMOC = ncread(InputFiles.MOC, 'lat_aux_grid');
         AMOCsv = squeeze(sum(msftmzSv(:, :, :, 2, :), 3)); 
         %(lat,depth,1=atl_arctic,months)
         PMOCsv = squeeze(sum(msftmzSv(:, :, :, 1, :), 3)) - AMOCsv;
