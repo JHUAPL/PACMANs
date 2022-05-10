@@ -1,13 +1,20 @@
-## Python Box model 
+# Python Box model 
 
 The Box model is a simplified representation of the Atlantic meridional 
-overturning circulation (AMOC) simulation, used by Gnadfad et al.<sup>1</sup> 
+overturning circulation (AMOC) simulation, used by Gnanadesikan et al.<sup>1</sup> 
 to examine the stability of the AMOC. This code facilitates experimenting with 
 the box model, including:
 
  * Documented API for running individual box model simulations
  * Generating data from many box model simulations
  * Storing box model data in NetCDF format
+
+## License
+Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC
+
+All rights reserved.
+
+Distributed under the terms of the BSD 3-Clause License.
 
 ## Requirements
 
@@ -99,7 +106,7 @@ M_n, M_upw, M_eddy, D_low, T, S, sigma0 = result.unpack()
 python
 │   scripts - Location for local code examples and other useful scripts
 │   notebooks - Location for Jupyter Notebooks
-|   setup.py - Script to install trojai module into Python environment
+|   setup.py - Installation script for module (typically associated with `pip install`)
 |   README.md - This file
 │   tests - Location for test scripts
 └───py_box_model - Top level Python module
