@@ -15,10 +15,10 @@ ni2v = find(Atlantic.latV(:, 1) < coordinates.latNorth2, 1, 'last');
 ni2 = find(Atlantic.latT(:, 1) > Atlantic.latV(ni2v, 1), 1, 'first');
 
 
-%depth is the cell center; finding the edges to make dz
+% Depth is the cell center; finding the edges to make dz
 dedge = depth(1:end-1) + 0.5 * diff(depth);
 dedge = cat(1, 0, dedge, depth(end)+0.5*(depth(end) - depth(end-1)));
-dz = diff(dedge.'); %m
+dz = diff(dedge.'); % m
 [~, nz, nt] = size(Atlantic.velN);
 
 dz1(1, 1:nz, 1) = dz;
@@ -32,21 +32,21 @@ vbar(1, 1, :) = nansum(Atlantic.velN(niv, :, :).*...
 vbar(2, 1, :) = nansum(Atlantic.velN(ni2v, :, :).*...
     repmat(dz2, [1, 1, nt]), 2) ./ sum(dz2);
 vtransport = Atlantic.velN([niv, ni2v], :, :) - vbar; 
-%relies on matlab 2016b or later to expand dimensions of vbar
+% Relies on matlab 2016b or later to expand dimensions of vbar
 
 [~, ~, nt] = size(vtransport);
 Fwn = zeros(nt, 2);
 
-%north 1
+% Southern edge of north box
 holdS = 0.5 * squeeze(Atlantic.salt(ni-1, :, :)+Atlantic.salt(ni, :, :));
 holdS(isnan(holdS)) = 0;
 Fwn(:, 1) = -(1 ./ 35) .* nansum(holdS.*squeeze(vtransport(1, :, :))...
     .*repmat(squeeze(Atlantic.volumeV(niv, :)).', [1, nt]), 1) ./ ...
     nanmean(dyu(:, niv));
-% integrating dxdz, so the volume of each V cell divided by northward
+% Integrating dxdz, so the volume of each V cell divided by northward
 % extent, dyu
 
-%north 2
+% Northern edge of north box
 holdS = 0.5 * squeeze(Atlantic.salt(ni2-1, :, :)+Atlantic.salt(ni2, :, :));
 holdS(isnan(holdS)) = 0;
 Fwn(:, 2) = -(1 ./ 35) .* nansum(holdS.*squeeze(vtransport(2, :, :)).*...
