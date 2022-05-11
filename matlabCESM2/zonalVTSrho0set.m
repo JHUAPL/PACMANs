@@ -3,7 +3,7 @@
 % Distributed under the terms of the BSD 3-Clause License.
 
 function [timeUTC, depth, Atlantic, Pacific] = zonalVTSrho0set(InputFiles)
-% zonal averaging of CESM2 output files:
+% Zonal averaging of CESM2 output files:
 % zonalTSrho0 reads .nc T,S,V files by latitude, computes rho0, the potential
 % density, using the gsw toolbox, averages zonally in the Atlantic and
 % Pacific, and returns the time, depth, and  
@@ -45,7 +45,7 @@ switch source
 end
 
 dedge = depth(1:end-1) + 0.5 * diff(depth); %depth_m_1 is the cell center; 
-% finding the edges to make dz
+% Finding the edges to make dz
 dedge = cat(1, 0, dedge, depth(end)+0.5*(depth(end) - depth(end-1)));
 dz = diff(dedge.'); %m
 
@@ -76,13 +76,13 @@ Pacific.latV = zeros(ny, nz);
 Pacific.volumeV = zeros(ny, nz);
 
 for ii = 1:ny
-    ii %comment this out if you do not want to output ii to display/log
+    ii % Comment this out if you do not want to output ii to display/log
     start = [1, ii, 1, 1]; % [lon,lat,depth,monthly time], 
-    % start location along each coordinate
+    % Start location along each coordinate
     count = [Inf, 1, Inf, nt]; % read number of elements in each dimension.
     % INf = read until the end of each dimension
     stride = [1, 1, 1, 1]; 
-    % read variable data at intervals specified in stride
+    % Read variable data at intervals specified in stride
 
     if ~lowmemory
         switch source
@@ -91,7 +91,7 @@ for ii = 1:ny
         % (lon, lat, depth, monthly time) 320x1x60x600
         hold_T_all = squeeze(ncread(InputFiles.temp, 'TEMP', start, count, stride));
         hold_V_all = squeeze(ncread(InputFiles.velN, 'VVEL', start, count, stride)) ./ 100; 
-        %cm/s-->m/s
+        % cm/s-->m/s
             case 'CMIP'
         hold_SAL_all = squeeze(ncread(InputFiles.salt, 'so', start, count, stride)); 
         % (lon, lat, depth, monthly time) 320x1x1x600
@@ -157,9 +157,9 @@ for ii = 1:ny
         Atlantic.lonV(ii, jj) = nansum(holdlon.*tarea(iwantv, ii)) ...
             ./ nansum(tarea(iwantv, ii));
 
-        %density
+        % Density
         P = gsw_p_from_z(-depth(jj)*ones(sum(iwant), 1), lat_degN_1(iwant, ii)); 
-        % pressure(decibars); 1 decibar = 1 meter of seawater
+        % Pressure(decibars); 1 decibar = 1 meter of seawater
         SA = gsw_SA_from_SP(hold_SAL(iwant, :), P, lon_degE_1(iwant, ii), ...
             lat_degN_1(iwant, ii)); 
         % Absolute Salinity (g/kg)
@@ -168,17 +168,17 @@ for ii = 1:ny
          rho0 = gsw_rho(SA, CT, 0); %potential density
          Atlantic.rho0(ii, jj, :) = nansum(rho0*dz(jj).*...
              repmat(tarea(iwant, ii), 1, count(4)), 1) ./...
-             Atlantic.volumeT(ii, jj); %potential density
-        % code commented out for other versions of density
+             Atlantic.volumeT(ii, jj); % Potential density
+        % Code commented out for other versions of density
         % rho = gsw_rho(SA,CT,P); % Density (kg/m^3) insitu
         % rho2k = gsw_rho(SA,CT,2000); %density referenced to 2000m
-        %insitu density
+        % Insitu density
         % meanrho(ii,jj,:)=nansum(rho*dz(jj).*repmat(tarea(iwant,ii),1,count(4)),1)./volume1(ii,jj); 
-        %density referenced to 2000m
+        % Density referenced to 2000m
         % meanrho2k(ii,jj,:)=nansum(rho2k*dz(jj).*repmat(tarea(iwant,ii),1,count(4)),1)./volume1(ii,jj); 
         
 
-        %Pacific
+        % Pacific
         iwant = (hold_region == 1) | (hold_region == 2);
         iwantv = iwant;
         if sum(iwant) == 0
@@ -211,9 +211,9 @@ for ii = 1:ny
         Pacific.lonV(ii, jj) = nansum(holdlon.*tarea(iwantv, ii)) ./...
             nansum(tarea(iwantv, ii));
 
-        %density
+        % Density
         P = gsw_p_from_z(-depth(jj)*ones(sum(iwant), 1), lat_degN_1(iwant, ii)); 
-        % pressure(decibars); 1 decibar = 1 meter of seawater
+        % Pressure(decibars); 1 decibar = 1 meter of seawater
         SA = gsw_SA_from_SP(hold_SAL(iwant, :), P, lon_degE_1(iwant, ii), ...
             lat_degN_1(iwant, ii)); 
         % Absolute Salinity (g/kg)
