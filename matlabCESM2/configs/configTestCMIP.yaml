@@ -7,7 +7,7 @@ InputFiles:
     grid: sampleLEsalt1.nc
     datapath: /path/to/above/files/
     gswLibraryPath: /path/toyour/gsw/
-    source: LE
+    source: CMIP
     lowmemory: 1
 coordinates:
     latSouth: -45 
