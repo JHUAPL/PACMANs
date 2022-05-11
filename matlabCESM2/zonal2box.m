@@ -39,13 +39,13 @@ sigmaS = squeeze(nansum(Pacific.rho0(1:si, 1:hdi, :).*...
     repmat(Pacific.volumeT(1:si, 1:hdi), [1, 1, nt]), [1, 2])) ./ ...
     sum(Pacific.volumeT(1:si, 1:hdi), [1, 2]) - 1000; %south
 
-%depth is the cell center; finding the edges
+% Depth is the cell center; finding the edges
 dedge = depth(1:end-1) + 0.5 * diff(depth); 
 dedge = cat(1, 0, dedge, depth(end)+0.5*(depth(end) - depth(end-1)));
 
 
 for timei = 1:nt
-%the index for the cell center whose bottom edge is above the mean pycnocline depth
+% The index for the cell center whose bottom edge is above the mean pycnocline depth
     ldi = find(-dedge > D0L(timei), 1, 'last') - 1; 
     if ldi < hdi
         ldi = hdi + 1;
@@ -62,7 +62,7 @@ for timei = 1:nt
         Atlantic.volumeT(si+1:ni-1, 1:ldi), [1, 2])) ./ ...
         sum(Atlantic.volumeT(si+1:ni-1, 1:ldi), [1, 2]) - 1000; %low lat
 
-    % deep box via 3 portions
+    % Deep box via 3 portions
     % northern, depthH to bottom
     vd1 = sum(Atlantic.volumeT(ni:end, hdi+1:end), [1, 2]);
     sald1 = squeeze(nansum(Atlantic.salt(ni:end, hdi+1:end, timei).*...
@@ -100,11 +100,11 @@ for timei = 1:nt
 end
 clear sald1 td1 sd1 sald2 td2 sd2 sald3 sd3 td3
 
-%maximum over depth at north box edge
+% Maximum over depth at north box edge
 Mn = squeeze(max(AMOCsv(ni, :, :), [], 2)); 
-%maximum over depth at south box edge
+% Maximum over depth at south box edge
 Mek = squeeze(max(AMOCsv(si, :, :), [], 2));
-%minimum over depth at south box edge
+% Minimum over depth at south box edge
 Ms = squeeze(abs(min(AMOCsv(si, :, :), [], 2)));
 
 tempL = tempL.';
