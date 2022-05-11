@@ -11,7 +11,7 @@ function [Fws] = freshwaterfluxS(coordinates, depth, Pacific, dyu)
 siv = find(Pacific.latV(:, 1) < coordinates.latSouth, 1, 'last');
 si = find(Pacific.latT(:, 1) > Pacific.latV(siv, 1), 1, 'first');
 
-%depth is the cell center; finding the edges to make dz
+% Depth is the cell center; finding the edges to make dz
 dedge = depth(1:end-1) + 0.5 * diff(depth);
 dedge = cat(1, 0, dedge, depth(end)+0.5*(depth(end) - depth(end-1)));
 dz = diff(dedge.'); %m
@@ -25,7 +25,7 @@ vbar = zeros([1, 1, nt]);
 vbar(1, 1, :) = nansum(Pacific.velN(siv, :, :).*...
     repmat(dz1, [1, 1, nt]), 2) ./ sum(dz1);
 vtransport = Pacific.velN(siv, :, :) - vbar;
-%relies on matlab 2016b or later to expand dimensions of vbar
+% Relies on matlab 2016b or later to expand dimensions of vbar
 
 [~, ~, nt] = size(vtransport);
 Fws = zeros(nt, 1);
@@ -35,7 +35,7 @@ holdS(isnan(holdS)) = 0;
 Fws(:, 1) = -(1 ./ 35) .* nansum(holdS.*squeeze(vtransport(1, :, :)).* ...
     repmat(squeeze(Pacific.volumeV(siv, :)).', [1, nt]), 1) ./...
     nanmean(dyu(:, siv));
-% integrating dxdz, so the volume of each V cell divided by northward
+% Integrating dxdz, so the volume of each V cell divided by northward
 % extent, dyu
 
 end
