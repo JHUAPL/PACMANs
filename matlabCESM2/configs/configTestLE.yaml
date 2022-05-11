@@ -1,10 +1,10 @@
 # csem2to4box config
 InputFiles:
-    salt: sampleLEsalt.nc
-    temp: sampleLEtemp.nc
-    velN: sampleLEvvel.nc
-    MOC: sampleLEmoc.nc
-    grid: sampleLEsalt.nc
+    salt: sampleLEsalt1.nc
+    temp: sampleLEtemp1.nc
+    velN: sampleLEvvel1.nc
+    MOC: sampleLEmoc1.nc
+    grid: sampleLEsalt1.nc
     datapath: /path/to/above/files/
     gswLibraryPath: /path/toyour/gsw/
     source: LE
@@ -20,7 +20,7 @@ parameters:
     diffusionVert: 0.16e-4
     epsilon: 1.4e-4
 OutputFiles:
-    matlab: zonalmeanTest.mat
-    atlantic: zonalmeanAtest.nc 
-    pacific: zonalmeanPtest.nc
-    box: boxTest.nc
+    matlab: zonalmeanTestLE.mat
+    atlantic: zonalmeanAtestLE.nc 
+    pacific: zonalmeanPtestLE.nc
+    box: boxTestLE.nc
