@@ -5,7 +5,7 @@ InputFiles:
     velN: sampleLEvvel1.nc
     MOC: sampleLEmoc1.nc
     grid: sampleLEsalt1.nc
-    datapath: /path/to/above/files/
+    datapath: ./data/
     gswLibraryPath: /path/toyour/gsw/
     source: LE
     lowmemory: 1
