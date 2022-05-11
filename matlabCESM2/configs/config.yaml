@@ -8,7 +8,7 @@ InputFiles:
     datapath: /path/to/above/files/
     gswLibraryPath: /path/toyour/gsw/
     source: LE
-    lowmemory: 1
+    lowmemory: 0
 coordinates:
     latSouth: -45 
     latNorth1: 45 
