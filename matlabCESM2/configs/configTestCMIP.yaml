@@ -5,7 +5,7 @@ InputFiles:
     velN: sampleCMIPvo1.nc
     MOC: sampleCMIPmsftmz1.nc
     grid: sampleLEsalt1.nc
-    datapath: /path/to/above/files/
+    datapath: ./data/
     gswLibraryPath: /path/toyour/gsw/
     source: CMIP
     lowmemory: 1
