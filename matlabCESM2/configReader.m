@@ -17,7 +17,7 @@
 
 
 
-yaml_file = './config.yaml'; 
+yaml_file = './configs/config.yaml'; 
 yaml_path='C:/Matlab/repos/YAMLMatlab_0.4.3';
 
 addpath(genpath(yaml_path));
