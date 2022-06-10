@@ -1,4 +1,4 @@
-# PyBAMOCS Python Box AMOC Simulator 
+# PyBAMOCS -- Python Box AMOC Simulator 
 
 PyBAMOCS uses a simplified box model to simulate the Atlantic meridional 
 overturning circulation (AMOC) simulation, used by Gnanadesikan et al.<sup>1</sup> 
