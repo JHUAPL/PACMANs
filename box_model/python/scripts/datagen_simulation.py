@@ -16,9 +16,9 @@ from copy import deepcopy
 
 import numpy as np
 
-from py_box_model.box_model import box_model, NORTH_IDX, SOUTH_IDX, LOW_IDX, DEEP_IDX
-from py_box_model.box_model_args import dict_from_box_args, box_args_from_dict
-from py_box_model.box_storage import store_run
+from pybamocs.box_model import box_model, NORTH_IDX, SOUTH_IDX, LOW_IDX, DEEP_IDX
+from pybamocs.box_model_args import dict_from_box_args, box_args_from_dict
+from pybamocs.box_storage import store_run
 
 
 def box_output_to_storage_dict(M_n, M_upw, M_eddy, D_low, T, S, sigma_0):

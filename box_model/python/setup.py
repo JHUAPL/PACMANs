@@ -19,7 +19,7 @@ install_requires = ['numpy>=1.22.1',
                     ]
 
 setuptools.setup(
-    name='py_box_model',
+    name='pybamocs',
     version=__version__,
     description='Python version of Box Model from JHU',
     long_description=long_description,

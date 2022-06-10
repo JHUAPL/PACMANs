@@ -15,7 +15,7 @@ import numpy as np
 from matplotlib import pyplot as plt
 
 from collapse_ex_utils import fba_run_n_steps, fba_run_n_steps_async
-from py_box_model.box_model_args import (
+from pybamocs.box_model_args import (
     BoxModelBoxDimensions,
     BoxModelInitConditions,
     BoxModelParameters,

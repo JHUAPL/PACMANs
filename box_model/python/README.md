@@ -1,6 +1,6 @@
-# Python Box model 
+# PyBAMOCS Python Box AMOC Simulator 
 
-The Box model is a simplified representation of the Atlantic meridional 
+PyBAMOCS uses a simplified box model to simulate the Atlantic meridional 
 overturning circulation (AMOC) simulation, used by Gnanadesikan et al.<sup>1</sup> 
 to examine the stability of the AMOC. This code facilitates experimenting with 
 the box model, including:
@@ -52,24 +52,24 @@ if you named your environment "myenv", it should appear as follows:
 
 ### Running the code
 
-Assuming you have the code pulled from the repository, navigate to the `box_model` directory and run
+Assuming you have the code pulled from the repository, navigate to the `pybamocs` directory and run
 
 ```commandline
 $ pip install -e .
 ```
 
 This should install the required packages to run the Box model code in your Python environment. 
-Once installed, you should be able to run the follow scripts from the [scripts](box_model/scripts) directory:
+Once installed, you should be able to run the follow scripts from the [scripts](pybamocs/scripts) directory:
 
-  * [simple_example.py](box_model/scripts/simple_example.py): An example of how to run a single 
+  * [simple_example.py](pybamocs/scripts/simple_example.py): An example of how to run a single 
       box model simulation. Also creates plots of the results.
-  * [collapse_example.py](box_model/scripts/collapse_example.py): Several examples of AMOC collapse 
+  * [collapse_example.py](pybamocs/scripts/collapse_example.py): Several examples of AMOC collapse 
       with plotted results.
-  * [store_example_npz.py](box_model/scripts/store_example_npz.py): An example of how one might save box model data 
+  * [store_example_npz.py](pybamocs/scripts/store_example_npz.py): An example of how one might save box model data 
       as Numpy `.npz` files. 
-  * [store_example_netcdf.py](box_model/scripts/store_example_netcdf.py): An example of how one might save box model 
+  * [store_example_netcdf.py](pybamocs/scripts/store_example_netcdf.py): An example of how one might save box model 
       data in NetCDF format. 
-  * [datagen_simulation.py](box_model/scripts/datagen_simulation.py): A script simulating a 
+  * [datagen_simulation.py](pybamocs/scripts/datagen_simulation.py): A script simulating a 
       parameter space exploration experiment using small random perturbations on box 
       model variables. Each simulation result is stored in NetCDF format.
 
@@ -78,8 +78,8 @@ Once installed, you should be able to run the follow scripts from the [scripts](
 The very basic example of running the box model can be illustrated in the following example:
 
 ```python
-from py_box_model.box_model import box_model
-from py_box_model.box_model_args import (
+from pybamocs.box_model import box_model
+from pybamocs.box_model_args import (
     BoxModelBoxDimensions,
     BoxModelInitConditions,
     BoxModelParameters,
@@ -109,7 +109,7 @@ python
 |   setup.py - Installation script for module (typically associated with `pip install`)
 |   README.md - This file
 │   tests - Location for test scripts
-└───py_box_model - Top level Python module
+└───pybamocs - Top level Python module
     └───test - Location of test scripts
         └───data - Directory of files used for test
     |   box_model.py - box model code

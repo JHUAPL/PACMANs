@@ -15,8 +15,8 @@ from copy import deepcopy
 
 import numpy as np
 
-from py_box_model.box_model import box_model
-from py_box_model.box_model_args import dict_from_box_args, box_args_from_dict
+from pybamocs.box_model import box_model
+from pybamocs.box_model_args import dict_from_box_args, box_args_from_dict
 
 BOX_ARGS_BASE = dict(N=4000, K_v=1e-5, A_GM=1000, M_ek=25e6, A_Redi=1000, M_SD=15e6, D_low0=400,
                      T_north0=2, T_south0=4, T_low0=17, T_deep0=3,

@@ -9,8 +9,8 @@ understanding of the box model outputs.
 
 from matplotlib import pyplot as plt
 
-from py_box_model.box_model import box_model
-from py_box_model.box_model_args import (
+from pybamocs.box_model import box_model
+from pybamocs.box_model_args import (
     BoxModelBoxDimensions,
     BoxModelInitConditions,
     BoxModelParameters,

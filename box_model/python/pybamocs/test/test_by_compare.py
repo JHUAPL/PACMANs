@@ -5,13 +5,13 @@
 import numpy as np
 import os
 
-from py_box_model.box_model_args import (
+from pybamocs.box_model_args import (
     BoxModelBoxDimensions,
     BoxModelInitConditions,
     BoxModelParameters,
     BoxModelTimeStep,
 )
-from py_box_model.box_model import box_model
+from pybamocs.box_model import box_model
 from numpy import genfromtxt
 
 PATH_TO_DATA = os.path.join(os.path.dirname(os.path.realpath(__file__)), "data")

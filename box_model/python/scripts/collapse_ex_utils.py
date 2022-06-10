@@ -10,7 +10,7 @@ import multiprocessing as mp
 
 import numpy as np
 
-from py_box_model.box_model import box_model
+from pybamocs.box_model import box_model
 
 
 def last_point_aredi(box_dims, box_init, box_params, box_ts):
