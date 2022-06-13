@@ -1,0 +1,26 @@
+# csem2to4box config
+InputFiles:
+    salt: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.SALT.185001-185912.nc
+    temp: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.TEMP.185001-185912.nc
+    velN: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.VVEL.185001-185912.nc
+    MOC:  b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.MOC.185001-185912.nc
+    grid: b.e21.BHISTcmip6.f09_g17.LE2-1001.001.pop.h.SALT.185001-185912.nc
+    datapath: /path/to/above/files/
+    gswLibraryPath: /path/toyour/gsw/
+    source: LE
+    lowmemory: 0
+coordinates:
+    latSouth: -45 
+    latNorth1: 45 
+    latNorth2: 65
+    depthH: 200
+parameters:
+    diffusionGM: 3000
+    diffusionRedi: 600
+    diffusionVert: 0.16e-4
+    epsilon: 1.4e-4
+OutputFiles:
+    matlab: zonalmeanBHISTcmip6LE2-1001-001-185001-185912.mat
+    atlantic: zonalmeanABHISTcmip6LE2-1001-001-185001-185912.nc 
+    pacific: zonalmeanPBHISTcmip6LE2-1001-001-185001-185912.nc
+    box: boxBHISTcmip6LE2-1001-001-185001-185912.nc
