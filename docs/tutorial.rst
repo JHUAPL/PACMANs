@@ -1,5 +1,5 @@
 ========
 Tutorial
 ========
-.. include:: ../box_model/python/notebooks/test
+.. include:: ../box_model/python/notebooks/test.ipynb
 
