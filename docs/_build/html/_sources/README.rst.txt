@@ -19,8 +19,4 @@ strategies. This first of its kind comprehensive approach to climate and tipping
 partnership between APL researchers who excel in integrating complex AI systems to achieve scientific and
 defense-oriented results and world-class experts in dynamical systems and climate systems modeling from (JHU).
 
-.. note::
-
-Approved for public release: distribution unlimited.
-This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement
-No. HR00112290032.
+.. note:: Approved for public release: distribution unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.

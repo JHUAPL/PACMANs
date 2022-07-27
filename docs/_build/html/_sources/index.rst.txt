@@ -12,7 +12,6 @@
    summary
    milestone1_report
    milestone2_report
-   publications
 
 .. toctree::
    :maxdepth: 1
