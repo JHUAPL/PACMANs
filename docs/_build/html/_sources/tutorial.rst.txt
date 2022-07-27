@@ -1,6 +1,9 @@
-============
-Introduction
-============
+========
+Tutorial
+========
+
+PyBAMOCS – Python Box AMOC Simulator
+====================================
 
 PyBAMOCS uses a simplified box model to simulate the Atlantic meridional
 overturning circulation (AMOC) simulation, used by Gnanadesikan et al.1
@@ -169,6 +172,6 @@ This code was produced under the DARPA AI-assisted Climate Tipping-point
 Modeling (ACTM) program, and in association with Johns Hopkins
 University.
 
-1 Gnanadesikan, A., Kelson, R., & Sten, M. (2018). Flux Correction and
+1Gnanadesikan, A., Kelson, R., & Sten, M. (2018). Flux Correction and
 Overturning Stability: Insights from a Dynamical Box Model, Journal of
 Climate, 31(22), 9335-9350. Retrieved Mar 30, 2022 from

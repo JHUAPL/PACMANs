@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Introduction &mdash; PACMANS  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="Publications" href="publications.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PACMANS
+            <img src="_static/pacman_logo_v1.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Project Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="milestone1_report.html">Milestone 1 Progress Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="milestone2_report.html">Milestone 2 Progress Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PyBAMOCS:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help &amp; Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Our Team</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PACMANS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Introduction</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/pyBAMOCS_intro.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="introduction">
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h1>
+<p># PyBAMOCS – Python Box AMOC Simulator</p>
+<p>PyBAMOCS uses a simplified box model to simulate the Atlantic meridional
+overturning circulation (AMOC) simulation, used by Gnanadesikan et al.&lt;sup&gt;1&lt;/sup&gt;
+to examine the stability of the AMOC. This code facilitates experimenting with
+the box model, including:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Documented API for running individual box model simulations</p></li>
+<li><p>Generating data from many box model simulations</p></li>
+<li><p>Storing box model data in NetCDF format</p></li>
+</ul>
+</div></blockquote>
+<p>## License
+Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC</p>
+<p>All rights reserved.</p>
+<p>Distributed under the terms of the BSD 3-Clause License.</p>
+<p>## Requirements</p>
+<dl class="simple">
+<dt>This code is tested on <cite>Python version 3.9</cite>. The box model code also leverages the following packages:</dt><dd><ul class="simple">
+<li><p><cite>numpy</cite></p></li>
+<li><p><cite>seawater</cite></p></li>
+<li><p><cite>matplotlib</cite></p></li>
+<li><p><cite>netCDF4</cite></p></li>
+<li><p><cite>pytest</cite> (for running unit tests)</p></li>
+</ul>
+</dd>
+</dl>
+<p>## Getting Started</p>
+<p>### Python
+If you are unfamiliar with Python, we recommend downloading Anaconda from
+[here](<a class="reference external" href="https://www.anaconda.com/products/individual">https://www.anaconda.com/products/individual</a>). Follow the instructions to install Anaconda, and then create a
+new conda environment (or virtual environment if not using Anaconda) by running</p>
+<p><code class="docutils literal notranslate"><span class="pre">`commandline</span>
+<span class="pre">$</span> <span class="pre">conda</span> <span class="pre">create</span> <span class="pre">-n</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span> <span class="pre">python==3.9</span>
+<span class="pre">`</span></code></p>
+<p>Follow the prompts to finish creating the new environment.
+Once finished, activate the environment via the following command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`commandline</span>
+<span class="pre">$</span> <span class="pre">conda</span> <span class="pre">activate</span> <span class="pre">&lt;environment</span> <span class="pre">name&gt;</span>
+<span class="pre">`</span></code></p>
+<p>The name of your environment should be in front of your command line, for example
+if you named your environment “myenv”, it should appear as follows:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`commandline</span>
+<span class="pre">(myenv)</span> <span class="pre">$</span>
+<span class="pre">`</span></code></p>
+<p>### Running the code</p>
+<p>Assuming you have the code pulled from the repository, navigate to the <cite>pybamocs</cite> directory and run</p>
+<p><code class="docutils literal notranslate"><span class="pre">`commandline</span>
+<span class="pre">$</span> <span class="pre">pip</span> <span class="pre">install</span> <span class="pre">-e</span> <span class="pre">.</span>
+<span class="pre">`</span></code></p>
+<p>This should install the required packages to run the Box model code in your Python environment.
+Once installed, you should be able to run the follow scripts from the [scripts](pybamocs/scripts) directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li><dl class="simple">
+<dt>[simple_example.py](pybamocs/scripts/simple_example.py): An example of how to run a single</dt><dd><p>box model simulation. Also creates plots of the results.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>[collapse_example.py](pybamocs/scripts/collapse_example.py): Several examples of AMOC collapse</dt><dd><p>with plotted results.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>[store_example_npz.py](pybamocs/scripts/store_example_npz.py): An example of how one might save box model data</dt><dd><p>as Numpy <cite>.npz</cite> files.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>[store_example_netcdf.py](pybamocs/scripts/store_example_netcdf.py): An example of how one might save box model</dt><dd><p>data in NetCDF format.</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>[datagen_simulation.py](pybamocs/scripts/datagen_simulation.py): A script simulating a</dt><dd><p>parameter space exploration experiment using small random perturbations on box
+model variables. Each simulation result is stored in NetCDF format.</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+<p>### Box model example</p>
+<p>The very basic example of running the box model can be illustrated in the following example:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a><a href="#id3"><span class="problematic" id="id4">`</span></a>python
+from pybamocs.box_model import box_model
+from pybamocs.box_model_args import (</p>
+<blockquote>
+<div><p>BoxModelBoxDimensions,
+BoxModelInitConditions,
+BoxModelParameters,
+BoxModelTimeStep</p>
+</div></blockquote>
+<p>)</p>
+<p># Define box model arguments (see definitions of each argument for available parameters and default settings):
+box_dimensions = BoxModelBoxDimensions()
+box_initial_conditions = BoxModelInitConditions()
+box_parameters = BoxModelParameters(M_ek=35e6)
+box_time_step = BoxModelTimeStep(n_steps=100)</p>
+<p># the box model returns a BoxModelResult object
+result = box_model(box_dimensions, box_initial_conditions, box_parameters, box_time_step)</p>
+<p># Call the <cite>unpack</cite> method to get the various result values (if desired):
+M_n, M_upw, M_eddy, D_low, T, S, sigma0 = result.unpack()
+<a href="#id5"><span class="problematic" id="id6">``</span></a><a href="#id7"><span class="problematic" id="id8">`</span></a></p>
+<p>## Organization</p>
+<p><a href="#id9"><span class="problematic" id="id10">``</span></a>`
+python
+│   scripts - Location for local code examples and other useful scripts
+│   notebooks - Location for Jupyter Notebooks
+|   setup.py - Installation script for module (typically associated with <cite>pip install</cite>)
+|   README.md - This file
+│   tests - Location for test scripts
+└───pybamocs - Top level Python module</p>
+<blockquote>
+<div><dl class="simple">
+<dt>└───test - Location of test scripts</dt><dd><p>└───data - Directory of files used for test</p>
+</dd>
+</dl>
+<div class="line-block">
+<div class="line">box_model.py - box model code</div>
+<div class="line">box_model_args.py - box model box model argument objects</div>
+<div class="line">box_storage.py - functions for storing box model data to disk</div>
+<div class="line">constants.py - various constants used between box model files</div>
+</div>
+</div></blockquote>
+<p><a href="#id11"><span class="problematic" id="id12">``</span></a><a href="#id13"><span class="problematic" id="id14">`</span></a></p>
+<p>## For Developers</p>
+<dl class="simple">
+<dt>When contributing to this code, we ask:</dt><dd><ul class="simple">
+<li><p>Start by creating a branch of the repository, then writing the code, and creating a merge request</p></li>
+<li><p>Consider creating an issue on GitHub for more in-depth or challenging additions or problems</p></li>
+<li><p>Please use type hinting for arguments and results</p></li>
+<li><p>Remember to add the copyright statement at the top of the file</p></li>
+<li><p>Add unit tests where feasible (using <cite>pytest</cite>) to the <cite>test</cite> directory, and briefly describe the tests below</p></li>
+</ul>
+</dd>
+</dl>
+<p>### Running the tests</p>
+<p>As previously mentioned, we currently use <cite>pytest</cite> for the tests we have. To run the tests, simply
+navigate to the <cite>python</cite> directory on the command line and run:</p>
+<p><code class="docutils literal notranslate"><span class="pre">`commandline</span>
+<span class="pre">pytest</span>
+<span class="pre">`</span></code></p>
+<p>and the tests will run. Current testing includes the following:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>Compare with data produced by the original Matlab version of the box model and ensure the differences is
+values is small</p></li>
+<li><p>Compare the box model results using the default parameters with previously generated data</p></li>
+</ul>
+</div></blockquote>
+<p>## Acknowledgements</p>
+<p>This code was produced under the DARPA AI-assisted Climate Tipping-point Modeling (ACTM)
+program, and in association with Johns Hopkins University.</p>
+<p>&lt;sup&gt;1&lt;/sup&gt;Gnanadesikan, A., Kelson, R., &amp; Sten, M. (2018). Flux Correction and Overturning Stability:
+Insights from a Dynamical Box Model, Journal of Climate, 31(22), 9335-9350.
+Retrieved Mar 30, 2022 from [<a class="reference external" href="https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml](https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml">https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml](https://journals.ametsoc.org/view/journals/clim/31/22/jcli-d-18-0388.1.xml</a>).</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="publications.html" class="btn btn-neutral float-left" title="Publications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
