@@ -1,5 +1,5 @@
 ========
 Tutorial
 ========
-.. include:: ../box_model/python/notebooks/pybamocs_tutorial.ipynb
+.. include:: ../box_model/python/notebooks/test
 
