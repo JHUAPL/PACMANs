@@ -19,7 +19,7 @@
    :caption: PyBAMOCS:
 
    pyBAMOCS_intro
-   ../box_model/python/notebooks/pybamocs_tutorial.ipynb
+   tutorial
 
 
 .. toctree::
