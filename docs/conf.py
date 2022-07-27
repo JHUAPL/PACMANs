@@ -35,7 +35,7 @@ extensions = [
     'sphinx.ext.autosummary',
     'sphinx.ext.intersphinx',
     'nbsphinx',
-    'myst_parser',
+    #'myst_parser',
 ]
 
 source_suffix = ['.rst', '.md']
