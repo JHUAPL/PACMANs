@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestone 2 Progress Report &mdash; PACMANS  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script>window.MathJax = {"tex": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true}, "options": {"ignoreHtmlClass": "tex2jax_ignore|mathjax_ignore|document", "processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Introduction" href="pyBAMOCS_intro.html" />
+    <link rel="prev" title="Milestone 1 Progress Report" href="milestone1_report.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> PACMANS
+            <img src="_static/pacman_logo_v1.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Overview:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="summary.html">Project Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="milestone1_report.html">Milestone 1 Progress Report</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Milestone 2 Progress Report</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">1      Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#goals-and-impact">2      Goals and Impact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#task-3-ai-physics-informed-surrogate-models">3      Task 3. AI Physics-Informed Surrogate Models</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tipping-point-computation-plan-for-the-stochastic0-box-model">Tipping point computation plan for the (stochastic0 Box model)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#image1demonstration-of-the-components">Demonstration of the components</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#task-4-multi-agent-neuro-symbolic-ai-simulation">4      Task 4. Multi-Agent Neuro-Symbolic AI Simulation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#initial-architectures-the-gan">Initial Architectures – The GAN</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-gnanadesikan-four-box-model">The Gnanadesikan Four Box Model</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-adversarial-game">The Adversarial Game</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#neuro-symbolic-language">Neuro-Symbolic Language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#causality">Causality</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#computational-requirements">5      Computational Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion-and-next-steps">6      Conclusion and Next Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#bibliography">Bibliography</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#appendix-a-task-3-and-4-objectives-and-milestone">Appendix A – Task 3 and 4 Objectives and Milestone</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PyBAMOCS:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="pyBAMOCS_intro.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Help &amp; Reference</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="people.html">Our Team</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">PACMANS</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Milestone 2 Progress Report</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/milestone2_report.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  
+<style>
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<section id="milestone-2-progress-report">
+<h1>Milestone 2 Progress Report<a class="headerlink" href="#milestone-2-progress-report" title="Permalink to this heading"></a></h1>
+<p>Report on Developing Framework for the Hybrid Models
+Identifying the Known and Unknown Parts Along with Mathematical
+Approaches</p>
+<section id="overview">
+<h2>1      Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
+<p>This technical report covers the period of January, 2022 through March,
+2022. The report documents the achievement of the milestone associated
+with Month 2 of the JHU/APL-led PACMAN team’s statement of work.</p>
+</section>
+<section id="goals-and-impact">
+<h2>2      Goals and Impact<a class="headerlink" href="#goals-and-impact" title="Permalink to this heading"></a></h2>
+<p>The goals for this milestone include reporting on the progress of: a)
+designing the experimental setup of physics-informed learning for
+surrogate models, b) developing the initial architectures, loss
+functions and integration plan for surrogate, causal, and neuro-
+symbolic models; c) defining how scenario statements will be represented
+symbolically, how what-if questions will be generated by the GAN and any
+computational requirements, and d) developing a theoretical design of
+the causal inference and climate neuro- symbolic language.</p>
+</section>
+<section id="task-3-ai-physics-informed-surrogate-models">
+<h2>3      Task 3. AI Physics-Informed Surrogate Models<a class="headerlink" href="#task-3-ai-physics-informed-surrogate-models" title="Permalink to this heading"></a></h2>
+<p><strong>Subtask 3.2. AI Physics-Informed Surrogate Model Learning</strong></p>
+<p>As described in our Milestone 1 report, we are developing models in
+increasing levels of complexity. As mentioned, we are using the
+Gnanadesikan four box model as a surrogate model to begin. This model
+offers a simplified way to observe AMOC shutoff behavior. In this first
+iteration, we will develop the fold bifurcation method that could be
+applied to the Gnanadesikan four box model. We will also begin
+developing the reduced AI models to be used as an AI surrogates in place
+of the Gnanadesikan four box model. Understanding the role of the
+Gnanadesikan four box “surrogate” model will be fundamental in designing
+the AI surrogate models. Thus, we have performed a detailed study of the
+box model Matlab code, initial state variables, parameters, and the
+model equations. From this study, we describe the methodology that will
+be used.</p>
+<section id="tipping-point-computation-plan-for-the-stochastic0-box-model">
+<h3>Tipping point computation plan for the (stochastic0 Box model)<a class="headerlink" href="#tipping-point-computation-plan-for-the-stochastic0-box-model" title="Permalink to this heading"></a></h3>
+<p>To begin, we will develop one-parameter bifurcation diagrams of the
+(deterministic part) of the box model (9 differential equations) with
+respect to the separate parameters; it is already known that hysteresis,
+and therefore a violent “jump” between different behaviors, arises in
+the regime we will explore. In the neighborhood of the turning (tipping)
+point, the model reduces to an effectively one-dimensional model since
+one eigenvalue is close to zero. Then stochastic simulations will give
+rise to time series “jumping” across different states.</p>
+<p>We will collect these time series as a function of the parameter and
+then:</p>
+<ol class="loweralpha simple">
+<li><p>Use data mining to reduce the 9-dimensional state to a one- or
+two-dimensional data driven state</p></li>
+<li><p>Learn (using NN identification technology with architectures / loss
+functions based on numerical stochastic integrators) the effective
+parameter-dependent surrogate Stochastic Differential Equations
+(SDE) and</p></li>
+<li><p>Compute the distribution of escape times from simulation and from
+the requisite model-based Partial Differential Equation (PDE)
+solution.</p></li>
+<li><p>Use some of the physical parameters to control/stabilize the
+unstable (saddle) state living on the separatrix.</p></li>
+<li><p>Approximate the states on this low-dimensional separatrix (a saddle
+and its stable manifold) based on the drift of the effective SDE.</p></li>
+</ol>
+</section>
+<section id="image1demonstration-of-the-components">
+<h3><a class="reference internal" href="_images/image2.png"><img alt="image1" src="_images/image2.png" style="width: 3.66875in; height: 3.48168in;" /></a>Demonstration of the components<a class="headerlink" href="#image1demonstration-of-the-components" title="Permalink to this heading"></a></h3>
+<div class="line-block">
+<div class="line"><a class="reference internal" href="_images/image41.png"><img alt="image2" src="_images/image41.png" style="width: 3.06736in; height: 3.80347in;" /></a>The solution steps are illustrated below for a different
+complex dynamic model (an epidemic on an adaptive network). We will
+adapt our existing method for the epidemic problem, and apply this
+method to the AMOC problem. Network dynamic stochastic simulations are
+performed for various parameter values. In <strong>Figure 1</strong>, we show a
+single infection
+parameter<span class="math notranslate nohighlight">\(\text{\ p\ }\text{is\ changed}\ \)</span>and observe the
+bifurcation behavior with respect to it – at the “high p” limit, close
+to <span class="math notranslate nohighlight">\(70 \times 10^{- 5}\)</span>, we see clear transitions between two
+stable states (a stable steady state and a large stable oscillation,
+shown in the inset.) In <strong>Figure 1</strong>, the white line tentatively marks
+a branch of unstable limit cycles. Shaded regions mark ranges of ρ
+observed during long individual-based simulations in the neighborhood
+of the large attractive limit cycle (light gray) and of stable of
+stationary solutions (dark gray). Computation of the Jacobian
+eigenvalues</div>
+<div class="line">reveals a subcritical Hopf bifurcation (A), two fold bifurcations
+(C,E) and a transcritical bifurcation (F). In addition, there is a
+fold bifurcation of cycles (B) and a homoclinic bifurcation (D). Two
+small insets indicate the eigenvalue configuration at points A and C.
+Inset: time series on the limit cycle attractor</div>
+<div class="line">at p = 0.0006. Parameters of the problem as described in (Gross T et
+al 2008): w0 = 0.06, r = 0.0002, N = 105, L = 106.</div>
+</div>
+<p>The coarse subcritical Hopf bifurcation at
+<span class="math notranslate nohighlight">\(p_{A} = 73.7 \times 10^{- 5}\)</span> is one example of a tipping point.
+We will initially be identifying fold bifurcations for the simple box
+model; however, we will need to identify other types of bifurcations
+such as Hopf as we increase in model complexity. Beyond it (<span class="math notranslate nohighlight">\(p\)</span> &gt;
+<span class="math notranslate nohighlight">\(p_{A}\)</span>) we have BOTH a stable steady state and a stable limit
+cycle – and the separatrix between them is an unstable limit cycle. In
+<strong>Figure 2,</strong> we show the phase portrait of the coexistence of the big
+stable limit cycle, a small unstable limit cycle (separatrix, ``tipping
+boundary’’) and a stable steady state for
+<span class="math notranslate nohighlight">\(p = 75 \times 10^{- 5}\)</span>. When we initialize <em>inside</em> the unstable
+(broken line, separatrix) limit cycle, we get attracted to the stable
+steady state; when <em>outside</em> the unstable limit cycle, we go to the
+large, stable limit cycle. When we start <em>very close</em> to the unstable
+limit cycle, we “linger around it” for some time before deciding which
+way to go – this “lingering” becomes much more complex in the stochastic
+case, as seen in time series in Figure 3, where transients are shown.</p>
+<p><a class="reference internal" href="_images/image61.png"><img alt="image3" src="_images/image61.png" style="width: 6.49306in; height: 2.80625in;" /></a>In <strong>Figure 3</strong>, we show transitions between two states (a
+stable steady state and a large oscillation). The physical coordinates
+<span class="math notranslate nohighlight">\(\theta_{Ι}\)</span> is in red and <span class="math notranslate nohighlight">\(g_{\text{ss}}\)</span> is in blue for
+different values of the parameter <span class="math notranslate nohighlight">\(p\ ( \times 10^{- 5})\)</span>.
+Instances of ``transitioning” between large oscillations and steady
+states can be seen at intermediate parameter values. For large values of
+p, we go to the stable steady state (the only attractor); for small
+values, we see the large oscillations – and for intermediate values we
+see large oscillations, <em>and</em> quiescent periods, <em>and</em> hovering around
+“mid-level oscillations” – hovering around the separatrix.</p>
+<p>We use a neural network, shown in <strong>Figure 4</strong>, to learn the effective
+SDE shown in <strong>Figure 2</strong>.</p>
+<p>Figure 4. A caricature of the Neural Network architecture used to learn
+the drift and diffusivity of the stochastic differential equation.</p>
+<p>The “tipping point” reduced phase space is shown in <strong>Figure 2</strong> – a
+stable steady state coexisting with a large amplitude oscillation; the
+separatrix is the unstable limit cycle shown in a broken line. The phase
+portrait in terms data driven variables (diffusion map coordinates) is
+shown in <strong>Figures 5</strong> and <strong>6</strong> computed on sampled data of the full
+network for <span class="math notranslate nohighlight">\(p = 75 \times 10^{- 5}\ \)</span>. In <strong>Figure 5,</strong> we show
+the same dynamic trajectories as above, plotted not in physical space,
+but instead in latent, data-driven space where the first two “nonlinear
+principal component” Diffusion Map coordinates come from data mining the
+time series.</p>
+<a class="reference internal image-reference" href="_images/image11.png"><img alt="Chart Description automatically generated" src="_images/image11.png" style="width: 6.69663in; height: 2.51124in;" /></a>
+<p>Figure 5: The first two, data-driven (Diffusion Maps) coordinates
+colored with the two physical coordinates <span class="math notranslate nohighlight">\(\theta_{Ι}\)</span>and
+<span class="math notranslate nohighlight">\(g_{\text{ss}}\)</span> indicating visually the one-to-one relation
+between the physical and the data-driven coordinates.</p>
+<a class="reference internal image-reference" href="_images/image12.png"><img alt="Diagram Description automatically generated with low confidence" src="_images/image12.png" style="width: 6.58427in; height: 2.74345in;" /></a>
+<p>Figure 6: A 3D figure of the transients in latent space, shown colored
+with by evolution time. On the figure on the left, also the projections
+on the various 2D planes are shown.</p>
+<p><a class="reference internal" href="_images/image13.png"><img alt="image4" src="_images/image13.png" style="width: 2.19792in; height: 3.94444in;" /></a>In Figure 6, we show the same transients in three-dimensional
+latent space (the space of the first three “nonlinear principal
+components”, i.e. the first three nonharmonic diffusion map components).
+The transients are shown colored with by evolution time.</p>
+<p>And the tipping point (two attractors and the separatrix) is shown in
+data driven observable space is shown in <strong>Figure 7</strong>.</p>
+<p>Our escape time distribution computations are shown in <strong>Figures 8 a,
+b,</strong> and <strong>c</strong>. <strong>Figure 8a</strong> shows the escape times predicted by a
+network trained on physical variable time series (the mean of the
+distribution is 0.255 and 10,000 trajectories were used in these
+computations), while <strong>Figure 8b</strong> shows the one trained on diffusion
+map time series (the mean value of 13,000 sampled trajectories was
+0.295<strong>). Figure 8c</strong> shows the escape times for the full network
+simulation for two networks (the mean escape time of the Network 1 was
+estimated at 0.527 (from 12,000 simulated trajectories) and the mean
+escape time of Network 2 was estimated at 0.197 (from 6,600 simulated
+trajectories).</p>
+<p><a class="reference internal" href="_images/image15.png"><img alt="image5" src="_images/image15.png" style="width: 6.50101in; height: 3.32949in;" /></a>An important next step will involve the integration of this
+method with the GAN-based estimation of the separatrix (the unstable
+limit cycle). We describe below how the GAN will learn the space of the
+separatrix. The integration of the bifurcation method will support the
+discriminator in learning the stabilities and instabilities in the
+model. Initially the discriminator will use the Gnanadesikan four box
+model as its surrogate. However, as we start to build the AI surrogate
+models, we will eventually move from the Gnanadesikan four box model as
+the surrogate to the AI surrogate.</p>
+</section>
+</section>
+<section id="task-4-multi-agent-neuro-symbolic-ai-simulation">
+<h2>4      Task 4. Multi-Agent Neuro-Symbolic AI Simulation<a class="headerlink" href="#task-4-multi-agent-neuro-symbolic-ai-simulation" title="Permalink to this heading"></a></h2>
+<p><strong>Subtask 4.2. AI Simulation Development</strong></p>
+<section id="initial-architectures-the-gan">
+<h3>Initial Architectures – The GAN<a class="headerlink" href="#initial-architectures-the-gan" title="Permalink to this heading"></a></h3>
+<p>As proposed, we are exploring the use of a generative adversarial
+network for the simulation. The architecture primarily follows model
+prescribed in the original paper by Goodfellow 2014 including two
+networks, a discriminative network <em>D</em> and a generative network <em>G,</em>
+which engage in an adversarial game until a potential Nash equilibrium
+is reached. However, we modify this initial setup by replacing the
+generator <em>G</em> with a set of generators <em>G1..m</em>. As previously
+described in terms of the value function, <em>V,</em> is defined by:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\min}{G}\frac{\max}{D}V(D,\ G) = \ \mathbb{E}_{x\sim pdata(x)}\lbrack\log{D(x)\rbrack + \ }\mathbb{E}_{z\sim p_{z}(Z)}\left\lbrack \log\left( 1 - D\left( G(z) \right) \right) \right\rbrack\]</div>
+<p><em>G</em> represents the generator neural network and <em>D</em> represents the
+discriminator neural network, <span class="math notranslate nohighlight">\(\mathbb{E}_{x}\)</span> represents the
+expected value over data samples and <span class="math notranslate nohighlight">\(\mathbb{E}_{z}\)</span> represents
+the expected value over generated samples, with adjusted <em>D</em> parameters
+to minimize <em>log D(x)</em> and adjusted <em>G</em> parameters to minimize
+<em>log(1-D(G(x)))</em> define the minimax game. <em>D</em> tries to maximize its loss
+and <em>G</em> tries to minimize its loss. Prior information constrains the
+<em>pz(z)</em> distribution. Since there will be <em>M</em> generators <em>G1:M ,</em>
+this value function will be further modified.</p>
+<p>The team has begun building a prototype GAN in order to explore using
+multiple generators. In order to gain a better understanding of how this
+interaction will occur with respect to <em>G1:M</em>, the prototype entails a
+simple 1-equation surrogate model, a basic representation of the
+problem, and a multi-generator GAN. We are using this prototype to
+better understand the requirements of the loss function for both the
+discriminator and the generator, which needs to account for multiple
+generators. Simultaneously, a deeper treatment of the adversarial game
+and the job of both the discriminator and the generators is being
+explored.</p>
+<p>Our early experiment is a 1-D non-parametric density estimation using
+MAD-GAN. Shown in <strong>Figure 9</strong> on the left is a sample from a
+5-component 1-D Gaussian Mixture Model (GMM), and on the right shows an
+overlay of a sample of generator outputs (in this case 4) after 50,000
+updates to the discriminator and generator. The sample distributions of
+all of the generators appear to be “converging” towards the real
+distribution, but not necessarily one generator per modality as
+described in the paper.</p>
+<a class="reference internal image-reference" href="_images/image17.png"><img alt="_images/image17.png" src="_images/image17.png" style="width: 6.5in; height: 2.15486in;" /></a>
+<p>Figure 9. MAD-GAN 1-D GMM Experiment to better understand the behavior
+of GANs with multiple generators.</p>
+</section>
+<section id="the-gnanadesikan-four-box-model">
+<h3>The Gnanadesikan Four Box Model<a class="headerlink" href="#the-gnanadesikan-four-box-model" title="Permalink to this heading"></a></h3>
+<p><a class="reference internal" href="_images/image18.png"><img alt="image6" src="_images/image18.png" style="width: 4.17986in; height: 2.08344in;" /></a>As proposed, the Gnanadesikan four box model, depicted in
+<strong>Figure 10</strong>, will be used for the first version of this simulation.
+The Gnanadesikan four box model is a simple dynamical model that
+includes southern, low latitude, and northern surface boxes and one deep
+box. The low latitude and the deep box are designed to allow for
+adjustments based on forcings. In addition, temperature and salinity in
+all four boxes support variation.</p>
+</section>
+<section id="the-adversarial-game">
+<h3>The Adversarial Game<a class="headerlink" href="#the-adversarial-game" title="Permalink to this heading"></a></h3>
+<p><a class="reference internal" href="_images/image20.png"><img alt="image7" src="_images/image20.png" style="width: 3.83403in; height: 2.64722in;" /></a>Recall as depicted in <strong>Figure 11,</strong> the surrogate model
+will be used by the discriminator to run in model time, based on initial
+conditions and parameters specified. The initial simulation setup will
+use the Gnanadesikan four box model. This will enable simultaneous
+development of the AI surrogates and the GAN architecture without a
+strong initial dependence. The Gnanadesikan four box model simulations
+will be used to generate data for both the GAN and the AI surrogate
+model work.</p>
+<p><a class="reference internal" href="_images/image22.png"><img alt="image8" src="_images/image22.png" style="width: 4.4375in; height: 3in;" /></a>The adversarial game entails the generator processing data
+that includes the model initial state variables, parameters, ranges, and
+hard bounds allowable for perturbation (i.e., hard bounds imply states
+that would violate realistic, physical states). The generator will
+randomly choose a parameter to perturb and a value (bounded). This will
+be presented to the discriminator as a run that would potentially result
+in a shutoff of the AMOC or more generally instability in the model. The
+discriminator’s goal is to maintain stability in the model. It will run
+the Gnanadesikan four box model using the initial state variables and
+the parameters with the suggested perturbation. The discriminator will
+use a method that we are building to establish whether instability was
+reached while moving through box model time. If not, it will classify
+the model, initial state variables, and parameters with the suggested
+perturbation as stable. If an instability is reached it will classify
+the model, initial state variables, and parameters with the suggested
+perturbation as unstable. The discriminator will indicate to the
+generator whether the suggestion led to a tipping point. The generator
+agents will continue to explore the parameter space of the model,
+eventually leading to fully explored space of instability depicted in
+<strong>Figure 12</strong>, as a 2-D representation. The generators will thus explore
+the space of points that are found in the separatrix. The discriminator
+will learn over time what to avoid in terms of instability and what in
+parameter space could be used to avoid the instability in future runs.</p>
+<p><a class="reference internal" href="_images/image24.png"><img alt="image9" src="_images/image24.png" style="width: 4.63264in; height: 2.925in;" /></a>It is important to note that there are two dimensions of time
+in this adversarial setup, as shown in <strong>Figure 13</strong>, there is the box
+model time dimension for which the model runs for <strong>n</strong> timesteps, and
+there is the time dimension in terms of the GAN adversarial game. The
+first version of this prototype will explore returning a binary label
+indicating whether the AMOC shutoff was reached or was not reached. This
+will either end the search for this agent, trigger another random
+perturbation across parameter space, or trigger a further perturbation
+of the current parameter. Understanding how the generators will work
+together exploiting the parameter space and what is required of the loss
+function which will include the state of the generators, is currently
+under investigation.</p>
+<p>The discriminator is also learning what combination of initial
+conditions and parameters reach a shutoff. The discriminator has a set
+of input samples which are built from simulated box model runs. The set
+of input samples will be used to train the discriminator to learn which
+combination of parameters and initial conditions lead to a shutoff and
+which do not. As the generators present new potential combinations, the
+discriminator will run out the model with the presented combinations.
+These eventual runs will enable the discriminator to learn
+generalizations that lead to both instabilities and stabilities in the
+model.</p>
+</section>
+<section id="neuro-symbolic-language">
+<h3>Neuro-Symbolic Language<a class="headerlink" href="#neuro-symbolic-language" title="Permalink to this heading"></a></h3>
+<p>In order to develop the neuro-symbolic language the team has devised a
+simple question that can be traced through the equations to the box
+model code.</p>
+<p>The Example Question:</p>
+<p><em>Does the stability of the overturning depend on the pathways and
+sensitivities of water mass transformation in the Southern Ocean?</em></p>
+<p>How this question translates to the Gnanadesikan four box model is
+defined as follows.</p>
+<p>Water mass transformation in the South
+<span class="math notranslate nohighlight">\(M_{s}^{\text{trans}}\)</span>(representing the net transformation of
+dense water to light water) is a combination of Eddy fluxes and Ekman
+Fluxes</p>
+<div class="math notranslate nohighlight">
+\[{M_{s}^{\text{trans}} = M_{\text{ek}} - M}_{\text{eddy}}^{s} = \frac{\tau_{x}^{s}}{\text{ρf}}*L_{x}^{s} - A_{\text{GM}}*D*\frac{L_{x}^{s}}{L_{y}^{s}}\]</div>
+<p>Where <span class="math notranslate nohighlight">\(\tau_{x}^{s}\)</span> is a wind stress, <em>f</em> is the Coriolis
+parameter <span class="math notranslate nohighlight">\(L_{x}^{s}\)</span> is the length over which we integrate
+(outcrop of a critical density surface?). <span class="math notranslate nohighlight">\(A_{\text{GM}}\)</span> is the
+eddy advection coefficient, D is the Depth of the pycnocline and
+<span class="math notranslate nohighlight">\(L_{y}^{s}\)</span> is the width of the ACC/length scale over which the
+pycnocline shallows. The same <span class="math notranslate nohighlight">\(M_{s}^{\text{trans}}\)</span>can be
+achieved with different combinations of parameters even given the same
+pycnocline depth. In general, for a given <span class="math notranslate nohighlight">\(M_{s0}^{\text{trans}}\)</span>
+if <span class="math notranslate nohighlight">\(\tau_{x}^{s}\)</span> is changed (which can vary across different
+models) then this balance is used as:</p>
+<div class="math notranslate nohighlight">
+\[\frac{\tau_{x}^{s}L_{x}^{s}}{\text{ρf}} - M_{s0}^{\text{trans}} = A_{\text{GM}}*D*\frac{L_{x}^{s}}{L_{y}^{s}}\]</div>
+<p>to find a mixing coefficient that will give an identical water mass
+transformation in the South.</p>
+<p>The team has been working through a translation from the proposed
+questions – to the Gnanadesikan four box model code – to a structured
+language. The structured language represents constituents in terms of
+graphs. This representation will enable both the ability to perform
+inference and to apply automatic graph enrichments if need. The initial
+graph structure has taken the form of representing a simulation as shown
+in <strong>Figure 14</strong>. The team will further refine this work and will begin
+experimenting with the example described above in terms of generating
+graph structures. There are currently three thrusts underway (roughly
+aligned with <strong>Figure 15</strong>) in terms of the neuro-symbolic
+experimentation: a) developing the language and exploring the potential
+use of a graph embedding network to support inference, b) the embedding
+that converts structured problems into numeric structures for the GAN to
+learn how to answer the tipping point question, and c) formalizing the
+causal component of this methodology.</p>
+<p><a class="reference internal" href="_images/image26.png"><img alt="image10" src="_images/image26.png" style="width: 6.5in; height: 2.12431in;" /></a> <a class="reference internal" href="_images/image27.png"><img alt="image11" src="_images/image27.png" style="width: 6.5in; height: 4.05694in;" /></a></p>
+<p><em>Figure 15. From Models to Language to Adversarial Learning – A
+depiction of how we will incorporate the explorations of the box model
+with a neuro-symbolic language, represented as graphs for
+low-dimensional embeddings used for learning. Graph representations used
+for representing modeling (far left), defining exploration problems in
+terms of graphs (mid-left), producing low dimensional embeddings of
+graphs (mid-right), and using the low dimensional embedding for
+adversarial learning (far right).</em></p>
+</section>
+<section id="causality">
+<h3>Causality<a class="headerlink" href="#causality" title="Permalink to this heading"></a></h3>
+<p>As described in the Milestone 1 report, we are exploring two ways in
+which causality will integrated into the AI simulation. As part of the
+graph construction, we will build causal structure “templates” based on
+a priori knowledge. For example, an a priori causal template could
+include the fact that evaporation leads to high salinity in ocean
+waters. We are exploring the use of a graph-based network that could be
+used to learn these co-occurring factors. The other area relates to the
+inference that could be performed over the graphs constructed. We are
+exploring a set of options for how to represent what the generators
+learn over time tightly coupled to the neuro-symbolic representation.
+Graph representation are advantageous because inference could then be
+applied to the learned graph. The work described to support the
+neuro-symbolic language is fundamental to causal inference.</p>
+</section>
+</section>
+<section id="computational-requirements">
+<h2>5      Computational Requirements<a class="headerlink" href="#computational-requirements" title="Permalink to this heading"></a></h2>
+<p>The team has been exploring computing resources to support the AI
+simulation. We have estimated how much disk space will be required, how
+many GPUs will be needed and how we will accommodate sharing between the
+APL and JHU teams, and with the larger ACTM community.</p>
+<p>To address these collaborations, the APL team is using internal
+multi-GPU computing environment for experimenting with deep learning
+models. The JHU team is using internal high-performance computing for
+running oceanography models. Both teams will use a shared computing
+environment located at Johns Hopkins University, respectively called
+SciServer which will enable sharing of models and data between the JHU
+and APL teams. In addition, APL will purchase a cloud-based virtual
+machine to enable sharing of data and models to the larger ACTM
+community.</p>
+</section>
+<section id="conclusion-and-next-steps">
+<h2>6      Conclusion and Next Steps<a class="headerlink" href="#conclusion-and-next-steps" title="Permalink to this heading"></a></h2>
+<p>The team has made significant progress in cross-disciplinary
+understanding to support building both the AI simulation experiments and
+the AI-surrogate models with bifurcation. The team is now entering the
+phase of experimentation setup, architecture design, and data set
+generation for training the AI models. The team is also working towards
+integration points that will enable sharing with the larger ACTM
+community.</p>
+</section>
+<section id="bibliography">
+<h2>Bibliography<a class="headerlink" href="#bibliography" title="Permalink to this heading"></a></h2>
+<p><strong>Gnanadesikan</strong>, A., R. Kelson and M. Sten, Flux correction and
+overturning stability: Insights from a dynamical box model, J. Climate,
+31, 9335-9350, <a class="reference external" href="https://doi.org/10.1175/JCLI-D-18-0388.1">https://doi.org/10.1175/JCLI-D-18-0388.1</a>, (2018).</p>
+<p>Stommel, H. Thermohaline convection with two stable regimes of flow.
+Tellus 13, 224–230 (1961).</p>
+<p>Sgubin, Giovanni, Didier Swingedouw, Sybren Drijfhout, Yannick Mary, and
+Amine Bennabi. “Abrupt cooling over the North Atlantic in modern climate
+models.” Nature Communications 8, no. 1 (2017): 1-12.</p>
+<p>Rodgers, Keith B., Sun-Seon Lee, Nan Rosenbloom, Axel Timmermann, Gokhan
+Danabasoglu, Clara Deser, Jim Edwards et al. “Ubiquity of human-induced
+changes in climate variability.” Earth System Dynamics 12, no. 4 (2021):
+1393-1411.</p>
+<p>Goodfellow, Ian, Jean Pouget-Abadie, Mehdi Mirza, Bing Xu, David
+Warde-Farley, Sherjil Ozair, Aaron Courville, and Yoshua Bengio.
+“Generative adversarial nets.” Advances in neural information processing
+systems 27 (2014).</p>
+<p>Hoang, Quan, Tu Dinh Nguyen, Trung Le, and Dinh Phung. “MGAN: Training
+generative adversarial nets with multiple generators.” In International
+conference on learning representations. 2018.</p>
+<p>Li, Wei, Zhixuan Liang, Julian Neuman, Jinlin Chen, and Xiaohui Cui.
+“Multi-generator GAN learning disconnected manifolds with mutual
+information.” Knowledge-Based Systems 212 (2021): 106513.</p>
+</section>
+<section id="appendix-a-task-3-and-4-objectives-and-milestone">
+<h2>Appendix A – Task 3 and 4 Objectives and Milestone<a class="headerlink" href="#appendix-a-task-3-and-4-objectives-and-milestone" title="Permalink to this heading"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 100%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><strong>Task 3.2</strong> AI Physics-Informed Surrogate Model Learning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Objective: Design the experimental setup of physics-informed
+learning for surrogate models.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Task 4.2</strong> AI Simulation Development</p></td>
+</tr>
+<tr class="row-even"><td><p>Objective: Develop initial architectures, loss functions and
+integration plan for surrogate, causal, and neuro-symbolic
+models. Define how scenario statements will be represented
+symbolically, how what-if questions will be generated by the GAN
+and any computational requirements. Develop a theoretical design
+of the causal inference and climate neuro-symbolic language.</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>Milestone</strong>: Report on developing framework for the hybrid
+models identifying the known and unknown parts along with
+mathematical approaches.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="milestone1_report.html" class="btn btn-neutral float-left" title="Milestone 1 Progress Report" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="pyBAMOCS_intro.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, The Johns Hopkins University Applied Physics Laboratory LLC. All rights reserved..</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
