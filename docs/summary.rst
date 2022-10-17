@@ -21,3 +21,12 @@ will be enabled by a partnership between Johns Hopkins University Applied Physic
 in integrating complex AI systems to achieve scientific and defense-oriented results and world-class experts in
 dynamical systems and climate systems modeling from Johns Hopkins University (JHU) and expertise in the area of
 hydrology and machine learning from UC Davis.
+
+Code
+https://github.com/JHUAPL/PACMANs - Public to all (Up to date with all code from start to MS 3 deliverables)
+
+Documentation
+https://pacmans.readthedocs.io/en/latest/
+
+Datasets
+http://sciserver.org/public-data/PACMANS/datasets
