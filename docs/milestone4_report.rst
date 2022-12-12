@@ -386,7 +386,7 @@ Neuro-Symbolic Learning
 
    **Figure 11. Novel Neuro-Symbolic Architecture for Translating
    Questions to Programs based on Neuro-Symbolic Concept Learner
-   (NS-CL).**\ |image59|
+   (NS-CL).**
 
    • Next Steps:
         • Measure performance of the following translations:
