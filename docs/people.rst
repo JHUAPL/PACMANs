@@ -17,6 +17,18 @@ processes of the ocean. Dr. Brett studied physical oceanography in the Massachus
 Oceanographic Institution Joint Program and provides ocean physical modeling expertise to the Use Case Modeling,
 Evaluation, and Data Acquisition groups.
 
+**Marisa Hughes** (Program Manager)
+
+**David Chung** (AI Simulation Group)
+
+**Chace Ashcraft** (AI Simulation Group)
+
+**Anshu Saksena** (AI Simulation Group)
+
+**Larry White** (Use Case Modeling, Evaluation, and Data Acquisition Groups)
+
+**Caroline Tang** (Duke University - APL Intern) (AI Simulation Group)
+
 Johns Hopkins University (JHU)
 ------------------------------
 **Dr. Anand Gnanadesikan** (Co-PI; Lead of Use Case Modeling Group) is an Earth System Modeler who works on the
@@ -29,6 +41,13 @@ mathematician/computational engineer with forty years expertise in nonlinear dyn
 (machine learning, manifold learning) and multiscale modeling, with an interface between traditional modeling and
 ML/neural network-based modeling in physics-informed data driven models. He has extensive expertise in the machine
 learning of tipping points for agent-based models.
+
+**Dr. Thomas Haine** (Use Case Modeling Group)
+
+**Dr. Marie-Aude Pradal** (Use Case Modeling Group)
+
+**Dr. Renske Gelderloos** (Use Case Modeling Group)
+
 
 University of California-Davis University (UC Davis)
 ----------------------------------------------------
