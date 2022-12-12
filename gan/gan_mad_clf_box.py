@@ -57,6 +57,5 @@ if __name__ == "__main__":
 					chkpt_idx=chkpt_idx, chkpt_freq=10)
 
 	# # Test training loop
-	# gan.train(n_iterations=1000, gen_mb_size=128, real_mb_size=128, debug=False)
 	gan.train(n_iterations=500, gen_mb_size=32, real_mb_size=32, debug=False)
-	# gan.train(n_iterations=1, gen_mb_size=12, real_mb_size=12, debug=True)
+	

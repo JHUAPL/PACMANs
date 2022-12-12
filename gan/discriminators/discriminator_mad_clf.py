@@ -6,6 +6,10 @@ Distributed under the terms of the BSD 3-Clause License.
 Approved for public release; distribution is unlimited.
 This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No.
 HR00112290032.
+
+Implementation based on:
+Ghosh, Arnab, Viveka Kulharia, Vinay P. Namboodiri, Philip HS Torr, and Puneet K. Dokania. "Multi-agent diverse generative adversarial networks." In Proceedings of the IEEE conference on computer vision and pattern recognition, pp. 8513-8521. 2018.
+
 """
 
 import torch
