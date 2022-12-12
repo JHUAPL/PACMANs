@@ -1,11 +1,6 @@
 ===========================
 Milestone 4 Progress Report
 ===========================
-
-**Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.**
-
-
-
 **PACMANS TEAM:**
 
 Jennifer Sleeman (JHU APL) PI
@@ -46,7 +41,7 @@ Marisa Hughes (JHU APL)
    | • New architectures
    | • Experimental definitions
    | • Findings based on experimental results
-   | • Next steps
+   | • Next steps\ |image26|
 
 2      Goals and Impact
 ===============
@@ -55,7 +50,7 @@ Goals for this milestone included:
     • Obtain the first set of experimental results for the AI surrogate modeling based on testing the formalizations described in Milestone 3
     • Perform early experimentation of a baseline GAN for a subset of explorations and what-if questions
     • Show feasibility of the causal model
-    • Obtain baseline symbolic language experimental results
+    • Obtain baseline symbolic language experimental results\ |image27|
 
 3      Key Findings
 ===============
@@ -73,7 +68,7 @@ Goals for this milestone included:
         • Developed a first approach for bi-directional translation between the neuro-symbolic language and the GAN perturbations
             • **If successful, this model will show how a GAN’s perturbations of symbols can be translated to “purely generative” natural language questions**
         • To address questions around AMOC slowing vs. complete shut-off and recovery from AMOC, we are exploring causality at the model level
-            • **we expect to address these two areas with a probabilistic causal model** 
+            • **we expect to address these two areas with a probabilistic causal model**\ |image28|
 
 4      Task 3.3 – Surrogate Learning
 ==============================================================
@@ -88,7 +83,7 @@ Goals for this milestone included:
 
    • This was enabled by a careful non-dimensionalization of the related equations, without which the accuracy of the numerical computations would be unsatisfactory
 
-   • With the non-dimensionalized equations, the problem possesses not one but two tipping points (fold and Hopf bifurcations) 
+   • With the non-dimensionalized equations, the problem possesses not one but two tipping points (fold and Hopf bifurcations)\ |image29|
 
 
    With the non-dimensionalized equations, the problem possesses not one
@@ -123,7 +118,7 @@ Goals for this milestone included:
 
    • This steady state loses stability at the Hopf bifurcation (red branch in Figures 1-2).
 
-   • The escape (the “tipping") arises when a stochastic trajectory wandering around the stable state manages to "cross” the unstable limit cycle and escape to either large oscillations or to a completely different lower circulation branch.
+   • The escape (the “tipping") arises when a stochastic trajectory wandering around the stable state manages to "cross” the unstable limit cycle and escape to either large oscillations or to a completely different lower circulation branch.\ |image34|
 
 
    Where the initial condition with D=1 (where D is the Low latitude
@@ -137,13 +132,13 @@ Goals for this milestone included:
    |image35| |image36|
 
    **Figures 3a-3b. Temporal Bifurcation Diagram for Depth (a) and the
-   Limit Cycle Continuation (b).** 
+   Limit Cycle Continuation (b).** |image37|
 
 
    | Next Steps:
    | • We are working on a stochastic simulation close to the presented tipping points, to collect data towards a targeted surrogate model. This will allow us to efficiently and accurately estimate escape time distributions.
 
-   | • We will learn targeted effective stochastic DEs (one-dimensional at the LP tipping, two-dimensional at the Hopf tipping) and use them to estimate escape time statistics in both cases.
+   | • We will learn targeted effective stochastic DEs (one-dimensional at the LP tipping, two-dimensional at the Hopf tipping) and use them to estimate escape time statistics in both cases.\ |image38|
 
 
 
@@ -166,7 +161,7 @@ Goals for this milestone included:
 
    • Set up a baseline model that will be used for experimentation
 
-   • Defined causality in terms of model behavior/time
+   • Defined causality in terms of model behavior/time\ |image39|
 
 GAN Experiments
 ---------------
@@ -182,13 +177,13 @@ GAN Experiments
    • Data was augmented for uniform sampling from a 3-D space
    • In addition to samples, generated 1,000 synthetic samples
 
-   • Distribution of shutoff vs non-shutoff samples 743/413 
+   • Distribution of shutoff vs non-shutoff samples 743/413 |image40|
 
    | • Trained the GAN using equally-weighted generators
    | • Shutoff classification cross-entropy loss functions
    | • Ran for ~250 epochs
    | • Ran experiments with n = to the number of generators where n ∈ [1,2,4]
-   | • Generated samples result in shutoffs/non-shutoffs\ 
+   | • Generated samples result in shutoffs/non-shutoffs\ |image41|
 
 • Discriminator performance in classifying runs as shut-off or not•
 • High F-measure scores indicate the discriminator was able to accuracy classify shut-off from non-shut-off runs for held-out test
@@ -386,7 +381,7 @@ Neuro-Symbolic Learning
 
    **Figure 11. Novel Neuro-Symbolic Architecture for Translating
    Questions to Programs based on Neuro-Symbolic Concept Learner
-   (NS-CL).**
+   (NS-CL).**\ |image59|
 
    • Next Steps:
         • Measure performance of the following translations:
@@ -437,6 +432,136 @@ Causality
 
 
 |image65|\ |image66|
+
+JHU/APL Proprietary - For Internal Use Only **30**
+
+   **Appendix A**
+
++-------------------------+-------------------------+-----------+---+
+|    **Task 3.3**         |                         | **L**     |   |
++=========================+=========================+===========+===+
+|    **Objective**        |    Task Description     |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **AI                 |    Report on the first  | **o**     |   |
+|    Physics-Informed     |    set of experimental  |           |   |
+|    Surrogate Learning** |    results based on     |           |   |
+|                         |    testing the          |           |   |
+|                         |    formalizations set   |           |   |
+|                         |    forth in Milestone   |           |   |
+|                         |    3.                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Formalizations**   | **c**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **a**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **t**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **i**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **o**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **n**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **J**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **H**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **U**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Primary            |    **JHU**              |           |   |
+|    Organization         |                         |           |   |
+|    Responsible**        |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Human Subjects or  |    **No**               |           |   |
+|    Animal Research?**   |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Associated         |    Deliverables         |           |   |
+|    Milestones**         |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Milestone 4**      |    **Report on 'beta    |           |   |
+|                         |    version' of hybrid   |           |   |
+|                         |    model analysis       |           |   |
+|                         |    including new        |           |   |
+|                         |    mathematical         |           |   |
+|                         |    insights, along with |           |   |
+|                         |    insights in data**   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         |    **analysis.**        |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | 3 December 2022         |    **31** |   |
++-------------------------+-------------------------+-----------+---+
+
+..
+
+   **Appendix B**
+
++-------------------------+-------------------------+-----------+---+
+|    **Task 4.3**         |                         | **L**     |   |
++=========================+=========================+===========+===+
+|    **Objective**        |    Subtask Description  |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **AI Simulation      | Report on early         | **o**     |   |
+|    Formalizations**     | experimentation of a    |           |   |
+|                         | baseline GAN for a      |           |   |
+|                         | subset of explorations  |           |   |
+|                         | and what-if questions,  |           |   |
+|                         | including a set of      |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         |    experiments that     | **c**     |   |
+|                         |    show feasibility of  |           |   |
+|                         |    the causal model,    |           |   |
+|                         |    and baseline         |           |   |
+|                         |    symbolic language    |           |   |
+|                         |    experimental         |           |   |
+|                         |    results.             |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **a**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **t**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **i**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **o**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **n**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **A**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **P**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **L**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **,**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **J**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **H**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | **U**                   |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Primary            |    **APL**              |           |   |
+|    Organization         |                         |           |   |
+|    Responsible**        |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Human Subjects or  |    **No**               |           |   |
+|    Animal Research?**   |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Associated         |    Deliverables         |           |   |
+|    Milestones**         |                         |           |   |
++-------------------------+-------------------------+-----------+---+
+|    **Milestone 4**      |    **Milestone report – |           |   |
+|                         |    report on 'beta      |           |   |
+|                         |    version' of hybrid   |           |   |
+|                         |    model analysis       |           |   |
+|                         |    including new        |           |   |
+|                         |    mathematical         |           |   |
+|                         |    insights, along**    |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         |    **with insights in   |           |   |
+|                         |    data analysis.**     |           |   |
++-------------------------+-------------------------+-----------+---+
+|                         | 3 December 2022         |    **32** |   |
++-------------------------+-------------------------+-----------+---+
 
 .. image:: _static/media4/image27.png
    :width: 13.33333in
