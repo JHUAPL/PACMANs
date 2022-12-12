@@ -46,7 +46,7 @@ Marisa Hughes (JHU APL)
    | • New architectures
    | • Experimental definitions
    | • Findings based on experimental results
-   | • Next steps\ |image26|
+   | • Next steps
 
 2      Goals and Impact
 ===============
@@ -55,7 +55,7 @@ Goals for this milestone included:
     • Obtain the first set of experimental results for the AI surrogate modeling based on testing the formalizations described in Milestone 3
     • Perform early experimentation of a baseline GAN for a subset of explorations and what-if questions
     • Show feasibility of the causal model
-    • Obtain baseline symbolic language experimental results\ |image27|
+    • Obtain baseline symbolic language experimental results
 
 3      Key Findings
 ===============
@@ -73,7 +73,7 @@ Goals for this milestone included:
         • Developed a first approach for bi-directional translation between the neuro-symbolic language and the GAN perturbations
             • **If successful, this model will show how a GAN’s perturbations of symbols can be translated to “purely generative” natural language questions**
         • To address questions around AMOC slowing vs. complete shut-off and recovery from AMOC, we are exploring causality at the model level
-            • **we expect to address these two areas with a probabilistic causal model**\ |image28|
+            • **we expect to address these two areas with a probabilistic causal model** 
 
 4      Task 3.3 – Surrogate Learning
 ==============================================================
@@ -88,7 +88,7 @@ Goals for this milestone included:
 
    • This was enabled by a careful non-dimensionalization of the related equations, without which the accuracy of the numerical computations would be unsatisfactory
 
-   • With the non-dimensionalized equations, the problem possesses not one but two tipping points (fold and Hopf bifurcations)\ |image29|
+   • With the non-dimensionalized equations, the problem possesses not one but two tipping points (fold and Hopf bifurcations) 
 
 
    With the non-dimensionalized equations, the problem possesses not one
@@ -123,7 +123,7 @@ Goals for this milestone included:
 
    • This steady state loses stability at the Hopf bifurcation (red branch in Figures 1-2).
 
-   • The escape (the “tipping") arises when a stochastic trajectory wandering around the stable state manages to "cross” the unstable limit cycle and escape to either large oscillations or to a completely different lower circulation branch.\ |image34|
+   • The escape (the “tipping") arises when a stochastic trajectory wandering around the stable state manages to "cross” the unstable limit cycle and escape to either large oscillations or to a completely different lower circulation branch.
 
 
    Where the initial condition with D=1 (where D is the Low latitude
@@ -143,7 +143,7 @@ Goals for this milestone included:
    | Next Steps:
    | • We are working on a stochastic simulation close to the presented tipping points, to collect data towards a targeted surrogate model. This will allow us to efficiently and accurately estimate escape time distributions.
 
-   | • We will learn targeted effective stochastic DEs (one-dimensional at the LP tipping, two-dimensional at the Hopf tipping) and use them to estimate escape time statistics in both cases.\ |image38|
+   | • We will learn targeted effective stochastic DEs (one-dimensional at the LP tipping, two-dimensional at the Hopf tipping) and use them to estimate escape time statistics in both cases.
 
 
 
@@ -166,7 +166,7 @@ Goals for this milestone included:
 
    • Set up a baseline model that will be used for experimentation
 
-   • Defined causality in terms of model behavior/time\ |image39|
+   • Defined causality in terms of model behavior/time
 
 GAN Experiments
 ---------------
