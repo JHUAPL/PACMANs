@@ -200,13 +200,7 @@ class GANTrainer(object):
 		train_clf_logits = []
 		test_clf_logits = []
 		with torch.inference_mode():
-			# i = 0
-			# while i < train_data.shape[0]:
-			# 	# Compute logits
-			# 	train_batch_pt = torch.DoubleTensor(train_data[i:i+batch_size]).to(self.device)
-			# 	_, train_batch_clf_logits = self.disc(train_batch_pt)
-			# 	train_clf_logits.append(train_batch_clf_logits)
-			# 	i += batch_size
+
 
 			i = 0
 			while i < test_data.shape[0]:
@@ -217,14 +211,10 @@ class GANTrainer(object):
 				i += batch_size
 
 			# Get predictions
-			# train_clf_logits = torch.cat(train_clf_logits, dim=0)
 			test_clf_logits = torch.cat(test_clf_logits, dim=0)
-			# train_clf_preds = torch.argmax(train_clf_logits, axis=1).detach().cpu().numpy()
 			test_clf_preds = torch.argmax(test_clf_logits, axis=1).detach().cpu().numpy()
 
 			# Compute precision, recall, f1-score
-			# train_clf_report = classification_report(train_labels, train_clf_preds, target_names=["No sign change", "Sign change"],
-			# 										output_dict=True, zero_division=0)
 			test_clf_report = classification_report(test_labels, test_clf_preds, target_names=self.class_names,
 													output_dict=True, zero_division=0)
 			# self.disc_metrics["train"].append(train_clf_report)
