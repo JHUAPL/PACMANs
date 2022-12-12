@@ -8,10 +8,10 @@ This repository contains the source code which supports the DARPA AI-assisted Cl
 ## Team
 Authors of this repository include researchers from the Applied Physics Laboratory and from Johns Hopkins University.
 
-- Jennifer Sleeman (JHU/APL)
+- Jennifer Sleeman (JHU/APL) (PI)
 - Jay Brett (JHU/APL)
-- Anand Gnanadesikan (JHU)
-- Yannis Kevrekidis (JHU)
+- Anand Gnanadesikan (JHU) (CO-PI)
+- Yannis Kevrekidis (JHU) (CO-PI)
 - Anshu Saksena (JHU/APL)
 - Chace Ashcraft (JHU/APL)
 - David Chung (JHU/APL)
@@ -22,3 +22,6 @@ Authors of this repository include researchers from the Applied Physics Laborato
 
 ## Contact
 If you have any questions pertaining to this repository, please contact Jennifer Sleeman (jennifer.sleeman at jhuapl dot edu).
+
+
+Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.
