@@ -1,6 +1,7 @@
 ===========================
 Milestone 5 Progress Report
 ===========================
+Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.
 
 **PACMANS TEAM:**
 
