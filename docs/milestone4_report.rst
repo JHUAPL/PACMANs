@@ -137,7 +137,7 @@ Goals for this milestone included:
    |image35| |image36|
 
    **Figures 3a-3b. Temporal Bifurcation Diagram for Depth (a) and the
-   Limit Cycle Continuation (b).** |image37|
+   Limit Cycle Continuation (b).** 
 
 
    | Next Steps:
@@ -182,13 +182,13 @@ GAN Experiments
    • Data was augmented for uniform sampling from a 3-D space
    • In addition to samples, generated 1,000 synthetic samples
 
-   • Distribution of shutoff vs non-shutoff samples 743/413 |image40|
+   • Distribution of shutoff vs non-shutoff samples 743/413 
 
    | • Trained the GAN using equally-weighted generators
    | • Shutoff classification cross-entropy loss functions
    | • Ran for ~250 epochs
    | • Ran experiments with n = to the number of generators where n ∈ [1,2,4]
-   | • Generated samples result in shutoffs/non-shutoffs\ |image41|
+   | • Generated samples result in shutoffs/non-shutoffs\ 
 
 • Discriminator performance in classifying runs as shut-off or not•
 • High F-measure scores indicate the discriminator was able to accuracy classify shut-off from non-shut-off runs for held-out test
