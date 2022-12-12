@@ -1,0 +1,60 @@
+{
+	"gens": {
+				"0": {	"perturb_vars": ["K_v", "A_GM", "A_Redi"],
+			  			"cond_vars": ["M_ek", "M_SD", "D_low0",
+						  "T_north0", "T_south0", "T_low0", "T_deep0",
+						  "S_north0", "S_south0", "S_low0", "S_deep0",
+						  "Fws", "Fwn",
+						  "epsilon"]
+					},
+
+				"1": {	"perturb_vars": ["M_ek", "M_SD"],
+						"cond_vars": ["K_v", "A_GM", "A_Redi", "D_low0",
+						"T_north0", "T_south0", "T_low0", "T_deep0",
+						"S_north0", "S_south0", "S_low0", "S_deep0",
+						"Fws", "Fwn",
+						"epsilon"]
+			  		},
+
+				"2": {	"perturb_vars": ["D_low0"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD",
+						"T_north0", "T_south0", "T_low0", "T_deep0",
+						"S_north0", "S_south0", "S_low0", "S_deep0",
+						"Fws", "Fwn",
+						"epsilon"]
+			  		},
+				"3": {	"perturb_vars": ["T_north0", "T_south0", "T_low0", "T_deep0"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD",
+						"S_north0", "S_south0", "S_low0", "S_deep0",
+						"Fws", "Fwn",
+						"epsilon"]
+					},
+				"4": {	"perturb_vars": ["S_north0", "S_south0", "S_low0", "S_deep0"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD", "D_low0",
+						"T_north0", "T_south0", "T_low0", "T_deep0",
+						"Fws", "Fwn",
+						"epsilon"]
+					},
+				"5": {	"perturb_vars": ["Fws", "Fwn"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD", "D_low0",
+						"T_north0", "T_south0", "T_low0", "T_deep0",
+						"S_north0", "S_south0", "S_low0", "S_deep0",
+						"epsilon"]
+					},
+				"6": {	"perturb_vars": ["epsilon"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD", "D_low0",
+						"T_north0", "T_south0", "T_low0", "T_deep0",
+						"S_north0", "S_south0", "S_low0", "S_deep0",
+						"Fws", "Fwn"]
+					}
+			
+			},
+	"var_order": ["K_v", "A_GM", "M_ek", "A_Redi", "M_SD", "D_low0",
+	"T_north0", "T_south0", "T_low0", "T_deep0",
+	"S_north0", "S_south0", "S_low0", "S_deep0",
+	"Fws", "Fwn",
+	"epsilon"],
+	"z_size": 64,
+	"classes": ["No shutoff", "Shutoff", "Recovery"]
+
+}
