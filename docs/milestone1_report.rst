@@ -660,29 +660,6 @@ Li, Wei, Zhixuan Liang, Julian Neuman, Jinlin Chen, and Xiaohui Cui.
 "Multi-generator GAN learning disconnected manifolds with mutual
 information." Knowledge-Based Systems 212 (2021): 106513.
 
-Appendix A – Task 1 Objectives and Milestone
-============================================
-
-+----------------------------------------------------------------------+
-| Task 1.1 Ocean Modeling                                              |
-+======================================================================+
-| **Objective**: Designation of an Ocean Model Use Case                |
-+----------------------------------------------------------------------+
-| Task 2.1 Global Climate Models                                       |
-+----------------------------------------------------------------------+
-| **Objective**: CMIP Data Acquisition and Analysis                    |
-+----------------------------------------------------------------------+
-| Task 3.1 AI Physics-Informed Surrogate Models                        |
-+----------------------------------------------------------------------+
-| **Objective**: AI Physics-Informed Surrogate Model Design            |
-+----------------------------------------------------------------------+
-| Task 4.1 Multi-Agent Neuro-Symbolic AI Simulation                    |
-+----------------------------------------------------------------------+
-| **Objective**: AI Simulation Design                                  |
-+----------------------------------------------------------------------+
-| **Milestone 1:** Report identifying hybrid model constituents with   |
-| datasets, problems and targeted effects to be investigated.          |
-+----------------------------------------------------------------------+
 
 .. |image1| image:: _static/media/image4.png
    :width: 3.16806in
