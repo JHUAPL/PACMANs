@@ -1,0 +1,23 @@
+{
+	"gens": {
+				"0": {	"perturb_vars": ["N", "M_ek", "D_low0", "Fwn"],
+			  			"cond_vars": ["K_v", "A_GM", "A_Redi", "epsilon"]
+					},
+
+				"1": {	"perturb_vars": ["N", "A_Redi", "D_low0", "Fwn"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "epsilon"]
+			  		},
+
+				"2": {	"perturb_vars": ["N", "D_low0", "Fwn", "epsilon"],
+						"cond_vars": ["K_v", "A_GM", "M_ek", "A_Redi"]
+			  		},
+				"3": {	"perturb_vars": ["N", "A_GM", "D_low0", "Fwn"],
+						"cond_vars": ["K_v", "M_ek", "A_Redi", "epsilon"]
+					},
+				"4": {	"perturb_vars": ["N", "K_v", "D_low0", "Fwn"],
+						"cond_vars": ["A_GM", "M_ek", "A_Redi", "epsilon"]
+					}
+			},
+	"var_order": ["N", "K_v", "A_GM", "M_ek", "A_Redi", "D_low0", "Fwn", "epsilon"]
+
+}

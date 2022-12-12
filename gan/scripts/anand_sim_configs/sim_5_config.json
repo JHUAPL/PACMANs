@@ -1,0 +1,29 @@
+{
+	"perturb_vars": ["K_v", "D_low0", "Fwn"],
+	"perturb_min": [0.0, 1.0e2, 5.0e4],
+	"perturb_max": [5.0e-5, 4.0e2, 1.55e6],
+	"n_samples": 20000,
+	"constants_dict": {
+		"N": 8000,
+		"M_ek": 25e6,
+		"A_Redi": 1000,
+		"A_GM": 1000,
+		"M_SD": 15000000.0,
+		"T_north0": 2,
+		"T_south0": 4,
+		"T_low0": 17,
+		"T_deep0": 3,
+		"S_north0": 35,
+		"S_south0": 36,
+		"S_low0": 36,
+		"S_deep0": 34.5,
+		"Fws": 1000000.0,
+		"epsilon": 0.00012,
+		"area": 360000000000000.0,
+		"area_low": 200000000000000.0,
+		"area_s": 100000000000000.0,
+		"area_n": 60000000000000.0,
+		"D_high": 100,
+		"time_step_size_in_years": 0.25
+	}
+}
