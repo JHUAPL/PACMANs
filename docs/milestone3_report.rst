@@ -1,9 +1,11 @@
 ===========================
 Milestone 3 Progress Report
 ===========================
-
 Report on Metrics to be Used to Compare the Benefits of
 Hybrid Models Over Conventional Models
+
+**Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.**
+
 
 
 1      Overview
@@ -448,25 +450,6 @@ information." Knowledge-Based Systems 212 (2021): 106513.
 Hoffman, Robert R., Shane T. Mueller, Gary Klein, and Jordan Litman.
 "Metrics for explainable AI: Challenges and prospects." *arXiv preprint
 arXiv:1812.04608* (2018).
-
-Appendix A – Tasks 2 and 5 Objectives and Milestone
-===================================================
-
-+----------------------------------------------------------------------+
-| **Task 2.2** CMIPS Data Wrangling and Dataset Delivery Preparation   |
-+======================================================================+
-| Objective: Deliver wrangled data set for both the surrogate models   |
-| and the GAN.                                                         |
-+----------------------------------------------------------------------+
-| **Task 5.1** Evaluation Development                                  |
-+----------------------------------------------------------------------+
-|    Objective: Report on metrics in terms of accuracy, physical       |
-|    consistency, reproducibility, and consistency.                    |
-+----------------------------------------------------------------------+
-| **Milestone**: Deliver prepared datasets for use in Phase 1. Report  |
-| on metrics to be used to compare the benefits of hybrid models over  |
-| conventional models.                                                 |
-+----------------------------------------------------------------------+
 
 .. |image1| image::  _static/media3/image2.png
    :width: 3.95764in
