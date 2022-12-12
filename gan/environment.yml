@@ -217,4 +217,4 @@ dependencies:
     - seawater==3.3.4
     - threadpoolctl==3.1.0
     - tomli==2.0.1
-prefix: /home/chungdw1/anaconda3/envs/pacmans_gan
+prefix: pacmans_gan
