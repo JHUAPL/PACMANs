@@ -64,12 +64,9 @@ Approved for public release; distribution is unlimited. This material is based u
 	• Research showed 4-box model captures 60-90% of the variation in the AMOC and pycnocline of CESM2, suggesting 4-box results can be used to understand
 CMIP-class AMOC model disagreement
 • Development of the **new 6-box model** for AMOC overturning research
-	• Enables the study of oscillations providing insights into why some slow-downs lead to full collapses whereas some lead to recovery, which could inform climate
-intervention strategies
-• **New bifurcation method** for stochastic differential equations to estimate escape times in addition to identifying
-bifurcations
-	• Goes beyond SOA providing measurements for determining how far away we are from a tipping point and likelihood of recovering – applied to the stochastic 4-
-box model
+	• Enables the study of oscillations providing insights into why some slow-downs lead to full collapses whereas some lead to recovery, which could inform climate intervention strategies
+• **New bifurcation method** for stochastic differential equations to estimate escape times in addition to identifying bifurcations
+	• Goes beyond SOA providing measurements for determining how far away we are from a tipping point and likelihood of recovering – applied to the stochastic 4-box model
 • New AI-based method – TIP-GAN – a **generative adversarial network that is used to discover AMOC tipping points**
 	• Generalizable to other types of tipping points
 • Newly developed **neuro-symbolic deep learning architecture** that provides a means to ask questions of what is learned by TIP-GAN and a way to explore **causal paths**
@@ -81,8 +78,7 @@ box model
 --------------------
 
 
-   This report includes a detailed experimental plan for each component
-   of the PACMANS project including:
+This report includes a detailed experimental plan for each component of the PACMANS project including:
 
 • Use Case Modeling: Development of fully coupled climate models with identified AMOC tipping points for AI model evaluations
 • AMOC Use Case: AI experimental runs based on the 6-box model and calibrated CESM2 models, validated against in-house runs, discussion of additional model data
@@ -95,24 +91,20 @@ box model
 
 
 Three areas where additional data sources could be of use
-   | • As additional data for training the AI simulation
-   | • After the AI simulation is trained and identifies areas of the search space that likely to exhibit collapse, apply modeling and additional observational data to better understand this behavior
-
-   | • Use the AI simulation to identify variables
+   • As additional data for training the AI simulation
+   • After the AI simulation is trained and identifies areas of the search space that likely to exhibit collapse, apply modeling and additional observational data to better understand this behavior
+   • Use the AI simulation to identify variables
 
 
 **Phase 2 Discussion – Data Sources**
 
-   • The primary dataset for scientific discovery will be the CMIP6
-   archive of global coupled models.
+   • The primary dataset for scientific discovery will be the CMIP6 archive of global coupled models.
 
-   	• Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
+   • Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
 
    • Model disagreement, paired with GAN discovery of tipping points, will identify the important parameters or conditions that control the AMOC shutoff.
 
-   • Observations that could put limits on these parameters or indicate
-   these conditions will be the most valuable new data that could be
-   generated.
+   • Observations that could put limits on these parameters or indicate these conditions will be the most valuable new data that could be generated.
 
    	• We expect important initial conditions to include the AMOC strength, which could be better measured with added data from floats for improved T, S structure measures, moorings for bottom pressure, or satellite SST and SSS.
 
@@ -125,11 +117,11 @@ Three areas where additional data sources could be of use
 
 
 **Phase 2 Discussion – Value of New Data**
-   | • *Emergent parameters-* efficiency with which large scale available potential energy is converted to overturning.
+   • *Emergent parameters-* efficiency with which large scale available potential energy is converted to overturning.
 
-   | • *Emergent behavior-* low damping of salinity anomalies near collapse. (requires measuring air-sea water fluxes/salt transports)
+   • *Emergent behavior-* low damping of salinity anomalies near collapse. (requires measuring air-sea water fluxes/salt transports)
 
-   | • *Precursor patterns-* focus modeling activity near tipping point, look for common precursors of collapse.
+   • *Precursor patterns-* focus modeling activity near tipping point, look for common precursors of collapse.
 
    |image31|\ |image32|
 
@@ -163,9 +155,7 @@ Three areas where additional data sources could be of use
 6 Task 1.3: Use Case Ocean Modeling Research Plan
 --------------------------------------------------
 
-   *Subtask Description: We will deliver a research plan for Phase 2
-   regarding the use case models that will be generated.*
-
+   *Subtask Description: We will deliver a research plan for Phase 2 regarding the use case models that will be generated.*
    *Tasks to Complete for Phase 2:*
    	• Development of a plan of experiments in a fully-coupled global climate model to locate the overturning tipping point, allowing us to find changes in state preceding that tipping point
 	• Determination to use the Community Earth System Model, CESM
@@ -176,9 +166,7 @@ Three areas where additional data sources could be of use
 
 **Experimental plan:**
 From a steady 2000s climate, we increase atmospheric CO2 at a constant rate of 4ppm/year (1%).
-
 Each 35 years, at an effective radiative increase of 2W/m2, we branch off two simulations, one with constant CO2 and one with decreasing CO2 at the same 1% annual rate.
-
 These will determine whether the AMOC recovers, stabilizes, or continues to collapse.
 
 
@@ -189,54 +177,38 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
       :height: 4.30139in
 
 
-   | **Experiment plan:**
-   | When we identify the CO2 range for collapse, we will run a small
-     ensemble of runs covering the lead up and collapse. This will have
-     two methods: 
-   1. Targeted: Several runs will have varying initial
-     conditions of known climate oscillations (e.g. Atlantic
-     Multidecadal Oscillation (AMO) phase) and AMOC strength. We will
-     also adjust the parameters from the box model that the GAN
-     indicates the tipping point or separatrix is most sensitive to. We
-     will further incorporate observations to constrain parameters and
-     evaluate their effects.
+   **Experiment plan:**
+   When we identify the CO2 range for collapse, we will run a small ensemble of runs covering the lead up and collapse. This will have two methods: 
+   1. Targeted: Several runs will have varying initial conditions of known climate oscillations (e.g. Atlantic Multidecadal Oscillation (AMO) phase) and AMOC strength. We will also adjust the parameters from the box model that the GAN indicates the tipping point or separatrix is most sensitive to.
+   We will further incorporate observations to constrain parameters and evaluate their effects.
 
-   2. Random: We will also repeat runs with roundoff-level differences
-   in the atmosphere’s initial conditions. This will allow us to
-   understand the sensitivity of AMOC collapse and recovery, determine
-   what additional measurements could reduce uncertainty in such
-   projections, and enable a parallel understanding of collapse to that
-   of the GAN.
+   2. Random: We will also repeat runs with roundoff-level differences in the atmosphere’s initial conditions. This will allow us to understand the sensitivity of AMOC collapse and recovery, determine what additional measurements could reduce uncertainty in such projections, and enable a parallel understanding of collapse to that of the GAN.
 
 
 5 Task 2.4: Data Plan for AMOC Use Case
 ----------------------------------------
 
-   The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator
-   (PACMANS) for Tipping Point Discovery
+   The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator(PACMANS) for Tipping Point Discovery
 
-   *Subtask Description: We will report how and which datasets will be
-   used to support the use case experiments.*
+   *Subtask Description: We will report how and which datasets will be used to support the use case experiments.*
 
-   | *Tasks to Complete for Phase 2:*
+   *Tasks to Complete for Phase 2:*
    	• Code for calibrating CMIP-archived data to the 4 and 6 box models.
 	• Calibration of CESM2 Large Ensemble members to the 4 and 6 box model.
 	• Development of a plan for integrating the GAN with the calibrated data for identification of several model-specific separatrix
-	• Development of a plan for integrating the calibrated data into the surrogate
-modeling
+	• Development of a plan for integrating the calibrated data into the surrogate modeling
 	• Development of a plan to evaluate the GAN results with our use case modeling
 	 Identify new informative observations to limit parameters based on GAN results
 
 
 **Experiment plan:**
 1. Calibration of historical and forward scenarios of multiple CMIP models will be used to study AMOC collapse through integration in the GAN
-	• **Additional Data/Models:**
-		• Current using CESM2: USA, Community Earth System Model
-		• New: MPI-ESM1-2-LR: Max Planck Institute for Meteorology Earth System Model; ACCESS-CM2: Australian Community Climate and Earth System Simulator; CAN-ESM5: Canadian Earth System Model
+	**Additional Data/Models:**
+	• Current using CESM2: USA, Community Earth System Model
+	• New: MPI-ESM1-2-LR: Max Planck Institute for Meteorology Earth System Model; ACCESS-CM2: Australian Community Climate and Earth System Simulator; CAN-ESM5: Canadian Earth System Model
 	• These are all z-level models (they use depth below sea surface as their vertical coordinate). Continued code development for calibrating models with other vertical coordinates would be required.
-2. Calibrated data will be used to fit the 4 and 6 box model for multiple CMIP-class global coupled models
-	CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04,Kv=3.3703e-05.
-	In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.\
+
+2. Calibrated data will be used to fit the 4 and 6 box model for multiple CMIP-class global coupled models CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04,Kv=3.3703e-05. In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.
 
 3. The GAN (see GAN experiments) will be used to explore the AMOC dynamics for the different models using the 4 and 6 box model with parameters fitted to the individual models
 
@@ -250,23 +222,19 @@ modeling
 7 Task 3.5: AI Physics-Informed Surrogate Updated Models
 ---------------------------------------------------------
 
-   *Subtask Description: We will report how the surrogate models will be
-   built/used for the AMOC tipping model use case and experiments which
-   will show how surrogate models can be used to highlight locations
-   that need additional measurements.*
+*Subtask Description: We will report how the surrogate models will be built/used for the AMOC tipping model use case and experiments which will show how surrogate models can be used to highlight locations that need additional measurements.*
 
-	*Tasks to Complete for Phase 2:*
-		• Transition from 4 to 6 box models
-		• Extend existing work with introduction of a GAN
+*Tasks to Complete for Phase 2:*
+	• Transition from 4 to 6 box models
+	• Extend existing work with introduction of a GAN
 
 
-   **Experiment plan (Transitioning from the 4 box to the 6 box model):** 
+**Experiment plan (Transitioning from the 4 box to the 6 box model):** 
 1. 6-box model equation set and nondimensionalization will be used to implement a new set of equations
 
 2. Will use numerical bifurcation computations with respect to the same parameters we used in the 4-box case to computer several one-parameter bifurcation diagrams in comparable operating regimes
 
 3. Will pinpoint the candidate tipping point bifurcations (turning points involving a stable and an unstable steady branch as well as possibly subcritical Hopf bifurcations where a stable focus loses stability “backwards” and an unstable limit cycle is born in the reverse direction.
-
    
 4. In the neighborhood of these candidate tipping points will include noise terms for deterministic evolution equations, and perform stochastic simulations from rich ensembles of initial conditions.
 
@@ -284,8 +252,7 @@ box models
 model are firmly established and which are more tenuous
 
 
-   **Experiment plan (Exploring modifications and extensions of GAN
-   usage):**
+**Experiment plan (Exploring modifications and extensions of GAN usage):**
 
 1. Using GANs to assist and enhance multiscale simulations. In traditional statistical physics there exist physics inspired algorithms (like umbrella sampling) using intelligently biased dynamics to generate these configurations. GANs provide a machine-learning alternative, where instead of using dynamic simulations, a database of acceptable microscopic configurations are used.
 
@@ -298,20 +265,15 @@ model are firmly established and which are more tenuous
 8 Task 4.5: AI Simulation Updated Models
 ------------------------------------------
 
-   *Subtask Description: We will report how the simulation will be
-   evaluated for the AMOC tipping point experiments. What-if questions
-   related to the AMOC tipping point, including an evaluation of the
-   causal model to answer specific questions.*
+*Subtask Description: We will report how the simulation will be evaluated for the AMOC tipping point experiments. What-if questions related to the AMOC tipping point, including an evaluation of the causal model to answer specific questions.*
 
 *Tasks to Complete for Phase 2:*
 	• New GAN experiments based on the 6-box model and calibrated CEMS2 model 
 		• Validated using the expected 6-box model output and JHU in-house models
 	• New integration between the surrogate models (non-box) and the GAN
 	• New integration between the GAN and the neuro-symbolic methods
-	• Expansion of the neuro-symbolic language to include locations (each box) and questions
-that address model dynamics beyond binary AMOC collapse
-	• Development of a plan to integration the questions into the experimental evaluations, i.e.
-we will setup a set of questions that will be used to query the learned latent space and will compare these answers with what is proven from running the models directly
+	• Expansion of the neuro-symbolic language to include locations (each box) and questions that address model dynamics beyond binary AMOC collapse
+	• Development of a plan to integration the questions into the experimental evaluations, i.e. we will setup a set of questions that will be used to query the learned latent space and will compare these answers with what is proven from running the models directly
 		• Validated using the JHU in-house models
 
 
@@ -321,8 +283,6 @@ we will setup a set of questions that will be used to query the learned latent s
 2. Compare models learned by GAN that “tip” with in-house model runs
 3. Compare models learned by GAN that did not “tip” with in-house model runs
 4. Compare models learned by GAN that “tipped and recovered” with in-house model runs 
-\ |image46|
-
 
 **Experiment plan CESM2 calibrated model - GAN:**
 1. Build a calibrated surrogate model using the 6-box model as a template
