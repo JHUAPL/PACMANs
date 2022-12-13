@@ -99,20 +99,13 @@ Three areas where additional data sources could be of use
 **Phase 2 Discussion – Data Sources**
 
    • The primary dataset for scientific discovery will be the CMIP6 archive of global coupled models.
-
-   • Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
-
+   	• Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
    • Model disagreement, paired with GAN discovery of tipping points, will identify the important parameters or conditions that control the AMOC shutoff.
-
    • Observations that could put limits on these parameters or indicate these conditions will be the most valuable new data that could be generated.
-
    	• We expect important initial conditions to include the AMOC strength, which could be better measured with added data from floats for improved T, S structure measures, moorings for bottom pressure, or satellite SST and SSS.
-
    	• We expect an important forcing to be the freshwater flux from the Arctic, which might be measured by floats and satellites.
-
    	• We expect the important parameters to be mixing rates, which can be
    measured with in-situ and satellite monitoring of significant salinity anomalies for their decay rate or potentially dye experiments at the (sub)mesoscale.
-
    	• Existing satellite and ARGO datasets will be examined to determine what we can already learn of freshwater fluxes, AMOC strength, and salinity anomalies to constrain our model analyses.
 
 
@@ -123,7 +116,7 @@ Three areas where additional data sources could be of use
 
    • *Precursor patterns-* focus modeling activity near tipping point, look for common precursors of collapse.
 
-   |image31|\ |image32|
+   |image31|
 
 
 **Phase 2 Discussion – Questions to Explore**
@@ -208,7 +201,14 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
 	• New: MPI-ESM1-2-LR: Max Planck Institute for Meteorology Earth System Model; ACCESS-CM2: Australian Community Climate and Earth System Simulator; CAN-ESM5: Canadian Earth System Model
 	• These are all z-level models (they use depth below sea surface as their vertical coordinate). Continued code development for calibrating models with other vertical coordinates would be required.
 
-2. Calibrated data will be used to fit the 4 and 6 box model for multiple CMIP-class global coupled models CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04,Kv=3.3703e-05. In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.
+2. Calibrated data will be used to fit the 4 and 6 box model for multiple CMIP-class global coupled models.
+
+CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04, Kv=3.3703e-05.  In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.
+
+	image:: _static/media7/image32.png
+	   :width: 5.17778in
+	   :height: 4.73633in
+
 
 3. The GAN (see GAN experiments) will be used to explore the AMOC dynamics for the different models using the 4 and 6 box model with parameters fitted to the individual models
 
@@ -238,18 +238,13 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
    
 4. In the neighborhood of these candidate tipping points will include noise terms for deterministic evolution equations, and perform stochastic simulations from rich ensembles of initial conditions.
 
-5. Will collect these stochastic trajectories, and then use our stochastic integrator-inspired neural network SDE
-identification software to learn low-dimensional effective SDEs targeted to the neighborhood of said candidate
-tipping points.
+5. Will collect these stochastic trajectories, and then use our stochastic integrator-inspired neural network SDE identification software to learn low-dimensional effective SDEs targeted to the neighborhood of said candidate tipping points.
 
 6. In a separate effort, will use fully developed weather simulations to calibrate mathematical six-equation model.
 
-7. Will collect time series of the “six model variables” from the full simulation, and then using recurrent neural
-network architectures (e.g. Runge-Kutta recurrent Resnets that we originally proposed) identify black box six-
-box models
+7. Will collect time series of the “six model variables” from the full simulation, and then using recurrent neural network architectures (e.g. Runge-Kutta recurrent Resnets that we originally proposed) identify black box six-box models
 
-8. In collaboration with Prof. Gnanadesikan, will decide which constitutive and balance terms from the six equation
-model are firmly established and which are more tenuous
+8. In collaboration with Prof. Gnanadesikan, will decide which constitutive and balance terms from the six equation model are firmly established and which are more tenuous
 
 
 **Experiment plan (Exploring modifications and extensions of GAN usage):**
