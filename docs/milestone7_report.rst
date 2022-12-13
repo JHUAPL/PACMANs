@@ -90,11 +90,6 @@ box model
 • AI Simulation: New integration between the GAN and the surrogate models
 • AI Simulation: New integration between the GAN and the neuro-symbolic methods including an advancement in the language and realistic questions that could be evaluated against in-house model runs, and the inclusion of an explainability module that uses causal paths learned by the GAN
 
-.. image:: _static/media7/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
-
-
 
 **Phase 2 Discussion – Value of Data**
 
@@ -138,9 +133,6 @@ Three areas where additional data sources could be of use
 
    |image31|\ |image32|
 
-.. image:: _static/media7/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
 
 **Phase 2 Discussion – Questions to Explore**
 
@@ -189,7 +181,6 @@ Each 35 years, at an effective radiative increase of 2W/m2, we branch off two si
 
 These will determine whether the AMOC recovers, stabilizes, or continues to collapse.
 
-\ |image34|
 
    Atmospheric CO2 concentration for CESM2 experiments
 
@@ -215,7 +206,7 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
    understand the sensitivity of AMOC collapse and recovery, determine
    what additional measurements could reduce uncertainty in such
    projections, and enable a parallel understanding of collapse to that
-   of the GAN.\ |image35|
+   of the GAN.
 
 
 5 Task 2.4: Data Plan for AMOC Use Case
@@ -245,7 +236,7 @@ modeling
 	• These are all z-level models (they use depth below sea surface as their vertical coordinate). Continued code development for calibrating models with other vertical coordinates would be required.
 2. Calibrated data will be used to fit the 4 and 6 box model for multiple CMIP-class global coupled models
 	CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04,Kv=3.3703e-05.
-	In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.\ |image38|\ |image39|\ |image40|
+	In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.\
 
 3. The GAN (see GAN experiments) will be used to explore the AMOC dynamics for the different models using the 4 and 6 box model with parameters fitted to the individual models
 
@@ -274,7 +265,7 @@ modeling
 
 2. Will use numerical bifurcation computations with respect to the same parameters we used in the 4-box case to computer several one-parameter bifurcation diagrams in comparable operating regimes
 
-3. Will pinpoint the candidate tipping point bifurcations (turning points involving a stable and an unstable steady branch as well as possibly subcritical Hopf bifurcations where a stable focus loses stability “backwards” and an unstable limit cycle is born in the reverse direction.\ |image43|
+3. Will pinpoint the candidate tipping point bifurcations (turning points involving a stable and an unstable steady branch as well as possibly subcritical Hopf bifurcations where a stable focus loses stability “backwards” and an unstable limit cycle is born in the reverse direction.
 
    
 4. In the neighborhood of these candidate tipping points will include noise terms for deterministic evolution equations, and perform stochastic simulations from rich ensembles of initial conditions.
