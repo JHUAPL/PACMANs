@@ -204,8 +204,9 @@ discriminator in classifying runs**
 \                    **0** **1** **2** **3**
 ============== ===== ===== ===== ===== =====
 **Number of**  **1** 0.854 n/a   n/a   n/a
-**Generators** **2** 0.992 0.998 n/a   n/a
-               **4** 0.982 0.986 0.972 1
+**Generators** 
+\              **2** 0.992 0.998 n/a   n/a
+\              **4** 0.982 0.986 0.972 1
 ============== ===== ===== ===== ===== =====
 
 **The trained generators are successfully generating a latent space of
@@ -286,7 +287,7 @@ Neuro-Symbolic Learning
 
    • ‘Programs’ are used to find answers using latent space
 
-.. image:: _static/media4/image41.png
+   .. image:: _static/media4/image41.png
    :width: 5.78611in
    :height: 2.86389in
 
