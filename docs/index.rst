@@ -12,6 +12,11 @@
    summary
    milestone1_report
    milestone2_report
+   milestone3_report
+   milestone4_report
+   milestone5_report
+   milestone6_report
+   milestone7_report
 
 .. toctree::
    :maxdepth: 1
