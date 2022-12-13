@@ -1,35 +1,25 @@
 ==================
 Milestone 6 Progress Report
 ==================
-Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.
+
+**Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.**
+
 
 **PACMANS TEAM:**
+• Jennifer Sleeman (JHU APL) PI
+• Anand Gnanadesikan (JHU) Co-PI
+• Yannis Kevrekidis (JHU) Co-PI
+• Jay Brett (JHU APL)
+• David Chung (JHU APL)
+• Chace Ashcraft (JHU APL)
+• Thomas Haine (JHU)
+• Marie-Aude Pradal (JHU)
+• Renske Gelderloos (JHU)
+• Caroline Tang (DUKE)
+• Anshu Saksena (JHU APL)
+• Larry White (JHU APL)
+• Marisa Hughes (JHU APL)
 
-Jennifer Sleeman (JHU APL) PI
-
-Anand Gnanadesikan (JHU) Co-PI
-
-Yannis Kevrekidis (JHU) Co-PI
-
-Jay Brett (JHU APL)
-
-David Chung (JHU APL)
-
-Chace Ashcraft (JHU APL)
-
-Thomas Haine (JHU)
-
-Marie-Aude Pradal (JHU)
-
-Renske Gelderloos (JHU)
-
-Caroline Tang (DUKE)
-
-Anshu Saksena (JHU APL)
-
-Larry White (JHU APL)
-
-Marisa Hughes (JHU APL)
 
 1 Overview
 ------------
@@ -37,16 +27,15 @@ Marisa Hughes (JHU APL)
    The Physics-informed AI Climate Model Agent Neuro-symbolic Simulator
    (PACMANS) for Tipping Point Discovery
 
-   • This technical report covers the period of June 14, 2022 through
-   August 13, 2022.
+   • This technical report covers the period of June 14, 2022 through August 13, 2022.
 
    • The report documents the achievement of the milestone associated with Month 8 of the JHU/APL-led PACMAN team’s statement of work.
 
    • The delivery for this milestone is this report which highlights AI Physics-informed surrogate model progress and the AI Simulation progress.
 
    • This milestone includes:
-   | • A progress report
-   | • Preliminary software\ |image26|
+       | • A progress report
+       | • Preliminary software\
 
 
 2 Goals and Impact
@@ -57,24 +46,20 @@ Goal for this milestone included:
 
 	• The report is included in this document and preliminary software for methods described are located here:
 
-   .. image:: _static/media6/image28.png
-      :width: 5.83333in
-      :height: 0.11111in
 
 	• The project website is located here:
 
-   |image27|\ |image28|
+   |image27|\
 
 
 3 Key Findings
 ---------------
 
-**Surrogate Models:
+**Surrogate Models:**
 
-   • We have achieved the first calculation of escape time distributions
-   for the 4-box model (non-dimensionalized)
+   • We have achieved the first calculation of escape time distributions for the 4-box model (non-dimensionalized)
 
-**AI Simulation:
+**AI Simulation:**
 
    • We showed that the GAN could be used to exploit the area of uncertainty, consistent with the separatrix of the fold bifurcations, consistent with the Gnanadesikan 2018 paper
 
@@ -82,7 +67,7 @@ Goal for this milestone included:
 
    • We believe we could extend the GAN to explore additional types of bifurcations
 
-   • Using the CLEVR dataset we are now able to measure performance of the neuro-symbolic architectures and have strong preliminary results using Levenstein distance as a metric\ |image29|
+   • Using the CLEVR dataset we are now able to measure performance of the neuro-symbolic architectures and have strong preliminary results using Levenstein distance as a metric\
 
 4 Task 3.4: AI Physics-Informed Surrogate Model Summary
 --------------------------------------------------------
@@ -96,11 +81,10 @@ Goal for this milestone included:
    • Have developed a first version of the Python code for the surrogates consistent with the bifurcation diagrams
 
    • In-process to integrate this code to be used by the GAN
-   • Working on estimating the escape time distributions\ |image30|
+   • Working on estimating the escape time distributions\
 
 
    **The Model**
-	|image31|\ 
 We consider a dynamical box model with four boxes:
 	• the southern high latitudes (0.308S)
 	• the northern high latitudes (0.458N)
@@ -111,35 +95,16 @@ State variables:
 	• 𝑇_S, 𝑇_n, 𝑇_l, 𝑇_d: Temperatures of the four boxes 
 	• 𝑆_S, 𝑆_n, 𝑆_l, 𝑆_d: Salinities of the four boxes
 
-.. image:: _static/media6/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
-	
+\ |image31|\
+
 • Single-headed bold arrows denote net fluxes of water.
 
 • Double-headed arrows denote mixing fluxes.
 
 **Nine Equations**
 
-|image32|\ |image33|\ |image34|\ |image35|\ |image36|\ |image37|\ |image38|\ |image39|\ |image40|\ |image41|\ |image42|\ |image43|\ |image44|\ |image45|\ |image46|\ |image47|\ |image48|\ |image49|\ |image50|\ |image51|\ |image52|\ |image53|\ |image54|\ |image55|\ |image56|\ |image57|\ |image58|\ |image59|\ |image60|\ |image61|\ |image62|\ |image63|\ |image64|\ |image65|\ |image66|\ |image67|\ |image68|\ |image69|
+|image32|\
 
-
-   | d𝐷
-   | d𝑡 = 1𝐴 𝑀!" + 𝑀#$% − 𝑀!&&' − 𝑀( − 𝐹%( − 𝐹%)\ |image70|
-   | d𝑇( d𝑡 = 1𝑉( 𝑀( + 𝑀*+ ⋅ 𝑇, − 𝑇( + λ-( ⋅ 𝑇.( − 𝑇(|image71|
-   | d𝑇) d𝑡 = 1 ) ⋅ 𝑇.) − 𝑇)\ |image72|\ 𝑉) 𝑀!" + 𝑀/0(1 ) ⋅ 𝑇 − 𝑇) + 𝑀*2
-     + 𝑀!&&' ⋅ 𝑇, − 𝑇) + λ-
-   | d 𝑇, ⋅ 𝑉, d𝑡 = 𝑀!" ⋅ 𝑇) − 𝑀( ⋅ 𝑆, + 𝑀*+ 𝑆( − 𝑆, − 𝑀!&&' ⋅ 𝑆, + 𝑀#$%
-     ⋅ 𝑆& + 𝑀*2 𝑆) − 𝑆, + λ-, ⋅ 𝑇., − 𝑇,\ |image73| d 𝑇& ⋅ 𝑉& d𝑡 = 𝑀( +
-     𝐹%(⋅ 𝑇( − 𝑀!" + 𝑀/0(1 + 𝑀#$% ⋅ 𝑇& + 𝑀!&&' + 𝑀/0(1 )
-   | + 𝐹%)⋅ 𝑇)\ |image74| d𝑆( d𝑡 = 1𝑉( 𝑀( ⋅ 𝑆, − 𝑀( + 𝐹%( ⋅ 𝑆( + 𝑀*+ 𝑆,
-     − 𝑆(|image75|
-   | d𝑆) d𝑡 = 1 ) ⋅ 𝑆)\ |image76|\ 𝑉) 𝑀!" + 𝑀/0(1) ⋅ 𝑆& − 𝑆) + 𝑀*2 +
-     𝑀!&&' ⋅ 𝑆, − 𝑆) − 𝐹%
-   | d 𝑆, ⋅ 𝑉,
-   | d𝑡 = 𝑀!" ⋅ 𝑆) − 𝑀( ⋅ 𝑆, + 𝑀*+ 𝑆( − 𝑆, − 𝑀!&&' ⋅ 𝑆, + 𝑀#$% ⋅ 𝑆& +
-     𝑀*2 𝑆) − 𝑆,\ |image77| d(S3 ⋅ V3) 𝑑𝑡 = M4 ⋅ S4 − M56 + M7849: +
-     M;<= ⋅ S3 + M533> + M7849: ⋅ S: + F=4 ⋅ S4 + F:4 ⋅ S:|image78|
 
    These are the equations that we start with (nine differential
    equations)
@@ -147,64 +112,22 @@ State variables:
    
 **Salt Conservation**
 
+|image33|\
 
-====== ======== ======== ======== ======
-𝑑 𝑆!𝑉! + 𝑑 𝑆"𝑉" + 𝑑 𝑆#𝑉# + 𝑑 𝑆$𝑉$    = 0
-                                  
-       𝑑𝑡       𝑑𝑡       𝑑𝑡       
-====== ======== ======== ======== ======
-𝑑𝑡                                
-====== ======== ======== ======== ======
-
-Hence, we substitute to the last ODE, the algebraic constraint:
-
-𝑆!𝑉! + 𝑆"𝑉" + 𝑆#𝑉# + 𝑆$𝑉$ = 𝑡𝑜𝑡𝑎𝑙 𝑎𝑚𝑜𝑢𝑛𝑡 𝑜𝑓 𝑆𝑎𝑙𝑡 = 𝐾
-
-So actually, 𝑉! = 𝐴! ∗ 𝐷%&' = 0.6𝑒14 ∗ 100 and 𝑉" = 𝐴" ∗ 𝐷%&' = 1𝑒14 ∗
-100 are constant, while the initial value of 𝑉(# = 2𝑒14 ∗ 𝐷(.
-
-Knowing:
-
-   𝑉($ = 𝑉)*) − 𝑉(! − 𝑉(" − 𝑉(# = 3700 ∗ 3.6𝑒14 − 0.6𝑒16 − 1𝑒16 − 2𝑒14 ∗
-   𝐷(
-
-The initial value of 𝐷( = 400.
-
-The initial value of salinities are 𝑆(! = 35, 𝑆(" = 34, 𝑆(# = 36, 𝑆($ =
-34.5.
-
-We can find directly 𝑆$:
-
-   𝑆$ = 𝐾 − 𝑆!𝑉! − 𝑆"𝑉" − 𝑆#𝑉#
-
-𝑉$\ |image79|\ |image80|\ |image81|
 
    IMPORTANTLY, we explicitly used the fact that there exists an
    algebraic constraint (a salt balance) that reduces the equations by
    one, and removes a neutral direction; this helps the conditioning of
    the Jacobian
 
-**8**
 
-|image82|\ |image83|\ |image84|\ |image85|\ |image86|\ |image87|\ |image88|\ |image89|\ |image90|\ |image91|\ |image92|
+
+
 
 
 **Non-Dimensional Equations**
 
-In order to non-dimensionalize the equations, we introduce
-non-dimensional time and variables:
-
-   | 𝑡 = 𝑡∗ ∗ 𝐴 ∗ 𝐻 , 𝐷 = 𝐻 ∗ 𝐷∗, 𝑀"#
-   | S$ = S$∗S$%, S& = S&∗S$%, S' = S'∗S$%
-   | T$ = T$∗T'%, T& = T&∗T'%, T' = T'∗T'%, 𝑇( = 𝑇(∗𝑇)%
-
-   we introduce several non-dimensional constants for the Fluxes:
-
-𝑇𝑟\* = +,- .!,.!,0"!,0#! 1$%& 2-!3() ' , 𝑀*∗ = 𝑇𝑟*Δ𝜌∗𝐷∗4; 𝑇𝑟567 =
-1$%&3(), 𝑀567∗ = 8*9#+, 0-., 1∗;𝑇𝑟"((: =90;&1 1$%&;213(), 𝑀"((:∗ =
-𝑇𝑟"((:𝐷∗ ; 𝑇𝑟<"(= = 93(4%90, 𝑀;.∗ = 𝑇𝑟<"(=𝑇𝑟"((:𝐷∗ ;
-
-𝑇𝑟.1 =356 @ =>,7 . =>,13(); 𝑇𝑟>? 3() 𝑇𝑟>? 3()
+|image34|\
 
    To make computations more accurate numerically, we
    non-dimensionalized the equations in ways **meaningful to the domain
@@ -231,7 +154,7 @@ non-dimensional time and variables:
    	And a saddle-node bifurcation: LP for 𝑇𝑟>?\* = 0.01798
 
 	Reminder: we found two different tipping points ("up to down" and "down to up” that also happened to do be of different nature ("turning point" and "subcritical Hopf")
-\ |image93|\ |image94|\ |image95|\ |image96|
+\ |image93|\ |image94|\
 
 
 
@@ -240,11 +163,8 @@ non-dimensional time and variables:
 
 To the non-dimensional system of 8 equations, we add fluctuations in the fresh water flux coefficient: :math:`𝑇𝑟_{FW}^n ∼ 𝒩(𝑇𝑟_{FW0}^n, 𝜎^2)`
 
-With :math:`𝜎 = 4% 𝑇𝑟_{FW}^n = 0.002`
+With :math:`𝜎 = 4\% 𝑇𝑟_{FW}^n = 0.002`
 
-.. image:: _static/media6/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
 
 |image97|\ |image98|
 
@@ -261,12 +181,11 @@ Next Steps:
 
 	• We have a very good handle on data-driven causality; the enabling tools are “Alternating Diffusion” / “Jointly Smooth Functions”
 
-	• **We plan to use this in the discovery of good predictors/advance indicators of tipping.** |image99|
+	• **We plan to use this in the discovery of good predictors/advance indicators of tipping.**
 
 
-4 Task 4.4: AI Simulation Progress Summary
+5 Task 4.4: AI Simulation Progress Summary
 ------------------------------------------
-
    *Subtask Description: We will provide a progress report of the early
    proof of concept experimental results for the MA-GAN, the causal
    model and the neuro-symbolic models, including isolated experimental
@@ -275,7 +194,7 @@ Next Steps:
    | Accomplishments:
    | • Showed that the GAN could be used to exploit the area of uncertainty consistent with the separatrix in the Gnanadesikan 2018 paper
    | • Developed architectures needed for a baseline neuro-symbolic language that enables a translation from human-specific questions to the GAN simulation, and from perturbed GAN runs to questions
-   | • Begun integrating the neuro-symbolic work with GAN output\ |image100|
+   | • Begun integrating the neuro-symbolic work with GAN output\
 
 
 **AI Simulation – GAN Uncertainty Experiment Objective**
@@ -289,7 +208,7 @@ Next Steps:
 
 	| • i.e. explore separatrix
 
-   | • How well can the GAN accurately predict the climate model outputs for configurations spanning these regions of uncertainty?\ |image101|
+   | • How well can the GAN accurately predict the climate model outputs for configurations spanning these regions of uncertainty?\
 
 
 **AI Simulation – GAN Uncertainty Experiments**
@@ -302,9 +221,9 @@ Next Steps:
    • Mek (Ekman flux from the southern ocean): [1.5e7, 3.5e7]
    • Fwn (Fresh water flux (North)): [5.0e4, 1.55e6]
 
-• Other variables were held constant\ |image102|
+• Other variables were held constant\
 
-|image103|\ |image104|
+|image103|\
 
 
 
@@ -318,7 +237,7 @@ Next Steps:
 
    • At each update step, the discriminator will achieve these two objectives for m(n+1) configurations (m samples per each of n generators, +1 batch from the real data distribution)
 
-   • Ground-truth shutoff labels are determined for the generated configurations by consulting the surrogate model before the training step\ |image105|
+   • Ground-truth shutoff labels are determined for the generated configurations by consulting the surrogate model before the training step\
 
 
 
@@ -336,13 +255,12 @@ Next Steps:
 
    	• Guide the discriminator into predicting that its configurations are sampled from the real data distribution
 
-   	• Generate model configurations where the discriminator is least certain about the output state (i.e. AMOC shutoff vs. non-shutoff)\ |image106|
+   	• Generate model configurations where the discriminator is least certain about the output state (i.e. AMOC shutoff vs. non-shutoff)\
 
 
 
 **AI Simulation – GAN Uncertainty Experiments**
 
-	\ |image107|\ |image108|
 
    • Real dataset generated by uniformly sampling vectors of perturbed variables from bounded 3-D subspace.
 
@@ -369,7 +287,6 @@ Next Steps:
 
    Test Set Based on Dataset Generated From Box Model.
 
-   3 December 2022 **19**
 
    **AI Simulation – GAN Experiments – Uncertainty Region Sampling**
 
@@ -426,9 +343,6 @@ Comparing GAN Generated Results for N = (1,2,3) with the Test Set.
 +---------------------------------------------------------+-----------+
 
 
-.. image:: _static/media6/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
 
 **AI Simulation – Neuro-Symbolic Learning**
 
@@ -445,9 +359,8 @@ Comparing GAN Generated Results for N = (1,2,3) with the Test Set.
       :height: 4.94722in
 
    Learning to Translate Questions into Programs and Programs into
-   Questions\ |image113|
+   Questions\
 
-\ |image114|
 
    | Using the CLEVR dataset to validate architectures:
    | (https://cs.stanford.edu/people/jcjohns/clevr/)
@@ -476,21 +389,20 @@ Comparing GAN Generated Results for N = (1,2,3) with the Test Set.
 
    **Example Output:**
 
-   .. image:: _static/media6/image107.png
-      :width: 2.30556in
-      :height: 0.125in
-
    **Predicted text:** BOS how many small cyan things are there ? EOS\ 
+
    **Ground Truth Text:** BOS how many small cyan things are there ? EOS
-   **Predicted program:** BOS count ( filter_color ( filter_size ( scene , small ) , cyan ) ) EOS
+
+    **Predicted program:** BOS count ( filter_color ( filter_size ( scene , small ) , cyan ) ) EOS
 
    **Ground Truth program:** BOS count ( filter_color ( filter_size ( scene , small ) , cyan ) ) EOS\ 
-   **Predicted text from program:** BOS how many of cyan things are are ? ? EOS\ |image115|
+
+    **Predicted text from program:** BOS how many of cyan things are are ? ? EOS\
 
 
-.. image:: _static/media6/image108.png
-   :width: 5.48056in
-   :height: 3.84722in
+   .. image:: _static/media6/image108.png
+      :width: 5.48056in
+      :height: 3.84722in
 
    .. image:: _static/media6/image109.png
       :width: 5.95in
@@ -513,7 +425,7 @@ Comparing GAN Generated Results for N = (1,2,3) with the Test Set.
    Initial evaluations have been performed and module integrations is
    in-progress.
 
-   |image117|\ |image118|
+   |image117|\
 
 **Approved for public release; distribution is unlimited. This material is based upon work supported by the Defense Advanced Research Projects Agency (DARPA) under Agreement No. HR00112290032.**
 
