@@ -288,8 +288,8 @@ Neuro-Symbolic Learning
    • ‘Programs’ are used to find answers using latent space
 
    .. image:: _static/media4/image41.png
-   :width: 5.78611in
-   :height: 2.86389in
+      :width: 5.78611in
+      :height: 2.86389in
 
    **Figure 7. Training vs. Trained Mode and AI vs. Human Question and
    Answers.**
@@ -305,7 +305,7 @@ Neuro-Symbolic Learning
       :width: 5.24306in
       :height: 2.41806in
 
-   | **Figure 8. Notional low dimensional embedding of “programs” that
+   **Figure 8. Notional low dimensional embedding of “programs” that
      represent natural language questions.**
 
    • **Designed a question template for experimentation**
@@ -320,12 +320,12 @@ Neuro-Symbolic Learning
 
 
 (a)     
-         .. image:: /_static/media4/image43.png              
+         .. image:: _static/media4/image43.png              
             :width: 5.01111in                                
             :height: 1.95972in                               
 
 (b) 
-         .. image:: /_static/media4/image44.png
+         .. image:: _static/media4/image44.png
             :width: 5.01111in
             :height: 1.95972in
 
@@ -366,8 +366,8 @@ Neuro-Symbolic Learning
     • Based on Neuro-Symbolic Concept Learner
     
     .. image:: _static/media4/image46.png
-   :width: 7.55417in
-   :height: 3.94028in
+         :width: 7.55417in
+         :height: 3.94028in
 
    **Figure 11. Novel Neuro-Symbolic Architecture for Translating
    Questions to Programs based on Neuro-Symbolic Concept Learner
@@ -384,7 +384,7 @@ Neuro-Symbolic Learning
 
    **Figure 12. Visualizing Translations Between Levels – Questions
    to/from Symbolic Programs (top) and Symbolic Programs to/from Vectors
-   (bottom).**\ |image60|
+   (bottom).**
 
 Causality
 ------------------------
@@ -543,11 +543,6 @@ Causality
    Jung, Joachim Denzler, and Nuno Carvalhais. "Deep learning and
    process understanding for data-driven Earth system science." Nature
    566, no. 7743 (2019): 195-204.
-
-
-.. image:: _static/media/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
 
 
    28. Sleeman, Jennifer, Ivanka Stajner, Christoph Keller, Milton
