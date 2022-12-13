@@ -110,7 +110,7 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
 **Experiment plan:**
 Several runs of this experiment will be undertaken for a small ensemble, varying initial conditions (e.g. Atlantic Multidecadal Oscillation (AMO) phase and AMOC strength) and the parameters from the box model that the GAN indicates the tipping point or separatrix is most sensitive to.
 
-We will also repeat runs with roundoff-level differences in the atmosphere’s initial conditions. This will allow us to understand the sensitivity of AMOC collapse and recovery, determine what additional measurements could reduce uncertainty in such projections, and enable a parallel understanding of collapse to that of the GAN.\ |image32|
+We will also repeat runs with roundoff-level differences in the atmosphere’s initial conditions. This will allow us to understand the sensitivity of AMOC collapse and recovery, determine what additional measurements could reduce uncertainty in such projections, and enable a parallel understanding of collapse to that of the GAN.
 
 
 6 Task 2.3: Data Acquisition Dataset Delivery
@@ -139,17 +139,14 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
    • Matlab code built, small dataset of runs with varied parameters for exploration. 
    • Enables more use cases for the AI methods.
 
+ 
+ 4-box Model    
 
-+----------------------------------------------------+----------------+
-|    .. image:: vertopal_                            |     |
-| a2c01c03231e47d0a4c997fb53adb88c/media/image29.png |                |
-|       :width: 4.31111in                            |                |
-|       :height: 2.74306in                           |                |
-|                                                    |                |
-|    4-box Model                                     |                |
-+----------------------------------------------------+----------------+
+.. image:: _static/media5/image29.png
+       :width: 4.31111in    
+      :height: 2.74306in                           
 
-.. |image34| image:: _static/media5/image30.png
+.. image:: _static/media5/image30.png
    :width: 7.74028in
    :height: 3.41439in
    
@@ -163,7 +160,7 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
 	• Bottom, higher flux in Atlantic only, as from increased meltwater
 • Oscillation of AMOC strength with Pacific overturning switching on and off has been observed
 	• See middle case on right. Southern Ocean overturning (purple) and low-latitude upwelling (yellow) are near constant, while AMOC (blue) oscillates by about 3Sv as Pacific overturning turns on and off. 
-|image36|\ |image37|\ |image38|\ |image39|
+|image36|\ |image37|\ |image38|
 
 
 • 5 ensemble members of CESM2, showing variability related to varied initial conditions. Matlab generation code now released.
