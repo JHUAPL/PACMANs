@@ -35,7 +35,7 @@ In support of establishing additional data source requirements for Phase 2 and a
 **Goals for this milestone included:**
 • Identifying GCM models that will be developed for atmosphere-ocean coupled physical processes including the AMOC (Task 1.2)
 
-• Further development of the calibrated GCMs datasets and tools that will be used for testbeds for AI-supported integration (Task 2.3)\ |image27|
+• Further development of the calibrated GCMs datasets and tools that will be used for testbeds for AI-supported integration (Task 2.3)
 
 3 Key Findings
 ---------------
@@ -50,8 +50,7 @@ In support of establishing additional data source requirements for Phase 2 and a
 ------------------------------
 
    • The primary dataset for scientific discovery will be the CMIP6 archive of global coupled models.
-
-   • Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
+   	• Those models with ensembles of runs for certain forward projections will be valuable in understanding *predictability* of the changes in AMOC.
 
    • Model disagreement, paired with GAN discovery of tipping points, will identify the important parameters or conditions that control the AMOC shutoff.
 
@@ -63,26 +62,20 @@ In support of establishing additional data source requirements for Phase 2 and a
 
    	• We expect the important parameters to be mixing rates, which can be measured with in-situ and satellite monitoring of significant salinity anomalies for their decay rate or potentially dye experiments at the (sub)mesoscale.
 
-   	• Existing satellite and ARGO datasets will be examined to determine what we can already learn of freshwater fluxes, AMOC strength, and salinity anomalies to constrain our model analyses.\ |image29|
+   	• Existing satellite and ARGO datasets will be examined to determine what we can already learn of freshwater fluxes, AMOC strength, and salinity anomalies to constrain our model analyses.
 
 
 **Key ideas to explore in Phase 2**
 
-   Is there **emergent behavior** that can serve as a an index of whether models are approaching a tipping point?
-
+Is there **emergent behavior** that can serve as a an index of whether models are approaching a tipping point?
    - Amplitude of variability in the overturning circulation?
-
-   - Appearance or disappearance of oscillations in overturning
-   transport?
-
+   - Appearance or disappearance of oscillations in overturning transport?
    - Damping time and/or persistence of salinity anomalies
    - Relative phase of salinity and pycnocline depth anomalies
-
 Is this emergent behavior **detectable** with relatively short time series?
    - Example: In box model, overturning variability increases as tipping point is approached… but hundreds of years of output are needed to see changes.
-
-   - Examine whether this is true in models with different periodicities in overturning variability.How does the GAN exploit this emergent behavior?
-
+   - Examine whether this is true in models with different periodicities in overturning variability.
+How does the GAN exploit this emergent behavior?
    - Could the GAN be directed to exploit spaces that have high probability of causing a tip?
    - Could additional data be used to improve the adversarial game?
 
@@ -148,7 +141,7 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
 
 
 +----------------------------------------------------+----------------+
-|    .. image:: vertopal_                            |    6-box Model |
+|    .. image:: vertopal_                            |     |
 | a2c01c03231e47d0a4c997fb53adb88c/media/image29.png |                |
 |       :width: 4.31111in                            |                |
 |       :height: 2.74306in                           |                |
@@ -156,8 +149,12 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
 |    4-box Model                                     |                |
 +----------------------------------------------------+----------------+
 
-|image34|\ |image35|
-
+.. |image34| image:: _static/media5/image30.png
+   :width: 7.74028in
+   :height: 3.41439in
+   
+   6-box Model
+   
 
 • New 6-box model
 • Bifurcation over freshwater flux strength shows switch between Atlantic and Pacific overturning. 3 time series at right for different freshwater flux conditions
@@ -175,7 +172,7 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
 • This is a necessary first step in understanding the behavior of these models and the implication on the AI-based training datasets.
 
 **Note:  See Appendix A for details of publicly-available data and code**
-\ |image40|
+
 
 
 
@@ -183,7 +180,7 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
  • All CESM2 SSP3-7.0 show reduced AMOC strength, deepening pycnocline, and reduced meridional density differences in the Atlantic. This is consistent with the theory behind the box model.
  • Different initial conditions affect inter-annual and decadal-scale variability
 
-| |image41|\ 
+| |image41|
 
   All CESM2 SSP3-7.0, 5 ensemble members |image42|
 
@@ -194,7 +191,7 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
 	• CESM2: USA, Community Earth System Model
 	• CAN-ESM5: Canadian Earth System Model
 • 3 of 4 models show strong decrease in AMOC strength, but only CESM2 shows 4-box style agreement with both pycnocline and meridional density gradient changes, supporting potential disagreement causes
-\ |image43|\ |image44|
+\ |image43|
 
 
 
@@ -207,7 +204,7 @@ We continue to build out the AI Physics-Informed Surrogate models and the AI Sim
 Furthermore, a group effort is underway to clearly define requirements for additional datasets that could further improve the discovery of tipping points for the AMOC use case. 
 
 
-   |image45|\ |image46|
+   |image45|
 
 
 
