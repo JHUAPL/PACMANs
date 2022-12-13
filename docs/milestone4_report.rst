@@ -318,17 +318,16 @@ Neuro-Symbolic Learning
 
    • These questions correlate tightly to the box model experiments and also with the GAN experiments
 
-+-----+--------------------------------------------------------+
-| (a) |    .. image:: /_static/media4/image43.png              |
-|     |       :width: 5.01111in                                |
-|     |       :height: 1.95972in                               |
-+-----+--------------------------------------------------------+
 
-+-----+--------------------------------------------------------+
-| (b) |    .. image:: /_static/media4/image44.png              |
-|     |       :width: 5.01111in                                |
-|     |       :height: 1.95972in                               |
-+-----+--------------------------------------------------------+
+(a)     
+         .. image:: /_static/media4/image43.png              
+            :width: 5.01111in                                
+            :height: 1.95972in                               
+
+(b) 
+         .. image:: /_static/media4/image44.png
+            :width: 5.01111in
+            :height: 1.95972in
 
    **Figure 9a-b. Question Template for Version 1 of Neuro-symbolic
    language (a) and Example Question Using this Template
@@ -420,10 +419,6 @@ Causality
    large GCM calibrated data sets and extensions to the box model.
 
 
-.. image:: _static/media4/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
-
 **Citations**
 
    1. Boers, Niklas. "Observation-based early-warning signals for a
@@ -485,9 +480,6 @@ Causality
    for High Performance Computing, Networking, Storage and Analysis, pp.
    649-660. IEEE, 2018.
 
-.. image:: _static/media4/image27.png
-   :width: 13.33333in
-   :height: 0.41667in
 
    15. Weber, Theodore, Austin Corotan, Brian Hutchinson, Ben Kravitz,
    and Robert Link. "Deep learning for creating surrogate models of
