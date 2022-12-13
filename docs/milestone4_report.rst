@@ -88,7 +88,7 @@ Goals for this milestone included:
       :height: 3.7625in
 
    **Figures 1a-1b. Diagram of NH Overturning Mn (a) and Zoomed-In View
-   of the subcritical Hopf Bifurcation Point (b).** |image30|
+   of the subcritical Hopf Bifurcation Point (b).** 
 
    Second view - the two tipping points are of different nature: one of
    the two is the fold point bifurcation, but the second one is a
@@ -121,7 +121,7 @@ Goals for this milestone included:
    |image35| |image36|
 
    **Figures 3a-3b. Temporal Bifurcation Diagram for Depth (a) and the
-   Limit Cycle Continuation (b).** |image37|
+   Limit Cycle Continuation (b).** 
 
 
    | Next Steps:
@@ -179,13 +179,13 @@ GAN Experiments
    set
 **Table 1. Precision, Recall, F-Measure scores for 1,2,4 generator GANs.**
 
-=================== ================ ============= = ================
-\                      **Precision**    **Recall**      **F-Measure**
-=================== ================ ============= = ================
-   **1 Generator**  1                              1 1
-   **2 Generators** 0.993                          1 0.997
-   **4 Generators** 0.929                          1 0.963
-=================== ================ ============= = ================
+=================== ================ ============= ================
+\                    **Precision**     **Recall**   **F-Measure**
+=================== ================ ============= ================
+   **1 Generator**  1                 1            1
+   **2 Generators** 0.993             1            0.997
+   **4 Generators** 0.929             1            0.963
+=================== ================ ============= ================
 
 **Small initial experiment- but very promising results from
 discriminator in classifying runs**
@@ -199,15 +199,13 @@ discriminator in classifying runs**
    **Table 2. For 1,2,4 generator GANs – Fraction of 500 samples that
    resulted in a shut-off.**
 
-**Generator Idx**
-
+                        **Generator Idx**
 ============== ===== ===== ===== ===== =====
 \                    **0** **1** **2** **3**
 ============== ===== ===== ===== ===== =====
 **Number of**  **1** 0.854 n/a   n/a   n/a
-\              **2** 0.992 0.998 n/a   n/a
-**Generators**
-\              **4** 0.982 0.986 0.972 1
+**Generators** **2** 0.992 0.998 n/a   n/a
+               **4** 0.982 0.986 0.972 1
 ============== ===== ===== ===== ===== =====
 
 **The trained generators are successfully generating a latent space of
@@ -219,7 +217,7 @@ shut-offs**
    behavior. More experimentation is underway to explore this further.
 
 **Figure 4a-c. GAN generated shut-offs for 1 generator (a), 2 generators
-(b), and 4 generators (c).**\ |image42|\ |image43|\ |image44|\ |image45|
+(b), and 4 generators (c).**\ |image42|\ |image43|\ |image44|
 
    | Observations:
    | • The n=1 generator case produces the greatest fraction of
@@ -231,7 +229,7 @@ shut-offs**
    bounds), it appears that n=1 generator is enough to roughly capture
    the shutoff configurations in this feature space. However, it’s still
    to be determined how the generators will perform when allowed to
-   perturb more than 3 features.\ |image46|
+   perturb more than 3 features.
 
 
  • For Fwn the n=1 generator GAN learns a bi-modal sampling
@@ -241,7 +239,7 @@ shut-offs**
 
    **Figure 5a-c. Histograms showing distribution of generated shut-offs
    for 1 generator (a), 2 generators (b), and 4 generators
-   (c).**\ |image47|\ |image48|\ |image49|\ |image50|
+   (c).**\ |image47|\ |image48|\ |image49|
 
 
 
@@ -333,13 +331,13 @@ Neuro-Symbolic Learning
 
    **Figure 9a-b. Question Template for Version 1 of Neuro-symbolic
    language (a) and Example Question Using this Template
-   (b).**\ |image55|
+   (b).**
 
 
     • **Have currently developed a rule-based method that generates encodings of questions as “programs”**
     • Based on a defined Domain Specific Language (DSL)
     • Will be used as a baseline for evaluating deep learning methods
-    • Built an automatic question generator for questions following the form in Figure 9a.\ |image56|
+    • Built an automatic question generator for questions following the form in Figure 9a.
 
     • Experimenting with a sequence-to-sequence autoencoder to encode questions, and decode into vector input for a GAN
 
@@ -362,15 +360,18 @@ Neuro-Symbolic Learning
    **Figure 10. Seq-to-seq Deep Autoencoder for Learning Translations
    Between Text and Programs, and Programs and Vectors.**
 
-   | |image58|\
     • Also, beginning to experiment with the workflow shown in Figure 11
     • Starting with experiments that focus on question to program translation• A model that learns a fixed sized embedding of the question
     • Translatable to programs and readable text
     • Based on Neuro-Symbolic Concept Learner
+    
+    .. image:: _static/media4/image46.png
+   :width: 7.55417in
+   :height: 3.94028in
 
    **Figure 11. Novel Neuro-Symbolic Architecture for Translating
    Questions to Programs based on Neuro-Symbolic Concept Learner
-   (NS-CL).**\ |image59|
+   (NS-CL).**
 
    • Next Steps:
         • Measure performance of the following translations:
@@ -398,7 +399,7 @@ Causality
 
    • Developing causal inference based on temporal evolution of system state
 
-   • Working on a model to learn relevant causal structures that are occurring as a result of dynamics included in surrogate model\ |image61|\ |image62|
+   • Working on a model to learn relevant causal structures that are occurring as a result of dynamics included in surrogate model\ |image61|
 
    • Causal model will capture intermediate states along the way to AMOC shutoffs, focusing on particular states that lie at causal forks in the road of the system’s temporal evolution and that are most
    relevant to whether there will be a shutoff or not
@@ -417,10 +418,6 @@ Causality
    With Milestone 5, we will continue to push forward with building
    large GCM calibrated data sets and extensions to the box model.
 
-   |image63|\ |image64|
-
-
-|image65|\ |image66|
 
 .. image:: _static/media4/image27.png
    :width: 13.33333in
