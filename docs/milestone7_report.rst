@@ -27,7 +27,7 @@ Approved for public release; distribution is unlimited. This material is based u
 
    • The report documents the achievement of the milestone associated with Month 10 of the JHU/APL-led PACMAN team’s statement of work.
 
-   • The deliverable for this milestone is this report which includes a research plan for Phase 2.\ |image26|
+   • The deliverable for this milestone is this report which includes a research plan for Phase 2.
 
 2 Team Resources
 ----------------
@@ -44,7 +44,7 @@ Approved for public release; distribution is unlimited. This material is based u
 
    • Datasets
 
-   	• http://sciserver.org/public-data/PACMANS/datasets\ |image27|
+   	• http://sciserver.org/public-data/PACMANS/datasets
 
 3 Goals and Impact
 ------------------
@@ -53,7 +53,7 @@ Approved for public release; distribution is unlimited. This material is based u
 
    	• Develop a detailed research plan for Phase 2 to include specifics of data, specifying data providers and availability
 
-   	• Describe expected updates to the AI climate modeling methods\ |image28|
+   	• Describe expected updates to the AI climate modeling methods
 
 
 4 Phase 1 Accomplishments To Date
@@ -103,7 +103,7 @@ Three areas where additional data sources could be of use
    | • As additional data for training the AI simulation
    | • After the AI simulation is trained and identifies areas of the search space that likely to exhibit collapse, apply modeling and additional observational data to better understand this behavior
 
-   | • Use the AI simulation to identify variables\ |image29|
+   | • Use the AI simulation to identify variables
 
 
 **Phase 2 Discussion – Data Sources**
@@ -126,7 +126,7 @@ Three areas where additional data sources could be of use
    	• We expect the important parameters to be mixing rates, which can be
    measured with in-situ and satellite monitoring of significant salinity anomalies for their decay rate or potentially dye experiments at the (sub)mesoscale.
 
-   	• Existing satellite and ARGO datasets will be examined to determine what we can already learn of freshwater fluxes, AMOC strength, and salinity anomalies to constrain our model analyses.\ |image30|
+   	• Existing satellite and ARGO datasets will be examined to determine what we can already learn of freshwater fluxes, AMOC strength, and salinity anomalies to constrain our model analyses.
 
 
 **Phase 2 Discussion – Value of New Data**
@@ -266,7 +266,7 @@ modeling
 
 	*Tasks to Complete for Phase 2:*
 		• Transition from 4 to 6 box models
-		• Extend existing work with introduction of a GAN\ |image42|
+		• Extend existing work with introduction of a GAN
 
 
    **Experiment plan (Transitioning from the 4 box to the 6 box model):** 
