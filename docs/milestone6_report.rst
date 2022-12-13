@@ -35,7 +35,7 @@ Milestone 6 Progress Report
 
    • This milestone includes:
        | • A progress report
-       | • Preliminary software\
+       | • Preliminary software
 
 
 2 Goals and Impact
@@ -45,11 +45,11 @@ Goal for this milestone included:
 	• Deliver progress report and preliminary software for the hybrid models/methods
 
 	• The report is included in this document and preliminary software for methods described are located here:
-
+	https://github.com/JHUAPL/PACMANs_internal
 
 	• The project website is located here:
-
-   |image27|\
+	https://pacmans.readthedocs.io/
+ 
 
 
 3 Key Findings
@@ -73,13 +73,11 @@ Goal for this milestone included:
 --------------------------------------------------------
 
 
-   *Subtask Description: We will provide a progress report of the early
-   proof of concept experimental results.*
+   *Subtask Description: We will provide a progress report of the early proof of concept experimental results.*
 
    Accomplishments:
 
    • Have developed a first version of the Python code for the surrogates consistent with the bifurcation diagrams
-
    • In-process to integrate this code to be used by the GAN
    • Working on estimating the escape time distributions\
 
@@ -561,17 +559,17 @@ Comparing GAN Generated Results for N = (1,2,3) with the Test Set.
    Integration of Artificial Intelligence for Improved Operational Air
    Quality Forecasting." In AGU Fall Meeting 2021. 2021.
 
-   | 29. Bellomo, K., Angeloni, M., Corti, S. *et al.* Future climate
+   29. Bellomo, K., Angeloni, M., Corti, S. *et al.* Future climate
      change shaped by inter-model differences in Atlantic meridional
      overturning circulation response. *Nat Commun* **12,** 3659 (2021).
-   | 30. Sgubin, G., Swingedouw, D., Drijfhout, S. *et al.* Abrupt
+   30. Sgubin, G., Swingedouw, D., Drijfhout, S. *et al.* Abrupt
      cooling over the North Atlantic in modern climate models. *Nat
      Commun* **8,** 14375 (2017).
-   | 31. Swingedouw, D., Bily, A., Esquerdo, C., Borchert, L. F.,
+   31. Swingedouw, D., Bily, A., Esquerdo, C., Borchert, L. F.,
      Sgubin, G., Mignot, J., & Menary, M. (2021). On the risk of abrupt
      changes in the North Atlantic subpolar gyre in CMIP6 models.
      *Annals of the New York Academy of Sciences*, *1504*\ (1), 187-201.
-     32. Mao, Jiayuan, Chuang Gan, Pushmeet Kohli, Joshua B. Tenenbaum,
+   32. Mao, Jiayuan, Chuang Gan, Pushmeet Kohli, Joshua B. Tenenbaum,
      and Jiajun Wu. "The neuro-symbolic concept learner: Interpreting
      scenes, words, and sentences from natural supervision." *arXiv
      preprint arXiv:1904.12584* (2019).
