@@ -205,7 +205,7 @@ These will determine whether the AMOC recovers, stabilizes, or continues to coll
 
 CESM2: Fitting historical run of LE ensemble member 1 yields AI=1429, epsilon=1.6724e-04, Kv=3.3703e-05.  In the forward scenario, these allow for 4box AMOC to explain 91% of variation in CESM2 AMOC.
 
-	image:: _static/media7/image32.png
+	.. image:: _static/media7/image32.png
 	   :width: 5.17778in
 	   :height: 4.73633in
 
