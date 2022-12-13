@@ -142,16 +142,15 @@ We will also repeat runs with roundoff-level differences in the atmosphere’s i
  
  4-box Model    
 
-.. image:: _static/media5/image29.png
-       :width: 4.31111in    
+   .. image:: _static/media5/image29.png
+      :width: 4.31111in    
       :height: 2.74306in                           
 
-.. image:: _static/media5/image30.png
-   :width: 7.74028in
-   :height: 3.41439in
-   
-   6-box Model
-   
+ 6-box Model
+  
+   .. image:: _static/media5/image30.png
+      :width: 7.74028in
+      :height: 3.41439in
 
 • New 6-box model
 • Bifurcation over freshwater flux strength shows switch between Atlantic and Pacific overturning. 3 time series at right for different freshwater flux conditions
