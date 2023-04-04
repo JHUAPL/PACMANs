@@ -29,4 +29,4 @@ Documentation
 https://pacmans.readthedocs.io/en/latest/
 
 Datasets
-http://sciserver.org/public-data/PACMANS/datasets
+https://data.idies.jhu.edu/PACMANS/
