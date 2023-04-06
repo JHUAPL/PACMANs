@@ -37,7 +37,7 @@ Milestone 10 Progress Report
 • Documentation
     • https://pacmans.readthedocs.io/en/latest/
 • Datasets
-    • http://sciserver.org/public-data/PACMANS/datasets
+    • https://data.idies.jhu.edu/PACMANS/
 
 
 3   Goals and Impact
