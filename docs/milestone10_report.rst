@@ -126,8 +126,7 @@ With regards to delayed oscillator mechanism:
 -------------
 1. Boers, Niklas. "Observation-based early-warning signals for a collapse of the Atlantic Meridional Overturning Circulation." Nature Climate Change 11, no. 8 (2021): 680-688.
 2. Gnanadesikan, A., A simple model for the structure of the oceanic pycnocline, Science., 283:2077-2079, (1999).
-3. Forget, G., J.-M. Campin, P. Heimbach, C. N. Hill, R. M. Ponte, C. Wunsch, ECCO version 4: An integrated framework for non-linear inverse modeling and
-global ocean state estimation. Geosci. Model Dev. 8, 3071–3104 (2015)
+3. Forget, G., J.-M. Campin, P. Heimbach, C. N. Hill, R. M. Ponte, C. Wunsch, ECCO version 4: An integrated framework for non-linear inverse modeling and global ocean state estimation. Geosci. Model Dev. 8, 3071–3104 (2015).
 4. Gnanadesikan, A., R. Kelson and M. Sten, Flux correction and overturning stability: Insights from a dynamical box model, J. Climate, 31, 9335-9350,
 https://doi.org/10.1175/JCLI-D-18-0388.1, (2018).
 5. Kaufhold, John Patrick, and Jennifer Alexander Sleeman. "Systems and methods for deep model translation generation." U.S. Patent No. 10,504,004. 10
