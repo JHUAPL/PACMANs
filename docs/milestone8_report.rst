@@ -359,8 +359,7 @@ The Hysteretic behavior found in [Gnanadesikan, Kelson, Sten 2018], can be descr
 
   • And a saddle-node bifurcation: LP for 𝑇𝑟@ = 0.01798 TU
 
-\ |image138|
-
+.. image:: _static/media8/image138.png
 
 • The value where the limit cycle branch appears to become vertical (an infinite period, homoclinic orbit) is 0.0375
 
@@ -388,9 +387,7 @@ Temporal Bifurcation Diagram for Depth (top) and the Limit Cycle Continuation (b
 
 • Also notice on the right some initial statistics of escape times for a fixed parameter value
 
-\ |image215|
-
-
+.. image:: _static/media8/image215.png
 
 
 The Stochastic Differential Equation (SDE) model was trained by using sampled data of the Full Network’s Dynamics. Those data were used to train a parameter dependent SDE network (for two values of the parameter p).
