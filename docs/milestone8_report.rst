@@ -307,17 +307,18 @@ State variables:
 ..
 
 
-\ |image211|
+.. image:: _static/media8/image211.png
+
 These are the equations that we start with (nine differential equations)
 
 
 
-\ |image212|
+|image212|
 
 IMPORTANTLY, we explicitly used the fact that there exists an algebraic constraint (a salt balance) that reduces the equations by one and removes a neutral direction. This helps the conditioning of the Jacobian
 
 
-\ |image213|
+|image213|
 
 To make computations more accurate numerically, we non-dimensionalized the equations in ways *meaningful to the domain scientist* (Anand G.) to reduce the number of free parameters
 
